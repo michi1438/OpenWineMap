@@ -1,0 +1,24 @@
+services:
+
+  postgres:
+    container_name: postgres
+    #volumes: etc/data
+    networks: ["OWM_network"]
+    build: postgres/
+    env_file: ".env"
+    restart: on-failure
+
+volumes:
+  DB:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/data/DB
+
+networks:
+  OWM_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
