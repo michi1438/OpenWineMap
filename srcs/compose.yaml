@@ -1,5 +1,15 @@
 services:
 
+  osm2pgsql:
+    container_name: osm2pgsql
+    #volumes: etc/data
+    networks: ["OWM_network"]
+    build: osm2pgsql/
+    depends_on: 
+      - postgres
+    env_file: ".env"
+    restart: on-failure
+
   postgres:
     container_name: postgres
     #volumes: etc/data
