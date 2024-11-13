@@ -1,18 +1,31 @@
 services:
 
+  mapnik:
+    container_name: mapnik
+    volumes: 
+      - MAP:/.MAP/
+    networks: ["OWM_network"]
+    build: mapnik/
+#    depends_on: 
+#      - osm2pgsql
+    env_file: ".env"
+    restart: on-failure
+
   osm2pgsql:
     container_name: osm2pgsql
-    #volumes: etc/data
+    volumes: 
+      - PBF:/.PBF/
     networks: ["OWM_network"]
     build: osm2pgsql/
-    depends_on: 
-      - postgres
+#    depends_on: 
+#      - postgres
     env_file: ".env"
     restart: on-failure
 
   postgres:
     container_name: postgres
-    #volumes: etc/data
+    volumes: 
+      - DB:/var/lib/postgresql/
     networks: ["OWM_network"]
     build: postgres/
     env_file: ".env"
@@ -24,7 +37,19 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: $HOME/data/DB
+      device: $HOME/.docker/OWM/DB/
+  PBF:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/.docker/OWM/PBF/
+  MAP:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/.docker/OWM/MAP/
 
 networks:
   OWM_network:

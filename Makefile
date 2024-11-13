@@ -9,7 +9,8 @@ re: down all
 #	docker system prune -a --volumes
 
 build:
-	@docker-compose -f srcs/compose.yaml build
+	mkdir -p ${HOME}/.docker/OWM/{DB,PBF,MAP}
+	@docker-compose -f srcs/compose.yaml build --progress plain 
 up:
 	@docker-compose -f srcs/compose.yaml up -d
 down:
