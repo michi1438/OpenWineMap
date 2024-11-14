@@ -1,13 +1,29 @@
 services:
 
+  simple:
+    image: michael/simple
+    container_name: simple
+    build: simple/
+    env_file: ".env"
+    restart: on-failure
+
+  builder:
+    image: michael/builder
+    container_name: builder
+    build: builder/
+    depends_on: 
+      - simple
+    env_file: ".env"
+    restart: on-failure
+
   mapnik:
     container_name: mapnik
     volumes: 
       - MAP:/.MAP/
     networks: ["OWM_network"]
     build: mapnik/
-#    depends_on: 
-#      - osm2pgsql
+    depends_on: 
+      - builder 
     env_file: ".env"
     restart: on-failure
 
@@ -17,8 +33,8 @@ services:
       - PBF:/.PBF/
     networks: ["OWM_network"]
     build: osm2pgsql/
-#    depends_on: 
-#      - postgres
+    depends_on: 
+      - builder 
     env_file: ".env"
     restart: on-failure
 
@@ -28,6 +44,8 @@ services:
       - DB:/var/lib/postgresql/
     networks: ["OWM_network"]
     build: postgres/
+    depends_on: 
+      - simple
     env_file: ".env"
     restart: on-failure
 

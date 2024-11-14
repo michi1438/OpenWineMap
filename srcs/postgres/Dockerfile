@@ -1,9 +1,6 @@
-FROM alpine:3.20.3
+FROM michael/simple
 
-WORKDIR /
-
-RUN apk update && \
-	apk add --no-cache postgis bash
+RUN apk add --no-cache postgresql
 
 COPY ./postgis_init.sh ./
 COPY ./postgres_dirs.sh ./

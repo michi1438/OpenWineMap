@@ -1,19 +1,11 @@
-FROM alpine:3.20.3
+FROM michael/builder
 
-WORKDIR /
-
-COPY osm2pgsql_init.sh /
-
-RUN apk update && \
-	apk add --no-cache vim bash cmake make g++ git nlohmann-json \
-		postgresql-dev boost-dev expat-dev bzip2-dev zlib-dev \
+RUN apk add --no-cache nlohmann-json postgresql-dev \
+		expat-dev bzip2-dev zlib-dev \
 		libpq proj-dev lua5.3-dev luajit-dev
 
-
-RUN mkdir build
+COPY osm2pgsql_init.sh /
 
 WORKDIR /.PBF/
  
 CMD ["bash", "/osm2pgsql_init.sh"]
-
-#EXPOSE 5432 
