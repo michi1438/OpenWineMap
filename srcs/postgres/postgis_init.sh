@@ -21,6 +21,7 @@ then
 	createdb -p 10 --encoding=UTF8 --owner=$DB_USER $DB_NAME
 
 	psql -p 10 --username=postgres --dbname=$DB_NAME -c "CREATE EXTENSION postgis;"
+	psql -p 10 --username=postgres --dbname=$DB_NAME -c "CREATE EXTENSION hstore;"
 	psql -p 10 --username=postgres --dbname=$DB_NAME -c "CREATE EXTENSION postgis_topology;"
 
 	#should also modify the postgresql.conf with sed as per 3.5 of <https://osm2pgsql.org/doc/manual-v1.html#tuning-the-postgresql-server>

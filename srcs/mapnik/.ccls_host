@@ -1,0 +1,4 @@
+%compile_commands.json
+-I/home/michaelthink/.docker/OWM/MAP/mapnik/include/
+-DMAPNIK_MEMORY_MAPPED_FILE -DMAPNIK_HAS_DLCFN -DBIGINT -DBOOST_REGEX_HAS_ICU -DHAVE_JPEG -DMAPNIK_USE_PROJ -DMAPNIK_PROJ_VERSION=90400 -DHAVE_PNG -DHAVE_WEBP -DHAVE_TIFF -DLINUX -DMAPNIK_THREADSAFE -DBOOST_SPIRIT_NO_PREDEFINED_TERMINALS=1 -DBOOST_PHOENIX_NO_PREDEFINED_TERMINALS=1 -DBOOST_SPIRIT_USE_PHOENIX_V3=1 -DNDEBUG -DHAVE_CAIRO -DGRID_RENDERER -std=c++17 -DU_USING_ICU_NAMESPACE=0 -fvisibility=hidden -fvisibility-inlines-hidden -pthread -ftemplate-depth-300 -O3 -L/usr/local/lib -lmapnik -L/.MAP/mapnik/freetype -L/usr/lib -pthread -lboost_regex -lcairo -lpng -lproj -lsqlite3 -ltiff -lwebp -licui18n -lharfbuzz -ljpeg -licuuc -lfreetype -lz -ldl
+%hpp %c %cpp -std=c++17

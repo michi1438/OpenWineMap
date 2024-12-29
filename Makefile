@@ -9,7 +9,7 @@ re: down all
 #	docker system prune -a --volumes
 
 build:
-	mkdir -p ${HOME}/.docker/OWM/{DB,PBF,MAP}
+	mkdir -p ${HOME}/.docker/OWM/{DB,PBF,MAP,MAP_include}
 	@docker-compose -f srcs/compose.yaml build --progress plain 
 up:
 	@docker-compose -f srcs/compose.yaml up -d
@@ -19,5 +19,3 @@ ps:
 	@docker-compose -f srcs/compose.yaml ps -a 
 log:
 	@make ps | docker-compose -f srcs/compose.yaml logs  
-
-

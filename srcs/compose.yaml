@@ -19,7 +19,8 @@ services:
   mapnik:
     container_name: mapnik
     volumes: 
-      - MAP:/.MAP/
+      - MAP:/.MAP
+      - MAP_inc:/usr/include
     networks: ["OWM_network"]
     build: mapnik/
     depends_on: 
@@ -68,6 +69,12 @@ volumes:
       type: none
       o: bind
       device: $HOME/.docker/OWM/MAP/
+  MAP_inc:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/.docker/OWM/MAP_include/
 
 networks:
   OWM_network:

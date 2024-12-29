@@ -1,6 +1,6 @@
 FROM michael/simple
 
-RUN apk add --no-cache postgresql
+RUN apk add --no-cache postgresql postgis
 
 COPY ./postgis_init.sh ./
 COPY ./postgres_dirs.sh ./

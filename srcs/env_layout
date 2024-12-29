@@ -1,0 +1,6 @@
+# This is an example of the environement layout change the value of variables
+#and change the name to \".env\"
+
+DB_NAME=<owm>
+DB_USER_PW=<owm_user_pw>
+DB_USER=<owm_user>
