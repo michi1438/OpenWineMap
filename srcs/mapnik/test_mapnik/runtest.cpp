@@ -44,50 +44,43 @@
 #include <mapnik/cairo/cairo_image_util.hpp>
 #endif
 
+#define RED "\x1B[31m"
+#define RST "\x1B[0m"
+
 #include <iostream>
+
 
 int main(int, char**)
 {
     using namespace mapnik;
     mapnik::setup();
-	const std::string srs_lcc =
-      "+proj=lcc +ellps=GRS80 +lat_0=49 +lon_0=-95 +lat+1=49 +lat_2=77 +datum=NAD83 +units=m +no_defs";
+    const std::string srs_lcc =
+      "+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs";
     const std::string srs_merc = "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 "
-                                 "+units=m +nadgrids=@null +wktext +no_defs +over";
+                                 "+units=m +grids=iceland2008.gsb +wktext +no_defs +over";
     try
     {
-
         std::cout << " running demo ... \n";
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
-        Map m(800, 600);
-		std::cout << "Before setting srs_merc = " <<  m.srs() << std::endl;
+        Map m(1600, 1200);
+		std::cout << RED << "Before setting srs_merc = " << RST <<  m.srs() << std::endl << std::endl;
         m.set_background(parse_color("white"));
         m.set_srs(srs_merc);
-		std::cout << "After setting srs_merc = " <<  m.srs() << std::endl;
-		std::cout << "get_current_extent " <<  m.get_current_extent() << std::endl;
+		std::cout << RED << "After setting srs_merc = " << RST << m.srs() << std::endl << std::endl;
+		std::cout << RED << "get_current_extent initial = " << RST << m.get_current_extent() << std::endl << std::endl;
         // create styles
 
         // Provinces (polygon)
         feature_type_style provpoly_style;
-        provpoly_style.reserve(2); // prevent reallocation and copying in add_rule
+        provpoly_style.reserve(1); // prevent reallocation and copying in add_rule
         {
             rule r;
-            r.set_filter(parse_expression("[NAME_EN] = 'Ontario'"));
+            //r.set_filter(parse_expression("[NAME_EN] = 'Ontario'"));
             {
                 polygon_symbolizer poly_sym;
-                put(poly_sym, keys::fill, color(250, 190, 183));
-                r.append(std::move(poly_sym));
-            }
-            provpoly_style.add_rule(std::move(r));
-        }
-        {
-            rule r;
-            r.set_filter(parse_expression("[NOM_FR] = 'Québec'"));
-            {
-                polygon_symbolizer poly_sym;
-                put(poly_sym, keys::fill, color(217, 235, 203));
+                put(poly_sym, keys::fill, color(17, 235, 203));
                 r.append(std::move(poly_sym));
             }
             provpoly_style.add_rule(std::move(r));
@@ -98,6 +91,8 @@ int main(int, char**)
         feature_type_style provlines_style;
         {
             rule r;
+ //           r.set_filter(parse_expression("[tags] = 'natural'"));
+			std::cout << RED << "parse_expression = " << parse_expression("[tags] = 'wood'") << std::endl << std::endl;
             {
                 line_symbolizer line_sym;
                 put(line_sym, keys::stroke, color(0, 0, 0));
@@ -112,6 +107,26 @@ int main(int, char**)
             provlines_style.add_rule(std::move(r));
         }
         m.insert_style("provlines", std::move(provlines_style));
+
+		// Provlines_wood
+        feature_type_style provlines_wood_style;
+        {
+            rule r;
+            //r.set_filter(parse_expression("[tags] = 'hiking'"));
+            {
+                line_symbolizer line_sym;
+                put(line_sym, keys::stroke, color(203, 0, 0));
+                put(line_sym, keys::stroke_width, 1.0);
+                dash_array dash;
+                dash.emplace_back(8, 4);
+                dash.emplace_back(2, 2);
+                dash.emplace_back(2, 2);
+                put(line_sym, keys::stroke_dasharray, dash);
+                r.append(std::move(line_sym));
+            }
+            provlines_style.add_rule(std::move(r));
+        }
+        m.insert_style("provlines_woods", std::move(provlines_wood_style));
 
         // Drainage
         feature_type_style qcdrain_style;
@@ -131,7 +146,7 @@ int main(int, char**)
         feature_type_style roads34_style;
         {
             rule r;
-            r.set_filter(parse_expression("[CLASS] = 3 or [CLASS] = 4"));
+            //r.set_filter(parse_expression("[tags] = 'hiking'"));
             {
                 line_symbolizer line_sym;
                 put(line_sym, keys::stroke, color(171, 158, 137));
@@ -233,134 +248,103 @@ int main(int, char**)
         m.insert_style("popplaces", std::move(popplaces_style));
 
         // My restaurants 
-//        feature_type_style rest_style;
-//        {
-//            rule r;
-//            {
-//                line_symbolizer line_sym;
-//                put(line_sym, keys::stroke, color(0, 0, 0));
-//                put(line_sym, keys::stroke_width, 5.0);
-//                r.append(std::move(line_sym));
-//            }
-//            rest_style.add_rule(std::move(r));
-//        }
+        feature_type_style rest_style;
+        {
+            rule r;
+            {
+                line_symbolizer line_sym;
+                put(line_sym, keys::stroke, color(0, 0, 0));
+                put(line_sym, keys::stroke_width, 5.0);
+                r.append(std::move(line_sym));
+            }
+            rest_style.add_rule(std::move(r));
+        }
 
         m.insert_style("rest", std::move(popplaces_style));
 
-        // layers
-        // Provincial  polygons
-//		{
-//			parameters p;
-//			p["type"]="postgis";
-//			p["host"]="postgres";
-//			p["port"]="5432";
-//			p["dbname"]="owm";
-//			p["user"]="owmuser";
-//			p["password"]="toor";
-//			p["table"]="restaurants";
-//
-//			layer lyr("restaurants");
-//			lyr.set_datasource(datasource_cache::instance().create(p));
-//			lyr.add_style("rest");
-//			m.add_layer(lyr);
-//		}
-
-        {
-            parameters p;
-            p["type"] = "shape";
-            p["file"] = "../data/boundaries";
-            p["encoding"] = "utf8";
+		//     layers
+		{
+			parameters p;
+			p["type"]="postgis";
+			p["host"]="postgres";
+			p["port"]="5432";
+			p["dbname"]="owm";
+			p["user"]="owmuser";
+			p["password"]="toor";
+			p["table"]="boundaries";
 
             layer lyr("Provinces");
-            lyr.set_datasource(datasource_cache::instance().create(p));
+			lyr.set_datasource(datasource_cache::instance().create(p));
             lyr.add_style("provinces");
-            lyr.set_srs(srs_lcc);
-            m.add_layer(lyr);
-        }
+	        lyr.set_srs(srs_lcc);
 
-        // Drainage
-        {
-            parameters p;
-            p["type"] = "shape";
-            p["file"] = "../data/qcdrainage";
-            layer lyr("Quebec Hydrography");
-            lyr.set_datasource(datasource_cache::instance().create(p));
-            lyr.set_srs(srs_lcc);
-            lyr.add_style("drainage");
-            m.add_layer(lyr);
-        }
+			m.add_layer(lyr);
+		}
+		{
+			parameters p;
+			p["type"]="postgis";
+			p["host"]="postgres";
+			p["port"]="5432";
+			p["dbname"]="owm";
+			p["user"]="owmuser";
+			p["password"]="toor";
+			p["table"]="polygons";
 
-        {
-            parameters p;
-            p["type"] = "shape";
-            p["file"] = "../data/ontdrainage";
-            layer lyr("Ontario Hydrography");
-            lyr.set_datasource(datasource_cache::instance().create(p));
-            lyr.set_srs(srs_lcc);
-            lyr.add_style("drainage");
-            m.add_layer(lyr);
-        }
-
-        // Provincial boundaries
-        {
-            parameters p;
-            p["type"] = "shape";
-            p["file"] = "../data/boundaries_l";
-            layer lyr("Provincial borders");
-            lyr.set_srs(srs_lcc);
-            lyr.set_datasource(datasource_cache::instance().create(p));
+            layer lyr("Provlines");
+			lyr.set_datasource(datasource_cache::instance().create(p));
             lyr.add_style("provlines");
-            m.add_layer(lyr);
-        }
+//            lyr.add_style("provlines_woods");
+	        lyr.set_srs(srs_lcc);
 
-        // Roads
-        {
-            parameters p;
-            p["type"] = "shape";
-            p["file"] = "../data/roads";
+			m.add_layer(lyr);
+		}
+		{
+			parameters p;
+			p["type"]="postgis";
+			p["host"]="postgres";
+			p["port"]="5432";
+			p["dbname"]="owm";
+			p["user"]="owmuser";
+			p["password"]="toor";
+			p["table"]="routes";
+
             layer lyr("Roads");
-            lyr.set_srs(srs_lcc);
-            lyr.set_datasource(datasource_cache::instance().create(p));
+			lyr.set_datasource(datasource_cache::instance().create(p));
             lyr.add_style("smallroads");
-            lyr.add_style("road-border");
-            lyr.add_style("road-fill");
-            lyr.add_style("highway-border");
-            lyr.add_style("highway-fill");
+	        lyr.set_srs(srs_lcc);
 
-            m.add_layer(lyr);
-        }
-        // popplaces
-        {
-            parameters p;
-            p["type"] = "shape";
-            p["file"] = "../data/popplaces";
-            p["encoding"] = "utf8";
-            layer lyr("Populated Places");
-            lyr.set_srs(srs_lcc);
-            lyr.set_datasource(datasource_cache::instance().create(p));
-            lyr.add_style("popplaces");
-            m.add_layer(lyr);
-        }
+			m.add_layer(lyr);
+		}
+		// Provincial  polygons
 
-        m.zoom_to_box(box2d<double>(-8024477.28459, 5445190.38849, -7381388.20071, 5662941.44855));
+//-54.2536, -36.6291
+//        m.zoom_to_box(box2d<double>(-1000000, 4445190, 10000000, 6662941));
+//        m.zoom_to_box(box2d<double>(-8024477.28459, 5045190.38849, -7381388.20071, 8062941.44855));
+		m.zoom_all();
+		std::cout << RED << "get_current_extent(), after zoom_to_box() = " \
+		   	<< RST << m.get_current_extent() << std::endl << std::endl;
+		std::cout << RED << "get_buffered_extent(), after zoom_to_box() = " \
+		   	<< RST << m.get_buffered_extent() << std::endl << std::endl;
 
         image_rgba8 buf(m.width(), m.height());
+		std::cout << RED << "m.width() = " << RST << m.width() << std::endl;
+		std::cout << RED << "m.height() = " << RST << m.height() \
+		   	<< std::endl << std::endl;
+		//std::cout << RED << "m.get_extra_parameters() = " << RST \
+		   	<< m.get_extra_parameters().get("proj") << std::endl << std::endl;
+		//std::cout << RED << "m.get_layer() = " << RST \
+		   	<< m.get_layer() << std::endl << std::endl;
+
         agg_renderer<image_rgba8> ren(m, buf);
+		std::cout << RED << "get_current_extent(), after agg_render() = " \
+		   	<< RST << m.get_current_extent() << std::endl << std::endl;
         ren.apply();
         std::string msg("These maps have been rendered using AGG in the current directory:\n");
-#ifdef HAVE_JPEG
-        save_to_file(buf, "demo.jpg", "jpeg");
-        msg += "- demo.jpg\n";
-#endif
 #ifdef HAVE_PNG
         save_to_file(buf, "demo.png", "png");
         save_to_file(buf, "demo256.png", "png8");
         msg += "- demo.png\n";
         msg += "- demo256.png\n";
-#endif
-#ifdef HAVE_TIFF
-        save_to_file(buf, "demo.tif", "tiff");
-        msg += "- demo.tif\n";
 #endif
 #ifdef HAVE_WEBP
         save_to_file(buf, "demo.webp", "webp");
@@ -369,41 +353,41 @@ int main(int, char**)
         msg += "Have a look!\n";
         std::cout << msg;
 
-#if defined(HAVE_CAIRO)
-        // save to pdf/svg files
-        save_to_cairo_file(m, "cairo-demo.pdf");
-        save_to_cairo_file(m, "cairo-demo.svg");
-
-        /* we could also do:
-
-           save_to_cairo_file(m,"cairo-demo.png");
-
-           but instead let's build up a surface for more flexibility
-        */
-
-        cairo_surface_ptr image_surface(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, m.width(), m.height()),
-                                        cairo_surface_closer());
-        double scale_factor = 1.0;
-        cairo_ptr image_context(create_context(image_surface));
-        mapnik::cairo_renderer<cairo_ptr> png_render(m, image_context, scale_factor);
-        png_render.apply();
-        // we can now write to png with cairo functionality
-        cairo_surface_write_to_png(&*image_surface, "cairo-demo.png");
-        // but we can also benefit from quantization by converting
-        // to a mapnik image object and then saving that
-        mapnik::image_rgba8 im_data(cairo_image_surface_get_width(&*image_surface),
-                                    cairo_image_surface_get_height(&*image_surface));
-        cairo_image_to_rgba8(im_data, image_surface);
-        save_to_file(im_data, "cairo-demo256.png", "png8");
-        cairo_surface_finish(&*image_surface);
-
-        std::cout << "Three maps have been rendered using Cairo in the current directory:\n"
-                     "- cairo-demo.png\n"
-                     "- cairo-demo256.png\n"
-                     "- cairo-demo.pdf\n"
-                     "- cairo-demo.svg\n"
-                     "Have a look!\n";
-#endif
+//#if defined(HAVE_CAIRO)
+//        // save to pdf/svg files
+//        save_to_cairo_file(m, "cairo-demo.pdf");
+//        save_to_cairo_file(m, "cairo-demo.svg");
+//
+//        /* we could also do:
+//
+//           save_to_cairo_file(m,"cairo-demo.png");
+//
+//           but instead let's build up a surface for more flexibility
+//        */
+//
+//        cairo_surface_ptr image_surface(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, m.width(), m.height()),
+//                                        cairo_surface_closer());
+//        double scale_factor = 1.0;
+//        cairo_ptr image_context(create_context(image_surface));
+//        mapnik::cairo_renderer<cairo_ptr> png_render(m, image_context, scale_factor);
+//        png_render.apply();
+//        // we can now write to png with cairo functionality
+//        cairo_surface_write_to_png(&*image_surface, "cairo-demo.png");
+//        // but we can also benefit from quantization by converting
+//        // to a mapnik image object and then saving that
+//        mapnik::image_rgba8 im_data(cairo_image_surface_get_width(&*image_surface),
+//                                    cairo_image_surface_get_height(&*image_surface));
+//        cairo_image_to_rgba8(im_data, image_surface);
+//        save_to_file(im_data, "cairo-demo256.png", "png8");
+//        cairo_surface_finish(&*image_surface);
+//
+//        std::cout << "Three maps have been rendered using Cairo in the current directory:\n"
+//                     "- cairo-demo.png\n"
+//                     "- cairo-demo256.png\n"
+//                     "- cairo-demo.pdf\n"
+//                     "- cairo-demo.svg\n"
+//                     "Have a look!\n";
+//#endif
         // save map definition (data + style)
         save_map(m, "map.xml");
     }
