@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +grids=iceland2008.gsb +wktext +no_defs +over" background-color="rgb(255,255,255)">
+  <Style name="drainage">
+    <Rule>
+      <Filter>([HYC]=8)</Filter>
+      <PolygonSymbolizer fill="rgb(153,204,255)"/>
+    </Rule>
+  </Style>
+  <Style name="highway-border">
+    <Rule>
+      <Filter>([CLASS]=1)</Filter>
+      <LineSymbolizer stroke="rgb(188,149,28)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    </Rule>
+  </Style>
+  <Style name="highway-fill">
+    <Rule>
+      <Filter>([CLASS]=1)</Filter>
+      <LineSymbolizer stroke="rgb(242,191,36)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    </Rule>
+  </Style>
+  <Style name="popplaces">
+    <Rule>
+      <TextSymbolizer face-name="DejaVu Sans Book" halo-radius="1" halo-fill="rgb(255,255,200)">[GEONAME]</TextSymbolizer>
+    </Rule>
+  </Style>
+  <Style name="provinces">
+    <Rule>
+      <PolygonSymbolizer fill="rgb(17,235,203)"/>
+    </Rule>
+  </Style>
+  <Style name="provlines">
+    <Rule>
+      <LineSymbolizer stroke="rgb(0,0,0)" stroke-width="1" stroke-dasharray="8,4,2,2,2,2"/>
+    </Rule>
+  </Style>
+  <Style name="provlines_woods"/>
+  <Style name="rest"/>
+  <Style name="road-border">
+    <Rule>
+      <Filter>([CLASS]=2)</Filter>
+      <LineSymbolizer stroke="rgb(171,158,137)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+    </Rule>
+  </Style>
+  <Style name="road-fill">
+    <Rule>
+      <Filter>([CLASS]=2)</Filter>
+      <LineSymbolizer stroke="rgb(255,250,115)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    </Rule>
+  </Style>
+  <Style name="smallroads">
+    <Rule>
+      <LineSymbolizer stroke="rgb(171,158,137)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    </Rule>
+  </Style>
+  <Layer name="Provinces" srs="+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs">
+    <StyleName>provinces</StyleName>
+    <Datasource>
+      <Parameter name="dbname">owm</Parameter>
+      <Parameter name="host">postgres</Parameter>
+      <Parameter name="password">toor</Parameter>
+      <Parameter name="port">5432</Parameter>
+      <Parameter name="table">boundaries</Parameter>
+      <Parameter name="type">postgis</Parameter>
+      <Parameter name="user">owmuser</Parameter>
+    </Datasource>
+  </Layer>
+  <Layer name="Provlines" srs="+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs">
+    <StyleName>provlines</StyleName>
+    <Datasource>
+      <Parameter name="dbname">owm</Parameter>
+      <Parameter name="host">postgres</Parameter>
+      <Parameter name="password">toor</Parameter>
+      <Parameter name="port">5432</Parameter>
+      <Parameter name="table">polygons</Parameter>
+      <Parameter name="type">postgis</Parameter>
+      <Parameter name="user">owmuser</Parameter>
+    </Datasource>
+  </Layer>
+  <Layer name="Roads" srs="+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs">
+    <StyleName>smallroads</StyleName>
+    <Datasource>
+      <Parameter name="dbname">owm</Parameter>
+      <Parameter name="host">postgres</Parameter>
+      <Parameter name="password">toor</Parameter>
+      <Parameter name="port">5432</Parameter>
+      <Parameter name="table">routes</Parameter>
+      <Parameter name="type">postgis</Parameter>
+      <Parameter name="user">owmuser</Parameter>
+    </Datasource>
+  </Layer>
+</Map>

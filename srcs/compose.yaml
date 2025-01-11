@@ -16,18 +16,27 @@ services:
     env_file: ".env"
     restart: on-failure
 
-  mapnik:
-    container_name: mapnik
+  mod_tile:
+    container_name: mod_tile
     volumes: 
-      - MAP:/.MAP
-      - MAP_inc:/usr/include
+      - MOD:/home/${DB_USER}
     networks: ["OWM_network"]
-    build: mapnik/
-    depends_on: 
-      - builder 
+    build: mod_tile/
     env_file: ".env"
     restart: on-failure
 
+#  mapnik:
+#    container_name: mapnik
+#    volumes: 
+#      - MAP:/.MAP
+#      - MAP_inc:/usr/include
+#    networks: ["OWM_network"]
+#    build: mapnik/
+#    depends_on: 
+#      - builder 
+#    env_file: ".env"
+#    restart: on-failure
+#
   osm2pgsql:
     container_name: osm2pgsql
     volumes: 
@@ -63,18 +72,24 @@ volumes:
       type: none
       o: bind
       device: $HOME/.docker/OWM/PBF/
-  MAP:
+  MOD:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: $HOME/.docker/OWM/MAP/
-  MAP_inc:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: $HOME/.docker/OWM/MAP_include/
+      device: $HOME/.docker/OWM/MOD/
+#  MAP:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: $HOME/.docker/OWM/MAP/
+#  MAP_inc:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      o: bind
+#      device: $HOME/.docker/OWM/MAP_include/
 
 networks:
   OWM_network:

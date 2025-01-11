@@ -9,10 +9,10 @@ re: down all
 #	docker system prune -a --volumes
 
 build:
-	mkdir -p ${HOME}/.docker/OWM/{DB,PBF,MAP,MAP_include}
+	mkdir -p ${HOME}/.docker/OWM/{DB,PBF,MOD}
 	@docker-compose -f srcs/compose.yaml build --progress plain 
 up:
-	@docker-compose -f srcs/compose.yaml up -d
+	@docker-compose -f srcs/compose.yaml up -d --remove-orphans
 down:
 	@docker-compose -f srcs/compose.yaml down
 ps:
