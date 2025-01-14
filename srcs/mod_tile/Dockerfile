@@ -164,7 +164,7 @@ COPY --from=compiler-helper-script /home/$DB_USER/src/regional /home/$DB_USER/sr
 
 COPY --from=compiler-stylesheet /root/openstreetmap-carto /home/$DB_USER/src/openstreetmap-carto-backup
 
-COPY mapnik.xml /home/$DB_USER/src/openstreetmap-carto/
+COPY mapnik.xml /home/$DB_USER/src/
 
 WORKDIR /
 
