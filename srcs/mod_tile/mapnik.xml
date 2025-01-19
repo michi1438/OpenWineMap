@@ -281,7 +281,7 @@
   </Style>
   <Style name="provinces">
     <Rule>
-      <PolygonSymbolizer fill="rgb(17,235,203)"/>
+      <PolygonSymbolizer fill="rgb(17,35,203)"/>
     </Rule>
   </Style>
   <Style name="provlines">
@@ -308,7 +308,7 @@
       <LineSymbolizer stroke="rgb(171,158,137)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
     </Rule>
   </Style>
-  <Layer name="Provinces" srs="+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs">
+  <Layer cache-features="true" name="Provinces" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>provinces</StyleName>
     <Datasource>
       <Parameter name="dbname">owm</Parameter>
@@ -320,7 +320,7 @@
       <Parameter name="user">owmuser</Parameter>
     </Datasource>
   </Layer>
-  <Layer name="Provlines" srs="+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs">
+  <Layer cache-features="true" name="Provlines" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>provlines</StyleName>
     <Datasource>
       <Parameter name="dbname">owm</Parameter>
@@ -332,7 +332,7 @@
       <Parameter name="user">owmuser</Parameter>
     </Datasource>
   </Layer>
-  <Layer name="Roads" srs="+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs">
+  <Layer cache-features="true" name="Roads" srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>smallroads</StyleName>
     <Datasource>
       <Parameter name="dbname">owm</Parameter>

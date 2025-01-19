@@ -19,8 +19,10 @@ services:
   mod_tile:
     container_name: mod_tile
     volumes: 
-      - MOD:/home/${DB_USER}
+      - MOD:/home/
     networks: ["OWM_network"]
+    depends_on: 
+      - mapnik 
     build: mod_tile/
     env_file: ".env"
     restart: on-failure

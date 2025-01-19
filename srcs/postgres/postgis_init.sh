@@ -22,6 +22,7 @@ then
 
 	psql -p 10 --username=postgres --dbname=$DB_NAME -c "CREATE EXTENSION postgis;"
 	psql -p 10 --username=postgres --dbname=$DB_NAME -c "CREATE EXTENSION postgis_topology;"
+	psql -p 10 --username=postgres --dbname=$DB_NAME -f /indexes.sql
 
 	#should also modify the postgresql.conf with sed as per 3.5 of <https://osm2pgsql.org/doc/manual-v1.html#tuning-the-postgresql-server>
 

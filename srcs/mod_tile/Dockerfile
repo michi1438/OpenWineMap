@@ -11,32 +11,9 @@ RUN apt-get update \
  wget curl \
  git-core unzip unrar \
 && locale-gen $LANG && update-locale LANG=$LANG \
-&& sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
-&& wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
 && apt-get update && apt-get -y upgrade
 
-
-###########################################################################################################
-
-FROM compiler-common AS compiler-stylesheet
-RUN cd ~ \
-&& git clone --single-branch --branch v5.4.0 https://github.com/gravitystorm/openstreetmap-carto.git --depth 1 \
-&& cd openstreetmap-carto \
-&& sed -i 's/, "unifont Medium", "Unifont Upper Medium"//g' style/fonts.mss \
-&& sed -i 's/"Noto Sans Tibetan Regular",//g' style/fonts.mss \
-&& sed -i 's/"Noto Sans Tibetan Bold",//g' style/fonts.mss \
-&& sed -i 's/Noto Sans Syriac Eastern Regular/Noto Sans Syriac Regular/g' style/fonts.mss \
-&& rm -rf .git
-
-###########################################################################################################
-
-FROM compiler-common AS compiler-helper-script
 RUN mkdir -p /home/$DB_USER/src \
-&& cd /home/$DB_USER/src \
-&& git clone https://github.com/zverik/regional \
-&& cd regional \
-&& rm -rf .git \
-&& chmod u+x /home/$DB_USER/src/regional/trim_osc.py
 
 ###########################################################################################################
 
@@ -69,22 +46,7 @@ RUN apt-get update \
  liblua5.3-dev \
  lua5.3 \
  mapnik-utils \
- npm \
- osm2pgsql \
- osmium-tool \
- osmosis \
- postgresql-$PG_VERSION \
- postgresql-$PG_VERSION-postgis-3 \
- postgresql-$PG_VERSION-postgis-3-scripts \
- postgis \
- python-is-python3 \
- python3-mapnik \
- python3-lxml \
- python3-psycopg2 \
- python3-shapely \
- python3-pip \
  renderd \
- sudo \
  vim \
 && apt-get clean autoclean \
 && apt-get autoremove --yes \
@@ -98,14 +60,6 @@ RUN wget https://github.com/googlefonts/noto-emoji/blob/9a5261d871451f9b5183c934
 RUN wget https://github.com/stamen/terrain-classic/blob/master/fonts/unifont-Medium.ttf?raw=true --content-disposition -P /usr/share/fonts/
 
 # Install python libraries
-RUN pip3 install \
- requests \
- osmium \
- pyyaml
-
-# Install carto for stylesheet
-RUN npm install -g carto@1.2.0
-
 # Configure Apache
 RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" >> /etc/apache2/conf-available/mod_tile.conf \
 && echo "LoadModule headers_module /usr/lib/apache2/modules/mod_headers.so" >> /etc/apache2/conf-available/mod_headers.conf \
@@ -114,32 +68,11 @@ COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # leaflet
 COPY leaflet-demo.html /var/www/html/index.html
-RUN cd /var/www/html/ \
-&& wget https://github.com/Leaflet/Leaflet/releases/download/v1.8.0/leaflet.zip \
-&& unzip leaflet.zip \
-&& rm leaflet.zip
-
-# Icon
-RUN wget -O /var/www/html/favicon.ico https://www.openstreetmap.org/favicon.ico
-
-# Copy update scripts
-COPY openstreetmap-tiles-update-expire.sh /usr/bin/
-RUN chmod +x /usr/bin/openstreetmap-tiles-update-expire.sh \
-&& mkdir /var/log/tiles \
-&& chmod a+rw /var/log/tiles \
-&& ln -s /home/$DB_USER/src/mod_tile/osmosis-db_replag /usr/bin/osmosis-db_replag \
-&& echo "* * * * *   $DB_USER    openstreetmap-tiles-update-expire.sh\n" >> /etc/crontab
-
-# Configure PosgtreSQL
-COPY postgresql.custom.conf.tmpl /etc/postgresql/$PG_VERSION/main/
-RUN chown -R postgres:postgres /var/lib/postgresql \
-&& chown postgres:postgres /etc/postgresql/$PG_VERSION/main/postgresql.custom.conf.tmpl \
-&& echo "host all all 0.0.0.0/0 scram-sha-256" >> /etc/postgresql/$PG_VERSION/main/pg_hba.conf \
-&& echo "host all all ::/0 scram-sha-256" >> /etc/postgresql/$PG_VERSION/main/pg_hba.conf
 
 # Create volume directories
 RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /data/style/  \
+  &&  mkdir  -p  /var/www/htm/dist/  \
   &&  mkdir  -p  /home/$DB_USER/src/  \
   &&  chown  -R  $DB_USER:  /data/  \
   &&  chown  -R  $DB_USER:  /home/$DB_USER/src/  \
@@ -159,18 +92,17 @@ TILESIZE=256 \n\
 MAXZOOM=20' >> /etc/renderd.conf \
  && sed -i 's,/usr/share/fonts/truetype,/usr/share/fonts,g' /etc/renderd.conf
 
-# Install helper script
-COPY --from=compiler-helper-script /home/$DB_USER/src/regional /home/$DB_USER/src/regional
+RUN chmod -R 777 /home/$DB_USER/src/*
+COPY mapnik.xml /
+COPY mod_tile_init.sh /
 
-COPY --from=compiler-stylesheet /root/openstreetmap-carto /home/$DB_USER/src/openstreetmap-carto-backup
-
-COPY mapnik.xml /home/$DB_USER/src/
-
-WORKDIR /
+COPY L.Control.Opacity.css /var/www/html/dist/
+COPY L.Control.Opacity.js /var/www/html/dist/
 
 RUN sed "s/80/8080/" -i /etc/apache2/ports.conf
 
-CMD ["tail", "-f"]
-#CMD ["bash", "mod_tile_init.sh"]
+WORKDIR /home/$DB_USER/src/
+
+cmd ["bash", "/mod_tile_init.sh"]
 
 EXPOSE 8080
