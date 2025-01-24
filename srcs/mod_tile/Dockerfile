@@ -33,37 +33,33 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Get packages
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
+ make \
+ cmake \
  apache2 \
- cron \
+ apache2-dev \
+ libiniparser-dev \
  dateutils \
- fonts-hanazono \
- fonts-noto-cjk \
- fonts-noto-hinted \
- fonts-noto-unhinted \
- fonts-unifont \
+ libboost-all-dev \
+ g++ \
+ libpq-dev \
  gnupg2 \
- gdal-bin \
+ libgdal-dev\
  liblua5.3-dev \
+ libharfbuzz-dev \
+ pkg-config \
  lua5.3 \
- mapnik-utils \
- renderd \
+ python3 \
  vim \
+ proj-bin \
+ libproj-dev \
+ libcairo2-dev \
 && apt-get clean autoclean \
 && apt-get autoremove --yes \
 && rm -rf /var/lib/{apt,dpkg,cache,log}/
 RUN adduser --disabled-password --gecos "" $DB_USER 
 
-# Get Noto Emoji Regular font, despite it being deprecated by Google
-RUN wget https://github.com/googlefonts/noto-emoji/blob/9a5261d871451f9b5183c93483cbd68ed916b1e9/fonts/NotoEmoji-Regular.ttf?raw=true --content-disposition -P /usr/share/fonts/
-
-# For some reason this one is missing in the default packages
-RUN wget https://github.com/stamen/terrain-classic/blob/master/fonts/unifont-Medium.ttf?raw=true --content-disposition -P /usr/share/fonts/
-
 # Install python libraries
 # Configure Apache
-RUN echo "LoadModule tile_module /usr/lib/apache2/modules/mod_tile.so" >> /etc/apache2/conf-available/mod_tile.conf \
-&& echo "LoadModule headers_module /usr/lib/apache2/modules/mod_headers.so" >> /etc/apache2/conf-available/mod_headers.conf \
-&& a2enconf mod_tile && a2enconf mod_headers
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # leaflet
@@ -73,29 +69,21 @@ COPY leaflet-demo.html /var/www/html/index.html
 RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /data/style/  \
   &&  mkdir  -p  /var/www/htm/dist/  \
+  &&  mkdir  -p  /.MAP \
   &&  mkdir  -p  /home/$DB_USER/src/  \
   &&  chown  -R  $DB_USER:  /data/  \
   &&  chown  -R  $DB_USER:  /home/$DB_USER/src/  \
   &&  chown  -R  $DB_USER:  /run/renderd  \
-  &&  mv  /var/cache/renderd/tiles/            /data/tiles/     \
-  &&  chown  -R  $DB_USER: /data/tiles \
   &&  ln  -s  /data/style              /home/$DB_USER/src/openstreetmap-carto  \
-  &&  ln  -s  /data/tiles              /var/cache/renderd/tiles                \
 ;
-
-RUN echo '[default] \n\
-URI=/tile/ \n\
-TILEDIR=/var/cache/renderd/tiles \n\
-XML=/home/owmuser/src/openstreetmap-carto/mapnik.xml \n\
-HOST=localhost \n\
-TILESIZE=256 \n\
-MAXZOOM=20' >> /etc/renderd.conf \
- && sed -i 's,/usr/share/fonts/truetype,/usr/share/fonts,g' /etc/renderd.conf
 
 RUN chmod -R 777 /home/$DB_USER/src/*
 COPY mapnik.xml /
 COPY mod_tile_init.sh /
 
+COPY .ccls_host /
+COPY myrenderd.conf /myrenderd.conf
+COPY test_mapnik/ /test_mapnik/
 COPY L.Control.Opacity.css /var/www/html/dist/
 COPY L.Control.Opacity.js /var/www/html/dist/
 

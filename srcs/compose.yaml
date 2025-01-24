@@ -19,26 +19,25 @@ services:
   mod_tile:
     container_name: mod_tile
     volumes: 
-      - MOD:/home/
+      - MOD:/tmp/
+      - MAP:/.MAP
     networks: ["OWM_network"]
-    depends_on: 
-      - mapnik 
     build: mod_tile/
     env_file: ".env"
     restart: on-failure
 
-  mapnik:
-    container_name: mapnik
-    volumes: 
-      - MAP:/.MAP
-      - MAP_inc:/usr/include
-    networks: ["OWM_network"]
-    build: mapnik/
-    depends_on: 
-      - builder 
-    env_file: ".env"
-    restart: on-failure
-
+#  mapnik:
+#    container_name: mapnik
+#    volumes: 
+#      - MAP:/.MAP
+#      - MAP_inc:/usr/include
+#    networks: ["OWM_network"]
+#    build: mapnik/
+#    depends_on: 
+#      - builder 
+#    env_file: ".env"
+#    restart: on-failure
+#
   osm2pgsql:
     container_name: osm2pgsql
     volumes: 

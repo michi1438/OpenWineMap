@@ -55,9 +55,8 @@ int main(int, char**)
     using namespace mapnik;
     mapnik::setup();
     const std::string srs_lcc =
-      "+proj=lcc +ellps=GRS80 +lat_0=46.25 +lon_0=-63 +lat_1=46.8 +lat_2=47.7 +datum=NAD83 +units=m +no_defs";
-    const std::string srs_merc = "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 "
-                                 "+units=m +grids=iceland2008.gsb +wktext +no_defs +over";
+		"+init=epsg:3857";
+    const std::string srs_merc = "+init=epsg:3857";
     try
     {
         std::cout << " running demo ... \n";
@@ -271,46 +270,11 @@ int main(int, char**)
 			p["dbname"]="owm";
 			p["user"]="owmuser";
 			p["password"]="toor";
-			p["table"]="boundaries";
+			p["table"]="global_point";
 
             layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
             lyr.add_style("provinces");
-	        lyr.set_srs(srs_lcc);
-
-			m.add_layer(lyr);
-		}
-		{
-			parameters p;
-			p["type"]="postgis";
-			p["host"]="postgres";
-			p["port"]="5432";
-			p["dbname"]="owm";
-			p["user"]="owmuser";
-			p["password"]="toor";
-			p["table"]="polygons";
-
-            layer lyr("Provlines");
-			lyr.set_datasource(datasource_cache::instance().create(p));
-            lyr.add_style("provlines");
-//            lyr.add_style("provlines_woods");
-	        lyr.set_srs(srs_lcc);
-
-			m.add_layer(lyr);
-		}
-		{
-			parameters p;
-			p["type"]="postgis";
-			p["host"]="postgres";
-			p["port"]="5432";
-			p["dbname"]="owm";
-			p["user"]="owmuser";
-			p["password"]="toor";
-			p["table"]="routes";
-
-            layer lyr("Roads");
-			lyr.set_datasource(datasource_cache::instance().create(p));
-            lyr.add_style("smallroads");
 	        lyr.set_srs(srs_lcc);
 
 			m.add_layer(lyr);
