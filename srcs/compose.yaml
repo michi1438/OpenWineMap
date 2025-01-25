@@ -3,14 +3,14 @@ services:
   simple:
     image: michael/simple
     container_name: simple
-    build: simple/
+    build: .simple/
     env_file: ".env"
     restart: on-failure
 
   builder:
     image: michael/builder
     container_name: builder
-    build: builder/
+    build: .builder/
     depends_on: 
       - simple
     env_file: ".env"

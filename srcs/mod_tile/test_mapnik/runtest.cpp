@@ -20,6 +20,8 @@
  *
  *****************************************************************************/
 
+#include <stdexcept>
+
 #include <mapnik/mapnik.hpp>
 #include <mapnik/map.hpp>
 #include <mapnik/layer.hpp>
@@ -50,24 +52,34 @@
 #include <iostream>
 
 
-int main(int, char**)
+int main(int ac, char** av)
 {
-    using namespace mapnik;
-    mapnik::setup();
-    const std::string srs_lcc =
-		"+init=epsg:3857";
-    const std::string srs_merc = "+init=epsg:3857";
     try
     {
-        std::cout << " running demo ... \n";
+
+		if (ac != 2)
+			throw std::runtime_error("not enough arguments, expected 2\n");
+		std::string reg_name = av[1];	
+		reg_name = reg_name.substr(0, reg_name.find("."));
+
+		using namespace mapnik;
+		mapnik::setup();
+		const std::string srs_map = 
+			"+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0.0 +x_0=0.0 \
++y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over";
+		const std::string srs_layers =
+			"+proj=latlon +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0.0 +x_0=0.0 \
++y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over";
+
+        std::cout << " running " << reg_name << "..." << std::endl;
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
         Map m(1600, 1200);
-		std::cout << RED << "Before setting srs_merc = " << RST <<  m.srs() << std::endl << std::endl;
-        m.set_background(parse_color("white"));
-        m.set_srs(srs_merc);
-		std::cout << RED << "After setting srs_merc = " << RST << m.srs() << std::endl << std::endl;
+		std::cout << RED << "Before setting srs_map = " << RST <<  m.srs() << std::endl << std::endl;
+        m.set_background(parse_color("#00000000"));
+        m.set_srs(srs_map);
+		std::cout << RED << "After setting srs_map = " << RST << m.srs() << std::endl << std::endl;
 		std::cout << RED << "get_current_extent initial = " << RST << m.get_current_extent() << std::endl << std::endl;
         // create styles
 
@@ -90,8 +102,7 @@ int main(int, char**)
         feature_type_style provlines_style;
         {
             rule r;
- //           r.set_filter(parse_expression("[tags] = 'natural'"));
-			std::cout << RED << "parse_expression = " << parse_expression("[tags] = 'wood'") << std::endl << std::endl;
+	        //r.set_filter(parse_expression("[tags] = 'natural'"));
             {
                 line_symbolizer line_sym;
                 put(line_sym, keys::stroke, color(0, 0, 0));
@@ -107,160 +118,6 @@ int main(int, char**)
         }
         m.insert_style("provlines", std::move(provlines_style));
 
-		// Provlines_wood
-        feature_type_style provlines_wood_style;
-        {
-            rule r;
-            //r.set_filter(parse_expression("[tags] = 'hiking'"));
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(203, 0, 0));
-                put(line_sym, keys::stroke_width, 1.0);
-                dash_array dash;
-                dash.emplace_back(8, 4);
-                dash.emplace_back(2, 2);
-                dash.emplace_back(2, 2);
-                put(line_sym, keys::stroke_dasharray, dash);
-                r.append(std::move(line_sym));
-            }
-            provlines_style.add_rule(std::move(r));
-        }
-        m.insert_style("provlines_woods", std::move(provlines_wood_style));
-
-        // Drainage
-        feature_type_style qcdrain_style;
-        {
-            rule r;
-            r.set_filter(parse_expression("[HYC] = 8"));
-            {
-                polygon_symbolizer poly_sym;
-                put(poly_sym, keys::fill, color(153, 204, 255));
-                r.append(std::move(poly_sym));
-            }
-            qcdrain_style.add_rule(std::move(r));
-        }
-        m.insert_style("drainage", std::move(qcdrain_style));
-
-        // Roads 3 and 4 (The "grey" roads)
-        feature_type_style roads34_style;
-        {
-            rule r;
-            //r.set_filter(parse_expression("[tags] = 'hiking'"));
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(171, 158, 137));
-                put(line_sym, keys::stroke_width, 2.0);
-                put(line_sym, keys::stroke_linecap, line_cap_enum::ROUND_CAP);
-                put(line_sym, keys::stroke_linejoin, line_join_enum::ROUND_JOIN);
-                r.append(std::move(line_sym));
-            }
-            roads34_style.add_rule(std::move(r));
-        }
-        m.insert_style("smallroads", std::move(roads34_style));
-
-        // Roads 2 (The thin yellow ones)
-        feature_type_style roads2_style_1;
-        {
-            rule r;
-            r.set_filter(parse_expression("[CLASS] = 2"));
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(171, 158, 137));
-                put(line_sym, keys::stroke_width, 4.0);
-                put(line_sym, keys::stroke_linecap, line_cap_enum::ROUND_CAP);
-                put(line_sym, keys::stroke_linejoin, line_join_enum::ROUND_JOIN);
-                r.append(std::move(line_sym));
-            }
-            roads2_style_1.add_rule(std::move(r));
-        }
-        m.insert_style("road-border", std::move(roads2_style_1));
-
-        feature_type_style roads2_style_2;
-        {
-            rule r;
-            r.set_filter(parse_expression("[CLASS] = 2"));
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(255, 250, 115));
-                put(line_sym, keys::stroke_width, 2.0);
-                put(line_sym, keys::stroke_linecap, line_cap_enum::ROUND_CAP);
-                put(line_sym, keys::stroke_linejoin, line_join_enum::ROUND_JOIN);
-                r.append(std::move(line_sym));
-            }
-            roads2_style_2.add_rule(std::move(r));
-        }
-        m.insert_style("road-fill", std::move(roads2_style_2));
-
-        // Roads 1 (The big orange ones, the highways)
-        feature_type_style roads1_style_1;
-        {
-            rule r;
-            r.set_filter(parse_expression("[CLASS] = 1"));
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(188, 149, 28));
-                put(line_sym, keys::stroke_width, 7.0);
-                put(line_sym, keys::stroke_linecap, line_cap_enum::ROUND_CAP);
-                put(line_sym, keys::stroke_linejoin, line_join_enum::ROUND_JOIN);
-                r.append(std::move(line_sym));
-            }
-            roads1_style_1.add_rule(std::move(r));
-        }
-        m.insert_style("highway-border", std::move(roads1_style_1));
-
-        feature_type_style roads1_style_2;
-        {
-            rule r;
-            r.set_filter(parse_expression("[CLASS] = 1"));
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(242, 191, 36));
-                put(line_sym, keys::stroke_width, 5.0);
-                put(line_sym, keys::stroke_linecap, line_cap_enum::ROUND_CAP);
-                put(line_sym, keys::stroke_linejoin, line_join_enum::ROUND_JOIN);
-                r.append(std::move(line_sym));
-            }
-            roads1_style_2.add_rule(std::move(r));
-        }
-        m.insert_style("highway-fill", std::move(roads1_style_2));
-
-        // Populated Places
-        feature_type_style popplaces_style;
-        {
-            rule r;
-            {
-                text_symbolizer text_sym;
-                text_placements_ptr placement_finder = std::make_shared<text_placements_dummy>();
-                placement_finder->defaults.format_defaults.face_name = "DejaVu Sans Book";
-                placement_finder->defaults.format_defaults.text_size = 10.0;
-                placement_finder->defaults.format_defaults.fill = color(0, 0, 0);
-                placement_finder->defaults.format_defaults.halo_fill = color(255, 255, 200);
-                placement_finder->defaults.format_defaults.halo_radius = 1.0;
-                placement_finder->defaults.set_format_tree(
-                  std::make_shared<mapnik::formatting::text_node>(parse_expression("[GEONAME]")));
-                put<text_placements_ptr>(text_sym, keys::text_placements_, placement_finder);
-                r.append(std::move(text_sym));
-            }
-            popplaces_style.add_rule(std::move(r));
-        }
-
-        m.insert_style("popplaces", std::move(popplaces_style));
-
-        // My restaurants 
-        feature_type_style rest_style;
-        {
-            rule r;
-            {
-                line_symbolizer line_sym;
-                put(line_sym, keys::stroke, color(0, 0, 0));
-                put(line_sym, keys::stroke_width, 5.0);
-                r.append(std::move(line_sym));
-            }
-            rest_style.add_rule(std::move(r));
-        }
-
-        m.insert_style("rest", std::move(popplaces_style));
-
 		//     layers
 		{
 			parameters p;
@@ -270,12 +127,13 @@ int main(int, char**)
 			p["dbname"]="owm";
 			p["user"]="owmuser";
 			p["password"]="toor";
-			p["table"]="global_point";
+			p["table"]=reg_name.append("_region");
 
             layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
             lyr.add_style("provinces");
-	        lyr.set_srs(srs_lcc);
+            lyr.add_style("provlines");
+	        lyr.set_srs(srs_layers);
 
 			m.add_layer(lyr);
 		}
@@ -306,58 +164,16 @@ int main(int, char**)
         std::string msg("These maps have been rendered using AGG in the current directory:\n");
 #ifdef HAVE_PNG
         save_to_file(buf, "demo.png", "png");
-        save_to_file(buf, "demo256.png", "png8");
         msg += "- demo.png\n";
-        msg += "- demo256.png\n";
-#endif
-#ifdef HAVE_WEBP
-        save_to_file(buf, "demo.webp", "webp");
-        msg += "- demo.webp\n";
 #endif
         msg += "Have a look!\n";
         std::cout << msg;
 
-//#if defined(HAVE_CAIRO)
-//        // save to pdf/svg files
-//        save_to_cairo_file(m, "cairo-demo.pdf");
-//        save_to_cairo_file(m, "cairo-demo.svg");
-//
-//        /* we could also do:
-//
-//           save_to_cairo_file(m,"cairo-demo.png");
-//
-//           but instead let's build up a surface for more flexibility
-//        */
-//
-//        cairo_surface_ptr image_surface(cairo_image_surface_create(CAIRO_FORMAT_ARGB32, m.width(), m.height()),
-//                                        cairo_surface_closer());
-//        double scale_factor = 1.0;
-//        cairo_ptr image_context(create_context(image_surface));
-//        mapnik::cairo_renderer<cairo_ptr> png_render(m, image_context, scale_factor);
-//        png_render.apply();
-//        // we can now write to png with cairo functionality
-//        cairo_surface_write_to_png(&*image_surface, "cairo-demo.png");
-//        // but we can also benefit from quantization by converting
-//        // to a mapnik image object and then saving that
-//        mapnik::image_rgba8 im_data(cairo_image_surface_get_width(&*image_surface),
-//                                    cairo_image_surface_get_height(&*image_surface));
-//        cairo_image_to_rgba8(im_data, image_surface);
-//        save_to_file(im_data, "cairo-demo256.png", "png8");
-//        cairo_surface_finish(&*image_surface);
-//
-//        std::cout << "Three maps have been rendered using Cairo in the current directory:\n"
-//                     "- cairo-demo.png\n"
-//                     "- cairo-demo256.png\n"
-//                     "- cairo-demo.pdf\n"
-//                     "- cairo-demo.svg\n"
-//                     "Have a look!\n";
-//#endif
-        // save map definition (data + style)
-        save_map(m, "map.xml");
+        save_map(m, reg_name.append(".xml"));
     }
     catch (std::exception const& ex)
     {
-        std::cerr << "### std::exception: " << ex.what() << std::endl;
+        std::cerr << std::endl << "### std::exception: " << ex.what() << std::endl;
         return EXIT_FAILURE;
     }
     catch (...)

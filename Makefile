@@ -1,4 +1,5 @@
 all: build up
+#need to add symlinks to the runtest.cpp and other config types...
 
 re: down all
 
