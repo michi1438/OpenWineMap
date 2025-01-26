@@ -57,7 +57,6 @@ int main(int ac, char** av)
 {
     try
     {
-
 		if (ac != 2)
 			throw std::runtime_error("not enough arguments, expected 2\n");
 		std::string reg_name = av[1];	
@@ -87,12 +86,12 @@ int main(int ac, char** av)
 
 		std::vector<std::string> commune = {"Aincille", "Anhaux", "Ascarat", "Bidarray", "Bussunarits-Sarrasquette", "Bustince-Iriberry", "Irouléguy", "Ispoure", "Jaxu", "Lasse", "Lecumberry", "Ossès", "Saint-Etienne-de-Baïgorry", "Saint-Jean-le-Vieux", "Saint-Martin-d’Arrossa"};
 		std::string commune_str = "[name] = '";
-		int i = 0;
-		while (commune[i] != commune.end())
+		for (std::string n : commune)
 		{
-			commune_str.append(commune[i]);
+			std::cout << n << std::endl;
+			commune_str.append(n);
 			commune_str.append("'");
-			if (commune[i++] != commune.end())
+			if (n != commune.back())
 				commune_str.append(" or [name] = '");
 		}
 		std::cout << RED << "comune_str = " << RST <<  commune_str << std::endl << std::endl;
@@ -116,7 +115,7 @@ int main(int ac, char** av)
         feature_type_style provlines_style;
         {
             rule r;
-            r.set_filter(parse_expression(commune_str));
+            r.set_filter(parse_expression(commune_str.c_str()));
             {
                 line_symbolizer line_sym;
                 put(line_sym, keys::stroke, color(0, 0, 0));

@@ -20,3 +20,5 @@ INSERT INTO :REGION(type_of_appelation, appelation, geom)
 		'AOC',
 		'medoc',
 		'SRID=4326;POLYGON((1 48,0 47,0 47,1 48))');
+
+UPDATE polygons SET name = REPLACE(name,'É','E'); 

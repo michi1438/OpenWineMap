@@ -81,7 +81,6 @@ RUN chmod -R 777 /home/$DB_USER/src/*
 COPY mapnik.xml /
 COPY mod_tile_init.sh /
 
-COPY .ccls_host /
 COPY myrenderd.conf /myrenderd.conf
 COPY test_mapnik/ /test_mapnik/
 COPY L.Control.Opacity.css /var/www/html/dist/
