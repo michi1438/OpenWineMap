@@ -85,8 +85,9 @@ mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
 
-
-mv -v /mapnik.xml /home/$DB_USER/src/openstreetmap-carto/
+pushd /.MAP/mapnik/demo/test_mapnik/
+	make && ./aquitaine;
+popd
 
 service apache2 start
 tail -f

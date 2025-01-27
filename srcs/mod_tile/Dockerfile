@@ -71,6 +71,7 @@ RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /var/www/htm/dist/  \
   &&  mkdir  -p  /.MAP \
   &&  mkdir  -p  /home/$DB_USER/src/  \
+  &&  mkdir  -p  /var/cache/renderd/tiles/france/  \
   &&  chown  -R  $DB_USER:  /data/  \
   &&  chown  -R  $DB_USER:  /home/$DB_USER/src/  \
   &&  chown  -R  $DB_USER:  /run/renderd  \
@@ -78,7 +79,6 @@ RUN mkdir -p /run/renderd/ \
 ;
 
 RUN chmod -R 777 /home/$DB_USER/src/*
-COPY mapnik.xml /
 COPY mod_tile_init.sh /
 
 COPY myrenderd.conf /myrenderd.conf

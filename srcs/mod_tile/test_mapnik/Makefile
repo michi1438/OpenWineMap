@@ -1,9 +1,9 @@
 CXXFLAGS = $(shell mapnik-config --includes --defines --cxxflags --dep-includes)
 LDFLAGS = $(shell mapnik-config --libs --dep-libs --ldflags)
 
-OBJ = runtest.o
+OBJ = aquitaine.o
 
-BIN = runtest
+BIN = aquitaine 
 
 all : $(BIN)
 

@@ -30,10 +30,12 @@
 			// add the OpenStreetMap tiles
 			var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				maxZoom: 18,
+				minZoom: 2,
 				id: 'base'
 			});
-			var mylayer = L.tileLayer('/tile/{z}/{x}/{y}.png', {
+			var mylayer = L.tileLayer('/tile/france/{z}/{x}/{y}.png', {
 				maxZoom: 18,
+				minZoom: 2,
 				id: 'OWM'
 			});
 
