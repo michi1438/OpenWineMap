@@ -78,39 +78,27 @@ int main(int ac, char** av)
         m.set_background(parse_color("#00000000"));
         m.set_srs(srs_map);
 
-		std::vector<std::string> commune[2];
-		commune[0] = {"Aincille", "Anhaux", "Ascarat", "Bidarray", "Bussunarits-Sarrasquette", "Bustince-Iriberry", "Irouléguy", "Ispoure", "Jaxu", "Lasse", "Lecumberry", "Ossès", "Saint-Etienne-de-Baïgorry", "Saint-Jean-le-Vieux", "Saint-Martin-d’Arrossa"};
-		commune[1] = {"Maumusson-Laguian", "Riscle", "Cannet", "Viella", "Castelnau-Rivière-Basse", "Hagedet", "Lascazères", "Madiran", "Saint-Lanne et Soublecause", "Abos", "Arbus", "Arricau-Bordes", "Arrosès", "Artiguelouve", "Aubertin", "Aubous", "Aurions-Idernes", "Aydie", "Baigts-de-Béarn", "Bellocq", "Bérenx", "Bétracq", "Bosdarros", "Burosse-Mendousse", "Cadillon", "Cardesse", "Carresse", "Castagnède", "Castetpugon", "Castillon (Canton de Lembeye)", "Conchez-de-Béarn", "Corbères-Abères", "Crouseilles", "Cuqueron", "Diusse", "Escurès", "Estialescq", "Gan", "Gayon", "Gelos", "Haut-de-Bosdarros", "L’Hôpital-d’Orion", "Jurançon", "Lacommande", "Lagor", "Lahontan", "Lahourcade", "Laroin", "Lasserre", "Lasseube", "Lasseubetat", "Lembeye", "Lespielle-Germenaud-Lannegrasse", "Lucq-de-Béarn", "Mascaraàs-Haron", "Mazères-Lezons", "Moncaup", "Moncla", "Monein", "Monpezat", "Mont-Disse", "Mourenx", "Narcastet", "Ogenne-Camptort", "Oraàs", "Orthez", "Parbayse", "Portet", "Puyoo", "Ramous", "Rontignon", "Saint-Faust", "Saint-Jean-Poudge", "Salies-de-Béarn", "Salles-Mongiscard", "Sauvelade", "Séméacq-Blachon", "Tadon-Sadirac-Viellenave", "Tadousse-Ussau", "Uzos", "Vialer", "Vielleségure"};
-		std::string commune_irouleguy = "[name] = '";
-		std::cout << RED << "comune_str = " << RST << std::endl;
-		for (std::string n : commune[0])
-		{
-			std::cout << n << std::endl;
-			commune_irouleguy.append(n);
-			commune_irouleguy.append("'");
-			if (n != commune[0].back())
-				commune_irouleguy.append(" or [name] = '");
-		}
-		std::cout << std::endl;
+		//std::vector<std::string> commune[2];
+		//commune[0] = {"Aincille", "Anhaux", "Ascarat", "Bidarray", "Bussunarits-Sarrasquette", "Bustince-Iriberry", "Irouléguy", "Ispoure", "Jaxu", "Lasse", "Lecumberry", "Ossès", "Saint-Etienne-de-Baïgorry", "Saint-Jean-le-Vieux", "Saint-Martin-d’Arrossa"};
+		//commune[1] = {"Maumusson-Laguian", "Riscle", "Cannet", "Viella", "Castelnau-Rivière-Basse", "Hagedet", "Lascazères", "Madiran", "Saint-Lanne et Soublecause", "Abos", "Arbus", "Arricau-Bordes", "Arrosès", "Artiguelouve", "Aubertin", "Aubous", "Aurions-Idernes", "Aydie", "Baigts-de-Béarn", "Bellocq", "Bérenx", "Bétracq", "Bosdarros", "Burosse-Mendousse", "Cadillon", "Cardesse", "Carresse", "Castagnède", "Castetpugon", "Castillon (Canton de Lembeye)", "Conchez-de-Béarn", "Corbères-Abères", "Crouseilles", "Cuqueron", "Diusse", "Escurès", "Estialescq", "Gan", "Gayon", "Gelos", "Haut-de-Bosdarros", "L’Hôpital-d’Orion", "Jurançon", "Lacommande", "Lagor", "Lahontan", "Lahourcade", "Laroin", "Lasserre", "Lasseube", "Lasseubetat", "Lembeye", "Lespielle-Germenaud-Lannegrasse", "Lucq-de-Béarn", "Mascaraàs-Haron", "Mazères-Lezons", "Moncaup", "Moncla", "Monein", "Monpezat", "Mont-Disse", "Mourenx", "Narcastet", "Ogenne-Camptort", "Oraàs", "Orthez", "Parbayse", "Portet", "Puyoo", "Ramous", "Rontignon", "Saint-Faust", "Saint-Jean-Poudge", "Salies-de-Béarn", "Salles-Mongiscard", "Sauvelade", "Séméacq-Blachon", "Tadon-Sadirac-Viellenave", "Tadousse-Ussau", "Uzos", "Vialer", "Vielleségure"};
+		//std::string commune_irouleguy = "[name] = '";
+		//std::cout << RED << "comune_str = " << RST << std::endl;
+		//for (std::string n : commune[0])
+		//{
+		//	std::cout << n << std::endl;
+		//	commune_irouleguy.append(n);
+		//	commune_irouleguy.append("'");
+		//	if (n != commune[0].back())
+		//		commune_irouleguy.append(" or [name] = '");
+		//}
+		//std::cout << std::endl;
 
-		std::string commune_bearne = "[name] = '";
-		std::cout << RED << "comune_str = " << RST << std::endl;
-		for (std::string n : commune[1])
-		{
-			std::cout << n << std::endl;
-			commune_bearne.append(n);
-			commune_bearne.append("'");
-			if (n != commune[1].back())
-				commune_bearne.append(" or [name] = '");
-		}
-		std::cout << std::endl;
-			
 		// Provinces (polygon)
 		feature_type_style provpoly_style;
-		provpoly_style.reserve(2); // prevent reallocation and copying in add_rule
+		provpoly_style.reserve(1); // prevent reallocation and copying in add_rule
 		{
 			rule r;
-			r.set_filter(parse_expression(commune_irouleguy));
+			//r.set_filter(parse_expression(commune_irouleguy));
 			{
 				polygon_symbolizer poly_sym;
 				put(poly_sym, keys::fill, color(17, 235, 160));
@@ -118,23 +106,27 @@ int main(int ac, char** av)
 			}
 			provpoly_style.add_rule(std::move(r));
 		}
+		m.insert_style("provinces", std::move(provpoly_style));
+
+		feature_type_style provpoly_style2;
+		provpoly_style2.reserve(1); // prevent reallocation and copying in add_rule
 		{
 			rule r;
-			r.set_filter(parse_expression(commune_bearne));
+			//r.set_filter(parse_expression(commune_irouleguy));
 			{
 				polygon_symbolizer poly_sym;
 				put(poly_sym, keys::fill, color(17, 235, 200));
 				r.append(std::move(poly_sym));
 			}
-			provpoly_style.add_rule(std::move(r));
+			provpoly_style2.add_rule(std::move(r));
 		}
-		m.insert_style("provinces", std::move(provpoly_style));
+		m.insert_style("provinces2", std::move(provpoly_style2));
 
 		// Provinces (polyline)
 		feature_type_style provlines_style;
 		{
 			rule r;
-			r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
+			//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
 			{
 				line_symbolizer line_sym;
 				put(line_sym, keys::stroke, color(0, 0, 0));
@@ -159,11 +151,30 @@ int main(int ac, char** av)
 			p["dbname"]="owm";
 			p["user"]="owmuser";
 			p["password"]="toor";
-			p["table"]="polygons";
+			p["table"]="bearne";
 
 			layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
 			lyr.add_style("provinces");
+			lyr.add_style("provlines");
+			lyr.set_srs(srs_layers);
+
+			m.add_layer(lyr);
+		}
+
+		{
+			parameters p;
+			p["type"]="postgis";
+			p["host"]="postgres";
+			p["port"]="5432";
+			p["dbname"]="owm";
+			p["user"]="owmuser";
+			p["password"]="toor";
+			p["table"]="irouleguy";
+
+			layer lyr("Provinces2");
+			lyr.set_datasource(datasource_cache::instance().create(p));
+			lyr.add_style("provinces2");
 			lyr.add_style("provlines");
 			lyr.set_srs(srs_layers);
 
