@@ -28,7 +28,7 @@ if [ ! -d /.MAP/mapnik ]; then
 	cd mapnik/
 	git submodule update --init
 	./configure	 DEMO=True
-	JOBS=10 make
+	JOBS=$(nproc) make
 	make install
 	popd
 else
@@ -45,7 +45,7 @@ cp -r -v /.MAP/mapnik/deps/mapbox/variant/include/* /usr/include/
 echo "MOD_TILE_INIT.SH: mapnik is built !!!"
 
 if [ ! -f /tmp/mod_tile_build/src/renderd ]; then
-	export CMAKE_BUILD_PARALLEL_LEVEL=10
+	export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
 	rm -rf /tmp/mod_tile_src /tmp/mod_tile_build
 	mkdir /tmp/mod_tile_src /tmp/mod_tile_build
 	cd /tmp/mod_tile_src

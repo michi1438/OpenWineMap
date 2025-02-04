@@ -1,9 +1,9 @@
 FROM michael/simple
 
-RUN apk add --no-cache postgresql postgis postgresql-contrib
-
 COPY ./postgis_init.sh ./
 COPY ./postgres_dirs.sh ./
+
+RUN apk add --no-cache postgresql postgis postgresql-contrib
 
 COPY bordeaux.sql /
 RUN bash ./postgres_dirs.sh

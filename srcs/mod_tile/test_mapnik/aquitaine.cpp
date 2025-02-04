@@ -148,7 +148,7 @@ int main(int ac, char** av)
 			p["type"]="postgis";
 			p["host"]="postgres";
 			p["port"]="5432";
-			p["dbname"]="owm";
+			p["dbname"]="pgis";
 			p["user"]="owmuser";
 			p["password"]="toor";
 			p["table"]="bearne";
@@ -167,7 +167,7 @@ int main(int ac, char** av)
 			p["type"]="postgis";
 			p["host"]="postgres";
 			p["port"]="5432";
-			p["dbname"]="owm";
+			p["dbname"]="pgis";
 			p["user"]="owmuser";
 			p["password"]="toor";
 			p["table"]="irouleguy";

@@ -5,6 +5,7 @@ RUN apk add --no-cache nlohmann-json postgresql-dev \
 		libpq proj-dev lua5.3-dev luajit-dev
 
 COPY osm2pgsql_init.sh /
+COPY AOC-flex-config/ /
 
 WORKDIR /.PBF/
  
