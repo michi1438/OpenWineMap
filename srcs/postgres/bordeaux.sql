@@ -51,6 +51,7 @@ INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official
 SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
 INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
 \echo '\n'
+INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
 
 -- AOP IROULEGUY
 \set AOP irouleguy 
@@ -64,6 +65,7 @@ SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
 
 DROP TABLE IF EXISTS :AOP;
 CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name = ANY(:COMMUNES) AND postal_code = ANY(:REG_TABLE);
+INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
 
 -- AOP MADIRAN 
 \set AOP madiran
@@ -77,6 +79,7 @@ SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
 
 DROP TABLE IF EXISTS :AOP;
 CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name = ANY(:COMMUNES) AND postal_code = ANY(:REG_TABLE);
+INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
 
 -- AOP JURANCON 
 \set AOP jurancon 
@@ -90,3 +93,4 @@ SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
 
 DROP TABLE IF EXISTS :AOP;
 CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name = ANY(:COMMUNES) AND postal_code = ANY(:REG_TABLE);
+INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 

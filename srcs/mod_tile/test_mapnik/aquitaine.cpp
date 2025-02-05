@@ -93,44 +93,51 @@ int main(int ac, char** av)
 		//}
 		//std::cout << std::endl;
 
+		std::vector<std::string> appelation = {"bearne", "madiran", "jurancon", "irouleguy"};
 		// Provinces (polygon)
-		feature_type_style provpoly_style;
-		provpoly_style.reserve(1); // prevent reallocation and copying in add_rule
+		feature_type_style provpoly_style[4];
+		feature_type_style appelation_style[4];
+		for (int i = 0; i < 4; i++)
 		{
-			rule r;
-			//r.set_filter(parse_expression(commune_irouleguy));
+			provpoly_style[i].reserve(1); // prevent reallocation and copying in add_rule
 			{
-				polygon_symbolizer poly_sym;
-				put(poly_sym, keys::fill, color(17, 235, 160));
-				r.append(std::move(poly_sym));
+				rule r;
+				r.set_filter(parse_expression("[name] = 'the_whole_appelation'"));
+				{
+					polygon_symbolizer poly_sym;
+					put(poly_sym, keys::fill, color(17, 235, 60+(i*60), 0x80));
+					r.append(std::move(poly_sym));
+				}
+				provpoly_style[i].add_rule(std::move(r));
 			}
-			provpoly_style.add_rule(std::move(r));
-		}
-		m.insert_style("provinces", std::move(provpoly_style));
+			m.insert_style(appelation[i], std::move(provpoly_style[i]));
 
-		feature_type_style provpoly_style2;
-		provpoly_style2.reserve(1); // prevent reallocation and copying in add_rule
-		{
-			rule r;
-			//r.set_filter(parse_expression(commune_irouleguy));
+			appelation_style[i].reserve(1); // prevent reallocation and copying in add_rule
 			{
-				polygon_symbolizer poly_sym;
-				put(poly_sym, keys::fill, color(17, 235, 200));
-				r.append(std::move(poly_sym));
+				rule r;
+				//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
+				r.set_filter(parse_expression("[name] = 'the_whole_appelation'"));
+				r.set_max_scale(346775);
+				{
+					line_symbolizer line_sym;
+					put(line_sym, keys::stroke, color(17, 235, 60+(i*60), 0xA0));
+					put(line_sym, keys::stroke_width, 10);
+					r.append(std::move(line_sym));
+				}
+				appelation_style[i].add_rule(std::move(r));
 			}
-			provpoly_style2.add_rule(std::move(r));
+			m.insert_style(appelation[i] + "_contour", std::move(appelation_style[i]));
 		}
-		m.insert_style("provinces2", std::move(provpoly_style2));
 
 		// Provinces (polyline)
-		feature_type_style provlines_style;
+		feature_type_style communeline_style;
 		{
 			rule r;
 			//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
 			{
 				line_symbolizer line_sym;
-				put(line_sym, keys::stroke, color(0, 0, 0));
-				put(line_sym, keys::stroke_width, 1.0);
+				put(line_sym, keys::stroke, color(0, 0, 0, 0x20));
+				put(line_sym, keys::stroke_width, 1);
 				dash_array dash;
 				dash.emplace_back(8, 4);
 				dash.emplace_back(2, 2);
@@ -138,44 +145,27 @@ int main(int ac, char** av)
 				put(line_sym, keys::stroke_dasharray, dash);
 				r.append(std::move(line_sym));
 			}
-			provlines_style.add_rule(std::move(r));
+			communeline_style.add_rule(std::move(r));
 		}
-		m.insert_style("provlines", std::move(provlines_style));
+		m.insert_style("communelines", std::move(communeline_style));
 
 		//     layers
+		for (int i = 0; i < 4; i++)
 		{
 			parameters p;
 			p["type"]="postgis";
 			p["host"]="postgres";
 			p["port"]="5432";
-			p["dbname"]="pgis";
+			p["dbname"]="owm";
 			p["user"]="owmuser";
 			p["password"]="toor";
-			p["table"]="bearne";
+			p["table"]=appelation[i];
 
 			layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
-			lyr.add_style("provinces");
-			lyr.add_style("provlines");
-			lyr.set_srs(srs_layers);
-
-			m.add_layer(lyr);
-		}
-
-		{
-			parameters p;
-			p["type"]="postgis";
-			p["host"]="postgres";
-			p["port"]="5432";
-			p["dbname"]="pgis";
-			p["user"]="owmuser";
-			p["password"]="toor";
-			p["table"]="irouleguy";
-
-			layer lyr("Provinces2");
-			lyr.set_datasource(datasource_cache::instance().create(p));
-			lyr.add_style("provinces2");
-			lyr.add_style("provlines");
+			lyr.add_style(appelation[i]);
+			lyr.add_style(appelation[i] + "_contour");
+			lyr.add_style("communelines");
 			lyr.set_srs(srs_layers);
 
 			m.add_layer(lyr);
@@ -195,6 +185,8 @@ int main(int ac, char** av)
         msg += "Have a look!\n";
         std::cout << msg;
 
+        std::cout << m.scale() << std::endl;
+        std::cout << m.scale_denominator() << std::endl;
         save_map(m, "/home/owmuser/src/openstreetmap-carto/aquitaine.xml");
     }
     catch (std::exception const& ex)
