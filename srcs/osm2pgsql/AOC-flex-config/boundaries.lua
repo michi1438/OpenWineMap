@@ -35,6 +35,7 @@ local tables = {}
 tables.polygons = osm2pgsql.define_area_table('polygons', {
     { column = 'type', type = 'text' },
     { column = 'name', type = 'text' },
+    { column = 'official_name', type = 'text' },
     { column = 'postal_code', type = 'text' },
     { column = 'tags', type = 'jsonb' },
     -- The type of the `geom` column is `geometry`, because we need to store
@@ -85,6 +86,7 @@ function osm2pgsql.process_relation(object)
          tables.polygons:insert({
             type = object.tags.type,
             name = object.tags.name, -- TODO change the weird character into something more general....
+            official_name = object.tags.official_name,
             postal_code = string.sub(object.tags.postal_code, 1, 2),
             tags = object.tags,
             geom = object:as_multipolygon()
