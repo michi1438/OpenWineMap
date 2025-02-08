@@ -93,19 +93,22 @@ int main(int ac, char** av)
 		//}
 		//std::cout << std::endl;
 
-		std::vector<std::string> appelation = {"bearne", "madiran", "jurancon", "irouleguy"};
+		std::vector<std::string> appelation = {"bearne", "madiran", "jurancon", "irouleguy", "pacherenc_du_vic_bilh", "tursan"};
+		const int num_appellation = 6;
 		// Provinces (polygon)
-		feature_type_style provpoly_style[4];
-		feature_type_style appelation_style[4];
-		for (int i = 0; i < 4; i++)
+		feature_type_style provpoly_style[num_appellation];
+		feature_type_style appelation_style[num_appellation];
+		for (int i = 0; i < num_appellation; i++)
 		{
+
+			//provpoly_style[i].set_comp_op(contrast); // TODO https://www.w3.org/TR/compositing-1/#module-interactions should play around some more with this later... 
 			provpoly_style[i].reserve(1); // prevent reallocation and copying in add_rule
 			{
 				rule r;
 				r.set_filter(parse_expression("[name] = 'the_whole_appelation'"));
 				{
 					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(17, 235, 60+(i*60), 0x80));
+					put(poly_sym, keys::fill, color(17, 0+(i*180)%255, 0+(i*60)%255, 0x80));
 					r.append(std::move(poly_sym));
 				}
 				provpoly_style[i].add_rule(std::move(r));
@@ -116,15 +119,35 @@ int main(int ac, char** av)
 			{
 				rule r;
 				//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation'"));
+				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
 				r.set_max_scale(346775);
 				{
 					line_symbolizer line_sym;
-					put(line_sym, keys::stroke, color(17, 235, 60+(i*60), 0xA0));
-					put(line_sym, keys::stroke_width, 10);
+					put(line_sym, keys::stroke, color(17, 0+(i*180)%255, 0+(i*60)%255, 0xC0));
+					put(line_sym, keys::stroke_width, 24);
 					r.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r));
+				rule r2;
+				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
+				r2.set_max_scale(346775);
+				{
+					line_symbolizer line_sym;
+					put(line_sym, keys::stroke, color(17, 0+(i*180)%255, 0+(i*60)%255, 0xC0));
+					put(line_sym, keys::stroke_width, 12);
+					r2.append(std::move(line_sym));
+				}
+				appelation_style[i].add_rule(std::move(r2));
+				rule r3;
+				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
+				r3.set_max_scale(346775);
+				{
+					line_symbolizer line_sym;
+					put(line_sym, keys::stroke, color(17, 0+(i*180)%255, 0+(i*60)%255, 0xC0));
+					put(line_sym, keys::stroke_width, 6);
+					r3.append(std::move(line_sym));
+				}
+				appelation_style[i].add_rule(std::move(r3));
 			}
 			m.insert_style(appelation[i] + "_contour", std::move(appelation_style[i]));
 		}
@@ -136,7 +159,7 @@ int main(int ac, char** av)
 			//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
 			{
 				line_symbolizer line_sym;
-				put(line_sym, keys::stroke, color(0, 0, 0, 0x20));
+				put(line_sym, keys::stroke, color(0, 0, 0, 0x10));
 				put(line_sym, keys::stroke_width, 1);
 				dash_array dash;
 				dash.emplace_back(8, 4);
@@ -150,7 +173,7 @@ int main(int ac, char** av)
 		m.insert_style("communelines", std::move(communeline_style));
 
 		//     layers
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < num_appellation; i++)
 		{
 			parameters p;
 			p["type"]="postgis";

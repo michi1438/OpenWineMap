@@ -21,6 +21,7 @@ services:
     volumes: 
       - MOD:/tmp/
       - MAP:/.MAP
+      - DB_CONN:/home/owmuser/db_connect/
     networks: ["OWM_network"]
     build: mod_tile/
     env_file: ".env"
@@ -85,12 +86,12 @@ volumes:
       type: none
       o: bind
       device: $HOME/.docker/OWM/MAP/
-  MAP_inc:
+  DB_CONN:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: $HOME/.docker/OWM/MAP_include/
+      device: $HOME/.docker/OWM/DB_CONN/
 
 networks:
   OWM_network:

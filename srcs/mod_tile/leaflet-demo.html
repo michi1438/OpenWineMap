@@ -26,6 +26,14 @@
         <div id="map"></div>
 		<script>
 			// initialize Leaflet
+			var popup = L.popup();
+
+			function onMapClick(e) {
+				popup
+					.setLatLng(e.latlng)
+					.setContent("You clicked the map at " + e.latlng.toString())
+					.openOn(map);
+			}
 
 			// add the OpenStreetMap tiles
 			var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -36,6 +44,7 @@
 			var mylayer = L.tileLayer('/tile/france/{z}/{x}/{y}.png', {
 				maxZoom: 18,
 				minZoom: 2,
+				interactive: true,
 				id: 'OWM'
 			});
 
@@ -44,6 +53,7 @@
 			//L.control.scale({imperial: true, metric: true}).addTo(map);
 
 			var map = L.map('map', {layers: [osm, mylayer]}).setView({lon: 0, lat: 0}, 3);
+
 
 			const baseLayers = {
 				'OpenStreetMap': osm,
@@ -56,6 +66,8 @@
 				collapsed: false,
 			})
 			.addTo(map); 
+
+			map.on('click', onMapClick);
 
 			L.control
 				.opacity(addLayers, {

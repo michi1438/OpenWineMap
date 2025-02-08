@@ -89,5 +89,7 @@ pushd /.MAP/mapnik/demo/test_mapnik/
 	make && ./aquitaine;
 popd
 
+rm -rf /var/cache/renderd/tiles/*
+
 service apache2 start
-tail -f
+renderd -f

@@ -26,8 +26,62 @@ LANGUAGE plpgsql;
 -- DROP TABLE IF EXISTS :AOP;
 -- CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name IN ARRAY communes;
 
+-- AOP PACHERENC_DU_VIC_BILH 
+\set AOP pacherenc_du_vic_bilh 
+
+DROP TABLE IF EXISTS :AOP;
+CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
+\echo '\nIN APPELATION' :AOP
+\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
+
+\set REG_TABLE ARRAY['''32''']
+\set COMMUNES ARRAY['''Maumusson-Laguian''','''Cannet''','''Viella''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * froh commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+
+\set REG_TABLE ARRAY['''65''']
+\set COMMUNES ARRAY['''Castelnau-Rivière-Basse''','''Hagedet''','''Lascazères''','''Madiran''','''Saint-Lanne''','''Soublecause''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+
+\set REG_TABLE ARRAY['''64''']
+\set COMMUNES ARRAY['''Arricau-Bordes''','''Arrosès''','''Aubous''','''Aurions-Idernes''','''Aydie''','''Bétracq''','''Burosse-Mendousse''','''Cadillon''','''Castetpugon''','''Castillon (canton de Lembeye)''','''Conchez-de-Béarn''','''Corbère-Abères''','''Crouseilles''','''Diusse''','''Escurès''','''Gayon''','''Lasserre''','''Lembeye''','''Mascaraàs-Haron''','''Moncaup''','''Moncla''','''Monpezat''','''Mont-Disse''','''Portet''','''Saint-Jean-Poudge''','''Séméacq-Blachon''','''Tadousse-Ussau''','''Vialer''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+\echo '\n'
+
+INSERT INTO :AOP (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP), 5); 
+
+-- AOP TURSAN 
+\set AOP tursan 
+
+DROP TABLE IF EXISTS :AOP;
+CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
+\echo '\nIN APPELATION' :AOP
+\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
+
+\set REG_TABLE ARRAY['''40''']
+\set COMMUNES ARRAY['''Aire-sur-l''''Adour''','''Arboucave''','''Aubagnan''','''Bahus-Soubiran''','''Bats-Tursan''','''Buanes''','''Castelnau-Tursan''','''Classun''','''Clèdes''','''Coudures''','''Duhort-Bachen''','''Eugénie-les-Bains''','''Eyres-Moncube''','''Fargues''','''Geaune''','''Larrivière-Saint-Savin''','''Latrille''','''Lauret''','''Mauries''','''Miramont-Sensacq''','''Montgaillard''','''Montsoué''','''Payros-Cazautets''','''Pécorade''','''Pimbo''','''Puyol-Cazalet''','''Renung''','''Saint-Agnet''','''Saint-Loubouer''','''Sarraziet''','''Sarron''','''Serres-Gaston''','''Sorbets''','''Urgons''','''Vielle-Tursan''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+\echo '\n'
+
+\set REG_TABLE ARRAY['''32''']
+\set COMMUNES ARRAY['''Ségos''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+\echo '\n'
+
+INSERT INTO :AOP (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP), 10); 
+
 -- AOP BEARNE 
-\set AOP bearne 
+\set AOP bearne
+
 DROP TABLE IF EXISTS :AOP;
 CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
 \echo '\nIN APPELATION' :AOP
@@ -37,7 +91,7 @@ CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
 \set COMMUNES ARRAY['''Maumusson-Laguian''','''Riscle''','''Cannet''','''Viella''']
 \echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
 SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
-INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE); --TODO add an OR full_postal_code = state
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
 
 \set REG_TABLE ARRAY['''65''']
 \set COMMUNES ARRAY['''Castelnau-Rivière-Basse''','''Hagedet''','''Lascazères''','''Madiran''','''Saint-Lanne''','''Soublecause''']
@@ -51,46 +105,68 @@ INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official
 SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
 INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
 \echo '\n'
-INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
+
+INSERT INTO :AOP (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP), 15); 
 
 -- AOP IROULEGUY
 \set AOP irouleguy 
-\set REG_TABLE ARRAY['''64''']
-\set COMMUNES ARRAY['''Aincille''','''Anhaux''','''Ascarat''','''Bidarray''','''Bussunarits-Sarrasquette''','''Bustince-Iriberry''','''Irouléguy''','''Ispoure''','''Jaxu''','''Lasse''','''Lecumberry''','''Ossès''','''Saint-Etienne-de-Baïgorry''','''Saint-Jean-le-Vieux''','''Saint-Martin-d''''Arrossa''']
-
-\echo '\nIN APPELATION' :AOP
-\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
-SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
-\echo '\n'
 
 DROP TABLE IF EXISTS :AOP;
-CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name = ANY(:COMMUNES) AND postal_code = ANY(:REG_TABLE);
-INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
+CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
+\echo '\nIN APPELATION' :AOP
+\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
+
+\set REG_TABLE ARRAY['''64''']
+\set COMMUNES ARRAY['''Aincille''','''Anhaux''','''Ascarat''','''Bidarray''','''Bussunarits-Sarrasquette''','''Bustince-Iriberry''','''Irouléguy''','''Ispoure''','''Jaxu''','''Lasse''','''Lecumberry''','''Ossès''','''Saint-Etienne-de-Baïgorry''','''Saint-Jean-le-Vieux''','''Saint-Martin-d''''Arrossa''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+\echo '\n'
+
+INSERT INTO :AOP (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP), 5); 
 
 -- AOP MADIRAN 
 \set AOP madiran
-\set REG_TABLE ARRAY['''64''','''32''','''65''']
-\set COMMUNES ARRAY['''Cannet''','''Maumusson-Laguian''','''Viella''','''Castelnau-Rivière-Basse''','''Hagedet''','''Lascazères''','''Madiran''','''Saint-Lanne''','''Soublecause''','''Arricau-Bordes''','''Arrosès''','''Aubous''','''Aurions-Idernes''','''Aydie''','''Bétracq''','''Burosse-Mendousse''','''Cadillon''','''Castetpugon''','''Lembeye''','''Conchez-de-Béarn''','''Corbère-Abères''','''Crouseilles''','''Diusse''','''Escurès''','''Gayon''','''Lasserre''','''Lembeye''','''Mascaraàs-Haron''','''Moncaup''','''Moncla''','''Monpezat''','''Mont-Disse''','''Portet''','''Saint-Jean-Poudge''','''Séméacq-Blachon''','''Tadousse-Ussau''','''Vialer''']
-
-\echo '\nIN APPELATION' :AOP
-\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
-SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
-\echo '\n'
 
 DROP TABLE IF EXISTS :AOP;
-CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name = ANY(:COMMUNES) AND postal_code = ANY(:REG_TABLE);
-INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
+CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
+\echo '\nIN APPELATION' :AOP
+\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
+
+\set REG_TABLE ARRAY['''32''']
+\set COMMUNES ARRAY['''Cannet''','''Maumusson-Laguian''','''Viella''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+
+\set REG_TABLE ARRAY['''65''']
+\set COMMUNES ARRAY['''Castelnau-Rivière-Basse''','''Hagedet''','''Lascazères''','''Madiran''','''Saint-Lanne''','''Soublecause''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+
+\set REG_TABLE ARRAY['''64''']
+\set COMMUNES ARRAY['''Arricau-Bordes''','''Arrosès''','''Aubous''','''Aurions-Idernes''','''Aydie''','''Bétracq''','''Burosse-Mendousse''','''Cadillon''','''Castetpugon''','''Castillon (Canton de Lembeye)''','''Conchez-de-Béarn''','''Corbère-Abères''','''Crouseilles''','''Diusse''','''Escurès''','''Gayon''','''Lasserre''','''Lembeye''','''Mascaraàs-Haron''','''Moncaup''','''Moncla''','''Monpezat''','''Mont-Disse''','''Portet''','''Saint-Jean-Poudge''','''Séméacq-Blachon''','''Tadousse-Ussau''','''Vialer''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+\echo '\n'
+
+INSERT INTO :AOP (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP), 10); 
 
 -- AOP JURANCON 
 \set AOP jurancon 
-\set REG_TABLE ARRAY['''64''']
-\set COMMUNES ARRAY['''Abos''','''Arbus''','''Artiguelouve''','''Au-bertin''','''Bosdarros''','''Cardesse''','''Cuqueron''','''Estialesq''','''Gan''','''Gelos''','''Haut-de-Bosdarros''','''Jurançon''','''Lacom-mande''','''Lahourcade''','''Laroin''','''Lasseube''','''Lasseubétat''','''Lucq-de-Béarn''','''Mazères-Lezons''','''Monein''','''Nar-castet''','''Parbayse''','''Rontignon''','''Saint-FaustetUzos''']
-
-\echo '\nIN APPELATION' :AOP
-\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
-SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
-\echo '\n'
 
 DROP TABLE IF EXISTS :AOP;
-CREATE TABLE :AOP AS SELECT * FROM polygons WHERE name = ANY(:COMMUNES) AND postal_code = ANY(:REG_TABLE);
-INSERT INTO :AOP (name, geom) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP)); 
+CREATE TABLE :AOP AS SELECT * FROM polygons WHERE 1 <> 1;
+\echo '\nIN APPELATION' :AOP
+\echo 'ALL COMMUNES WHERE FOUND EXEPT:'
+
+\set REG_TABLE ARRAY['''64''']
+\set COMMUNES ARRAY['''Abos''','''Arbus''','''Artiguelouve''','''Aubertin''','''Bosdarros''','''Cardesse''','''Cuqueron''','''Estialescq''','''Gan''','''Gelos''','''Haut-de-Bosdarros''','''Jurançon''','''Lacommande''','''Lahourcade''','''Laroin''','''Lasseube''','''Lasseubetat''','''Lucq-de-Béarn''','''Mazères-Lezons''','''Monein''','''Narcastet''','''Parbayse''','''Rontignon''','''Saint-Faust''','''Uzos''']
+\echo :REG_TABLE 'COMMUNES WHERE NOT FOUND:'
+SELECT * from commune_not_found(:COMMUNES, :REG_TABLE);
+INSERT INTO :AOP SELECT * FROM polygons WHERE (name = ANY(:COMMUNES) OR official_name = ANY(:COMMUNES)) AND postal_code = ANY(:REG_TABLE);
+\echo '\n'
+
+INSERT INTO :AOP (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM :AOP), 10); 
