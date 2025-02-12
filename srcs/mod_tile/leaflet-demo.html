@@ -41,7 +41,13 @@
 				minZoom: 2,
 				id: 'base'
 			});
-			var mylayer = L.tileLayer('/tile/france/{z}/{x}/{y}.png', {
+			var sud_ouest = L.tileLayer('/tile/france/sud_ouest/{z}/{x}/{y}.png', {
+				maxZoom: 18,
+				minZoom: 2,
+				interactive: true,
+				id: 'OWM'
+			});
+			var sud_ouest_brd = L.tileLayer('/tile/france/sud_ouest_brd/{z}/{x}/{y}.png', {
 				maxZoom: 18,
 				minZoom: 2,
 				interactive: true,
@@ -52,7 +58,7 @@
 			// show the scale bar on the lower left corner
 			//L.control.scale({imperial: true, metric: true}).addTo(map);
 
-			var map = L.map('map', {layers: [osm, mylayer]}).setView({lon: 0, lat: 0}, 3);
+			var map = L.map('map', {layers: [osm, sud_ouest, sud_ouest_brd]}).setView({lon: 0, lat: 0}, 3);
 
 
 			const baseLayers = {
@@ -60,7 +66,8 @@
 			};
 
 			const addLayers = {
-				'OpenWineMap': mylayer 
+				'sud_ouest': sud_ouest,
+				'sud_ouest_brd': sud_ouest_brd,
 			};
 			var layerControl = L.control.layers(baseLayers, addLayers, {
 				collapsed: false,

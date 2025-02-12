@@ -75,6 +75,7 @@ fi
 
 # Enable configuration
 a2enmod tile
+a2enmod cgi 
 a2ensite 000-default
 
 source /etc/apache2/envvars
@@ -85,8 +86,14 @@ mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
 
+pushd /home/owmuser/db_connect/
+	mv -v /def_appelations.py /home/$DB_USER/db_connect/
+	mv -v /SudOuest_data /home/$DB_USER/db_connect/
+	python3 def_appelations.py
+popd
+
 pushd /.MAP/mapnik/demo/test_mapnik/
-	make && ./aquitaine;
+	make && ./sud_ouest && ./sud_ouest_brd;
 popd
 
 rm -rf /var/cache/renderd/tiles/*

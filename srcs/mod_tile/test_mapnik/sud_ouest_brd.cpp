@@ -60,9 +60,8 @@ int main(int ac, char** av)
     try
     {
 		if (ac != 1)
-			throw std::runtime_error("not enough arguments, expected 2\n");
+			throw std::runtime_error("not enough arguments, expected 0\n");
 		std::string reg_name = av[0];	
-		reg_name = reg_name.substr(0, reg_name.find("."));
 
 		using namespace mapnik;
 		mapnik::setup();
@@ -72,7 +71,7 @@ int main(int ac, char** av)
 		const std::string srs_layers =
 			"+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0.0 +x_0=0.0 \
 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over";
-        std::cout << " running aquitaine" << reg_name << "..." << std::endl;
+        std::cout << " running " << reg_name << "..." << std::endl;
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
@@ -130,25 +129,19 @@ int main(int ac, char** av)
 //					
 //			}
 //
-			layer clear_lyr("clear");
-			clear_lyr.set_datasource(datasource_cache::instance().create(p));
-			clear_lyr.add_style("poly_clear");
-			clear_lyr.set_srs(srs_layers);
-
 			layer lyr_cont("Contour");
 			lyr_cont.set_datasource(datasource_cache::instance().create(p));
 			lyr_cont.add_style(appelation[i] + "_contour");
 			lyr_cont.set_srs(srs_layers);
 
 			m.add_layer(lyr_cont);
-			m.add_layer(clear_lyr);
-			m.add_layer(lyr);
+//			m.add_layer(clear_lyr);
+		//	m.add_layer(lyr);
 
 		}
 		m.zoom_all();
 
 		// Provinces (polygon)
-		feature_type_style provpoly_style[num_appellation];
 		feature_type_style appelation_style[num_appellation];
 		for (int i = 0; i < num_appellation; i++)
 		{
@@ -163,6 +156,7 @@ int main(int ac, char** av)
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 0 + (i*15)%255, 80));
 					put(line_sym, keys::stroke_width, 28);
+					put(line_sym, keys::smooth, 0.5);
 					r.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r));
@@ -173,6 +167,7 @@ int main(int ac, char** av)
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 25 + (i*15)%255, 100));
 					put(line_sym, keys::stroke_width, 18);
+					put(line_sym, keys::smooth, 0.5);
 					r2.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r2));
@@ -183,78 +178,15 @@ int main(int ac, char** av)
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 50 + (i*15)%255, 120));
 					put(line_sym, keys::stroke_width, 8);
+					put(line_sym, keys::smooth, 0.5);
 					r3.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r3));
 			}
 			appelation_style[i].set_opacity(0.80);
+			//appelation_style[i].set_comp_op(contrast);
 			m.insert_style(appelation[i] + "_contour", std::move(appelation_style[i]));
-
-			provpoly_style[i].reserve(1);
-			{
-				rule r;
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
-				{
-					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(100, 0 + (i*15)%255, 80));
-					r.append(std::move(poly_sym));
-				}
-				provpoly_style[i].add_rule(std::move(r));
-				rule r2;
-				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
-				{
-					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(100, 25 + (i*15)%255, 100));
-					r2.append(std::move(poly_sym));
-				}
-				provpoly_style[i].add_rule(std::move(r2));
-				rule r3;
-				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
-				{
-					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(100, 50 + (i*15)%255, 120));
-					r3.append(std::move(poly_sym));
-				}
-				provpoly_style[i].add_rule(std::move(r3));
-			}
-			provpoly_style[i].set_comp_op(overlay);
-			provpoly_style[i].set_opacity(0.50);
-			m.insert_style(appelation[i], std::move(provpoly_style[i]));
 		}
-
-		feature_type_style clr_style;
-		clr_style.reserve(1);
-		{
-			rule r;
-			{
-				polygon_symbolizer poly_sym;
-				put(poly_sym, keys::fill, color(0, 0, 0));
-				r.append(std::move(poly_sym));
-			}
-			clr_style.add_rule(std::move(r));
-		}
-		clr_style.set_comp_op(dst_out);
-		m.insert_style("poly_clear", std::move(clr_style));
-
-		// Provinces (polyline)
-		feature_type_style communeline_style;
-		{
-			rule r;
-			//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
-			{
-				line_symbolizer line_sym;
-				put(line_sym, keys::stroke, color(0, 0, 0, 0x10));
-				put(line_sym, keys::stroke_width, 1);
-				dash_array dash;
-				dash.emplace_back(8, 4);
-				dash.emplace_back(2, 2);
-				dash.emplace_back(2, 2);
-				put(line_sym, keys::stroke_dasharray, dash);
-				r.append(std::move(line_sym));
-			}
-			communeline_style.add_rule(std::move(r));
-		}
-		m.insert_style("communelines", std::move(communeline_style));
 
         image_rgba8 buf(m.width(), m.height());
         agg_renderer<image_rgba8> ren(m, buf);
@@ -268,9 +200,10 @@ int main(int ac, char** av)
         msg += "Have a look!\n";
         std::cout << msg;
 
-        std::cout << m.scale() << std::endl;
-        std::cout << m.scale_denominator() << std::endl;
-        save_map(m, "/home/owmuser/src/openstreetmap-carto/aquitaine.xml");
+        //std::cout << m.scale() << std::endl;
+		//std::cout << m.scale_denominator() << std::endl;
+        save_map(m, "/home/owmuser/src/openstreetmap-carto/" + reg_name + ".xml");
+        std::cout << "XML output at: /home/owmuser/src/openstreetmap-carto/" + reg_name + ".xml" << std::endl;
     }
     catch (std::exception const& ex)
     {

@@ -24,10 +24,8 @@
 #include <mapnik/mapnik.hpp>
 #include <mapnik/map.hpp>
 #include <mapnik/layer.hpp>
-#include <mapnik/featureset.hpp>
 #include <mapnik/rule.hpp>
 #include <mapnik/feature_type_style.hpp>
-#include <mapnik/datasource.hpp>
 #include <mapnik/symbolizer.hpp>
 #include <mapnik/text/placements/dummy.hpp>
 #include <mapnik/text/text_properties.hpp>
@@ -94,133 +92,64 @@ int main(int ac, char** av)
 		//		commune_irouleguy.append(" or [name] = '");
 		//}
 		//std::cout << std::endl;
-	
-		std::vector<std::string> appelation = {"bearne", "madiran", "jurancon", "irouleguy", "pacherenc_du_vic_bilh", "tursan", "fronton", "saint-mont", "gaillac", "cote-du-marmandais", "saint-sardos", "brulhois", "coteaux-du-quercy", "marcillac", "estaing", "entaygues-le-fel", "cotes-de-millau"};
-		const int num_appellation = 17;
-		//     layers
-		parameters p;
-		p["type"]="postgis";
-		p["host"]="postgres";
-		p["port"]="5432";
-		p["dbname"]="owm";
-		p["user"]="owmuser";
-		p["password"]="toor";
 
-		for (int i = 0; i < num_appellation; i++)
-		{
-			p["table"]="\"\"\"" + appelation[i] + "\"\"\"";
-			layer lyr("Provinces");
-			lyr.set_datasource(datasource_cache::instance().create(p));
-
-			lyr.add_style(appelation[i]);
-			lyr.queryable();
-			lyr.set_srs(srs_layers);
-
-//			mapnik::layer_descriptor desc = lyr.datasource()->get_descriptor();
-//			std::cout << "Available attributes:" << std::endl;
-//			for (const auto& attr : desc.get_descriptors()) {
-//				std::cout << " - " << attr.get_name() << std::endl;
-//			}
-//			auto expr = mapnik::parse_expression("[zaxis]");
-//			mapnik::query query(lyr.envelope()); // Query the entire extent of the layer
-//			auto features = lyr.datasource()->features(query);
-//			while (auto feature = features->next()) {
-//				std::cout << "Feature ID: " << feature->id() << std::endl;
-//				std::cout << "Feature val: " << feature->get("type") << std::endl;
-//					
-//			}
-//
-			layer clear_lyr("clear");
-			clear_lyr.set_datasource(datasource_cache::instance().create(p));
-			clear_lyr.add_style("poly_clear");
-			clear_lyr.set_srs(srs_layers);
-
-			layer lyr_cont("Contour");
-			lyr_cont.set_datasource(datasource_cache::instance().create(p));
-			lyr_cont.add_style(appelation[i] + "_contour");
-			lyr_cont.set_srs(srs_layers);
-
-			m.add_layer(lyr_cont);
-			m.add_layer(clear_lyr);
-			m.add_layer(lyr);
-
-		}
-		m.zoom_all();
-
+		std::vector<std::string> appelation = {"bearne", "madiran", "jurancon", "irouleguy", "pacherenc_du_vic_bilh", "tursan"};
+		const int num_appellation = 6;
 		// Provinces (polygon)
-		feature_type_style provpoly_style[num_appellation];
-		feature_type_style appelation_style[num_appellation];
-		for (int i = 0; i < num_appellation; i++)
+		feature_type_style provpoly_style;
+		feature_type_style appelation_style;
+		appelation_style.reserve(1); // prevent reallocation and copying in add_rule
 		{
-			appelation_style[i].reserve(1); // prevent reallocation and copying in add_rule
+			rule r;
+			//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
+			r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
+			r.set_max_scale(346775);
 			{
-				rule r;
-				//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
-
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
-				r.set_max_scale(396775);
-				{
-					line_symbolizer line_sym;
-					put(line_sym, keys::stroke, color(100, 0 + (i*15)%255, 80));
-					put(line_sym, keys::stroke_width, 28);
-					r.append(std::move(line_sym));
-				}
-				appelation_style[i].add_rule(std::move(r));
-				rule r2;
-				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
-				r2.set_max_scale(396775);
-				{
-					line_symbolizer line_sym;
-					put(line_sym, keys::stroke, color(100, 25 + (i*15)%255, 100));
-					put(line_sym, keys::stroke_width, 18);
-					r2.append(std::move(line_sym));
-				}
-				appelation_style[i].add_rule(std::move(r2));
-				rule r3;
-				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
-				r3.set_max_scale(396775);
-				{
-					line_symbolizer line_sym;
-					put(line_sym, keys::stroke, color(100, 50 + (i*15)%255, 120));
-					put(line_sym, keys::stroke_width, 8);
-					r3.append(std::move(line_sym));
-				}
-				appelation_style[i].add_rule(std::move(r3));
+				line_symbolizer line_sym;
+				put(line_sym, keys::stroke, color(17, 0+(1*180)%255, 0+(1*60)%255));
+				put(line_sym, keys::stroke_width, 22);
+				r.append(std::move(line_sym));
 			}
-			appelation_style[i].set_opacity(0.80);
-			m.insert_style(appelation[i] + "_contour", std::move(appelation_style[i]));
-
-			provpoly_style[i].reserve(1);
+			appelation_style.add_rule(std::move(r));
+			rule r2;
+			r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
+			r2.set_max_scale(346775);
 			{
-				rule r;
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
-				{
-					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(100, 0 + (i*15)%255, 80));
-					r.append(std::move(poly_sym));
-				}
-				provpoly_style[i].add_rule(std::move(r));
-				rule r2;
-				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
-				{
-					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(100, 25 + (i*15)%255, 100));
-					r2.append(std::move(poly_sym));
-				}
-				provpoly_style[i].add_rule(std::move(r2));
-				rule r3;
-				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
-				{
-					polygon_symbolizer poly_sym;
-					put(poly_sym, keys::fill, color(100, 50 + (i*15)%255, 120));
-					r3.append(std::move(poly_sym));
-				}
-				provpoly_style[i].add_rule(std::move(r3));
+				line_symbolizer line_sym;
+				put(line_sym, keys::stroke, color(17, 0+(1*180)%255, 0+(1*60)%255));
+				put(line_sym, keys::stroke_width, 12);
+				r2.append(std::move(line_sym));
 			}
-			provpoly_style[i].set_comp_op(overlay);
-			provpoly_style[i].set_opacity(0.50);
-			m.insert_style(appelation[i], std::move(provpoly_style[i]));
+			appelation_style.add_rule(std::move(r2));
+			rule r3;
+			r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
+			r3.set_max_scale(346775);
+			{
+				line_symbolizer line_sym;
+				put(line_sym, keys::stroke, color(17, 0+(1*180)%255, 0+(2*60)%255));
+				put(line_sym, keys::stroke_width, 5);
+				r3.append(std::move(line_sym));
+			}
+			appelation_style.add_rule(std::move(r3));
 		}
+		appelation_style.set_opacity(0.80);
+		m.insert_style("appelation_contour", std::move(appelation_style));
+
+		provpoly_style.reserve(1); // prevent reallocation and copying in add_rule
+		{
+			rule r;
+			//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
+			r.set_filter(parse_expression("[name] = 'the_whole_appelation'"));
+			{
+				polygon_symbolizer poly_sym;
+				put(poly_sym, keys::fill, color(17, 0+(0*180)%255, 0+(1*60)%255));
+				r.append(std::move(poly_sym));
+			}
+			provpoly_style.add_rule(std::move(r));
+		}
+		provpoly_style.set_comp_op(overlay);
+		provpoly_style.set_opacity(0.50);
+		m.insert_style("appelation", std::move(provpoly_style));
 
 		feature_type_style clr_style;
 		clr_style.reserve(1);
@@ -255,6 +184,42 @@ int main(int ac, char** av)
 			communeline_style.add_rule(std::move(r));
 		}
 		m.insert_style("communelines", std::move(communeline_style));
+
+		//     layers
+		for (int i = 0; i < num_appellation; i++)
+		{
+			parameters p;
+			p["type"]="postgis";
+			p["host"]="postgres";
+			p["port"]="5432";
+			p["dbname"]="owm";
+			p["user"]="owmuser";
+			p["password"]="toor";
+			p["table"]="\"\"\"" + appelation[i] + "\"\"\"";
+
+
+			layer lyr("Provinces");
+			lyr.set_datasource(datasource_cache::instance().create(p));
+			lyr.add_style("appelation");
+			lyr.queryable();
+			lyr.set_srs(srs_layers);
+
+			layer clear_lyr("clear");
+			clear_lyr.set_datasource(datasource_cache::instance().create(p));
+			clear_lyr.add_style("poly_clear");
+			clear_lyr.set_srs(srs_layers);
+
+			layer lyr_cont("Contour");
+			lyr_cont.set_datasource(datasource_cache::instance().create(p));
+			lyr_cont.add_style("appelation_contour");
+			lyr_cont.set_srs(srs_layers);
+
+			m.add_layer(lyr_cont);
+			m.add_layer(clear_lyr);
+			m.add_layer(lyr);
+
+			m.zoom_all();
+		}
 
         image_rgba8 buf(m.width(), m.height());
         agg_renderer<image_rgba8> ren(m, buf);

@@ -70,13 +70,13 @@ COPY leaflet-demo.html /var/www/html/index.html
 RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /data/style/  \
   &&  mkdir  -p  /var/www/htm/dist/  \
-  &&  mkdir  -p  /home/owmuser/db_connect/  \
+  &&  mkdir  -p  /home/$DB_USER/db_connect/  \
   &&  mkdir  -p  /.MAP \
   &&  mkdir  -p  /home/$DB_USER/src/  \
   &&  mkdir  -p  /var/cache/renderd/tiles/france/  \
-  &&  chmod -R  777  /home/owmuser/db_connect/  \
   &&  chown  -R  $DB_USER:  /data/  \
   &&  chown  -R  $DB_USER:  /home/$DB_USER/src/  \
+  &&  chown  -R  $DB_USER:  /home/$DB_USER/db_connect/  \
   &&  chown  -R  $DB_USER:  /run/renderd  \
   &&  ln  -s  /data/style              /home/$DB_USER/src/openstreetmap-carto  \
 ;
@@ -88,11 +88,9 @@ COPY myrenderd.conf /myrenderd.conf
 COPY test_mapnik/ /test_mapnik/
 COPY L.Control.Opacity.css /var/www/html/dist/
 COPY L.Control.Opacity.js /var/www/html/dist/
-COPY def_appelations.py /home/owmuser/db_connect/
+COPY def_aop/* /
 
 RUN sed "s/80/8080/" -i /etc/apache2/ports.conf
-
-WORKDIR /home/$DB_USER/db_connect/
 
 cmd ["bash", "/mod_tile_init.sh"]
 
