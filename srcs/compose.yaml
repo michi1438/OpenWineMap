@@ -20,6 +20,7 @@ services:
     container_name: mod_tile
     volumes: 
       - MOD:/tmp/
+      - CGI:/var/www/cgi-bin/
       - MAP:/.MAP
       - DB_CONN:/home/owmuser/db_connect/
     networks: ["OWM_network"]
@@ -86,6 +87,12 @@ volumes:
       type: none
       o: bind
       device: $HOME/.docker/OWM/MAP/
+  CGI:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/.docker/OWM/CGI/
   DB_CONN:
     driver: local
     driver_opts:

@@ -19,6 +19,7 @@ try:
     def create_aop(cursor, aop, border_sz, aoc_data):
         cursor.execute(SQL("DROP TABLE IF EXISTS {};").format(Identifier(aop)))
         cursor.execute(SQL("CREATE TABLE {} AS SELECT * FROM polygons WHERE 1 <> 1;").format(Identifier(aop)))
+        off_aop = "AOP_" + aop[1:-1]
         line = aoc_data.readline()
         while line.find("}}\n") != 0:
             if line.strip().find("dep=") == 0:
@@ -33,11 +34,12 @@ try:
                     print(bcolors.WARNING + "\nCOMMUNES NOT FOUND: FOR DEPARTEMENT", dep[0] + bcolors.ENDC)
                     for row in records:
                        print(row)
-                exec_var = {'comm': communes, 'dep': dep, 'border_sz':border_sz} 
+                exec_var = {'comm': communes, 'dep': dep, 'border_sz':border_sz, 'off_aop': off_aop} 
                 sql_statement = SQL("INSERT INTO {} SELECT * FROM polygons WHERE (name = ANY(%(comm)s) OR official_name = ANY(%(comm)s)) AND postal_code = ANY(%(dep)s);").format(Identifier(aop))
                 cursor.execute(sql_statement, exec_var)
             line = aoc_data.readline()
-        sql_statement = SQL("INSERT INTO {aop} (name, geom, zaxis) VALUES ('the_whole_appelation', (SELECT ST_union(geom) FROM {aop}), %(border_sz)s);").format(aop=Identifier(aop))
+        sql_statement = SQL("INSERT INTO {aop} (name, official_name, geom, zaxis) VALUES ('the_whole_appelation', %(off_aop)s, (SELECT ST_union(geom) FROM {aop}), %(border_sz)s);").format(
+                aop=Identifier(aop))
         cursor.execute(sql_statement, exec_var)
         print ("THE APPELATION", aop.upper(), "WAS CREATED !!\n")
         #cursor.execute(SQL("SELECT name,official_name,postal_code FROM {};").format(Identifier(aop)))

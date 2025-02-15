@@ -70,6 +70,7 @@ COPY leaflet-demo.html /var/www/html/index.html
 RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /data/style/  \
   &&  mkdir  -p  /var/www/htm/dist/  \
+  &&  mkdir  -p  /var/www/cgi-bin/  \
   &&  mkdir  -p  /home/$DB_USER/db_connect/  \
   &&  mkdir  -p  /.MAP \
   &&  mkdir  -p  /home/$DB_USER/src/  \
@@ -89,6 +90,8 @@ COPY test_mapnik/ /test_mapnik/
 COPY L.Control.Opacity.css /var/www/html/dist/
 COPY L.Control.Opacity.js /var/www/html/dist/
 COPY def_aop/* /
+
+RUN chmod -R 777 /cgi_hook.py
 
 RUN sed "s/80/8080/" -i /etc/apache2/ports.conf
 

@@ -25,14 +25,19 @@
     <body>
         <div id="map"></div>
 		<script>
-			// initialize Leaflet
 			var popup = L.popup();
 
 			function onMapClick(e) {
-				popup
-					.setLatLng(e.latlng)
-					.setContent("You clicked the map at " + e.latlng.toString())
-					.openOn(map);
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open('POST', '/cgi-bin/cgi_hook.py', true);
+				httpRequest.onload = function() {
+					var myData = httpRequest.responseText;
+					popup
+						.setLatLng(e.latlng)
+						.setContent(myData + "You clicked the map at " + e.latlng.toString())
+						.openOn(map);
+				}
+				httpRequest.send("latlong=" + e.latlng.toString());
 			}
 
 			// add the OpenStreetMap tiles

@@ -76,6 +76,7 @@ fi
 # Enable configuration
 a2enmod tile
 a2enmod cgi 
+a2enmod env 
 a2ensite 000-default
 
 source /etc/apache2/envvars
@@ -85,8 +86,26 @@ rm -rf /.MAP/mapnik/demo/test_mapnik
 mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
+ 
+sed -i 's/.*ScriptAlias \/cgi-bin\/ \/usr\/lib\/cgi-bin\/.*/\t\tScriptAlias \/cgi-bin\/ \/var\/www\/cgi-bin\//' /etc/apache2/conf-available/serve-cgi-bin.conf 
+sed -i 's/.*<Directory "\/usr\/lib\/cgi-bin">.*/\t\t<Directory "\/var\/www\/cgi-bin\/">/' /etc/apache2/conf-available/serve-cgi-bin.conf
+sed -i 's/ -MultiViews +SymLinksIfOwnerMatch//' /etc/apache2/conf-available/serve-cgi-bin.conf
+sed -i '/Require all granted/d' /etc/apache2/conf-available/serve-cgi-bin.conf  
+
+sed -i "s/<DB_NAME>/$DB_NAME/" /etc/apache2/sites-available/000-default.conf
+sed -i "s/<DB_USER>/$DB_USER/" /etc/apache2/sites-available/000-default.conf
+sed -i "s/<DB_USER_PW>/$DB_USER_PW/" /etc/apache2/sites-available/000-default.conf
+sed -i "s/<DB_HOST>/$DB_HOST/" /etc/apache2/sites-available/000-default.conf
+sed -i "s/<DB_PORT>/$DB_PORT/" /etc/apache2/sites-available/000-default.conf
+
+printf "#########     Adding capaility to run CGI-scripts #################\n
+ServerName localhost\n
+ScriptAlias /cgi-bin/ /var/www/cgi-bin/\n
+Options +ExecCGI\n
+AddHandler cgi-script .cgi .pl .py\n" >> /etc/apache2/apache2.conf
 
 pushd /home/owmuser/db_connect/
+	mv -v /cgi_hook.py /var/www/cgi-bin/
 	mv -v /def_appelations.py /home/$DB_USER/db_connect/
 	mv -v /SudOuest_data /home/$DB_USER/db_connect/
 	python3 def_appelations.py
