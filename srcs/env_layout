@@ -1,12 +1,14 @@
 # This is an example of the environement layout change the value of variables
 #and change the name to \".env\"
 
-#DB_NAME=owm
-#DB_USER_PW=toor
-#DB_USER=owmuser
-#CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
-#G_MESSAGES_DEBUG=all
-#APACHE_LOG_DIR=/var/log/apache2
-#APACHE_RUN_DIR=/run/apache2
-#APACHE_RUN_USER=owmuser
-#APACHE_RUN_GROUP=owmuser
+DB_NAME=owm
+DB_USER_PW=toor
+DB_USER=owmuser
+DB_HOST=postgres
+DB_PORT=5432
+CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
+G_MESSAGES_DEBUG=all
+APACHE_LOG_DIR=/var/log/apache2
+APACHE_RUN_DIR=/run/apache2
+APACHE_RUN_USER=owmuser
+APACHE_RUN_GROUP=owmuser

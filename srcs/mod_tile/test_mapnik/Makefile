@@ -1,11 +1,11 @@
 CXXFLAGS = $(shell mapnik-config --includes --defines --cxxflags --dep-includes)
 LDFLAGS = $(shell mapnik-config --libs --dep-libs --ldflags)
 
-OBJ = sud_ouest.o
-OBJ2 = sud_ouest_brd.o
+OBJ = poly_draw.o Region.o
+OBJ2 = brd_draw.o Region.o
 
-BIN = sud_ouest
-BIN2 = sud_ouest_brd
+BIN = poly_draw 
+BIN2 = brd_draw
 
 all : $(BIN) $(BIN2)
 

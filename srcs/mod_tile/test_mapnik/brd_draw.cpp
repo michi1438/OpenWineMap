@@ -20,6 +20,7 @@
  *
  *****************************************************************************/
 
+#include "Region.hpp"
 
 #include <mapnik/mapnik.hpp>
 #include <mapnik/map.hpp>
@@ -59,9 +60,9 @@ int main(int ac, char** av)
 {
     try
     {
-		if (ac != 1)
-			throw std::runtime_error("not enough arguments, expected 0\n");
-		std::string reg_name = av[0];	
+		if (ac != 2)
+			throw std::runtime_error("not enough arguments, expected 1\n");
+		std::string reg_name = av[1];	
 
 		using namespace mapnik;
 		mapnik::setup();
@@ -71,7 +72,7 @@ int main(int ac, char** av)
 		const std::string srs_layers =
 			"+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0.0 +x_0=0.0 \
 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over";
-        std::cout << " running " << reg_name << "..." << std::endl;
+        std::cout << " running brd_draw for " << reg_name << "..." << std::endl;
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
@@ -79,24 +80,8 @@ int main(int ac, char** av)
         m.set_background(parse_color("#00000000"));
         m.set_srs(srs_map);
 
-		//std::vector<std::string> commune[2];
-		//commune[0] = {"Aincille", "Anhaux", "Ascarat", "Bidarray", "Bussunarits-Sarrasquette", "Bustince-Iriberry", "Irouléguy", "Ispoure", "Jaxu", "Lasse", "Lecumberry", "Ossès", "Saint-Etienne-de-Baïgorry", "Saint-Jean-le-Vieux", "Saint-Martin-d’Arrossa"};
-		//commune[1] = {"Maumusson-Laguian", "Riscle", "Cannet", "Viella", "Castelnau-Rivière-Basse", "Hagedet", "Lascazères", "Madiran", "Saint-Lanne et Soublecause", "Abos", "Arbus", "Arricau-Bordes", "Arrosès", "Artiguelouve", "Aubertin", "Aubous", "Aurions-Idernes", "Aydie", "Baigts-de-Béarn", "Bellocq", "Bérenx", "Bétracq", "Bosdarros", "Burosse-Mendousse", "Cadillon", "Cardesse", "Carresse", "Castagnède", "Castetpugon", "Castillon (Canton de Lembeye)", "Conchez-de-Béarn", "Corbères-Abères", "Crouseilles", "Cuqueron", "Diusse", "Escurès", "Estialescq", "Gan", "Gayon", "Gelos", "Haut-de-Bosdarros", "L’Hôpital-d’Orion", "Jurançon", "Lacommande", "Lagor", "Lahontan", "Lahourcade", "Laroin", "Lasserre", "Lasseube", "Lasseubetat", "Lembeye", "Lespielle-Germenaud-Lannegrasse", "Lucq-de-Béarn", "Mascaraàs-Haron", "Mazères-Lezons", "Moncaup", "Moncla", "Monein", "Monpezat", "Mont-Disse", "Mourenx", "Narcastet", "Ogenne-Camptort", "Oraàs", "Orthez", "Parbayse", "Portet", "Puyoo", "Ramous", "Rontignon", "Saint-Faust", "Saint-Jean-Poudge", "Salies-de-Béarn", "Salles-Mongiscard", "Sauvelade", "Séméacq-Blachon", "Tadon-Sadirac-Viellenave", "Tadousse-Ussau", "Uzos", "Vialer", "Vielleségure"};
-		//std::string commune_irouleguy = "[name] = '";
-		//std::cout << RED << "comune_str = " << RST << std::endl;
-		//for (std::string n : commune[0])
-		//{
-		//	std::cout << n << std::endl;
-		//	commune_irouleguy.append(n);
-		//	commune_irouleguy.append("'");
-		//	if (n != commune[0].back())
-		//		commune_irouleguy.append(" or [name] = '");
-		//}
-		//std::cout << std::endl;
-	
-		std::vector<std::string> appelation = {"bearne", "madiran", "jurancon", "irouleguy", "pacherenc_du_vic_bilh", "tursan", "fronton", "saint-mont", "gaillac", "cote-du-marmandais", "saint-sardos", "brulhois", "coteaux-du-quercy", "marcillac", "estaing", "entaygues-le-fel", "cotes-de-millau"};
-		const int num_appellation = 17;
-		//     layers
+		Region appl(av[1]);
+
 		parameters p;
 		p["type"]="postgis";
 		p["host"]="postgres";
@@ -105,53 +90,28 @@ int main(int ac, char** av)
 		p["user"]="owmuser";
 		p["password"]="toor";
 
-		for (int i = 0; i < num_appellation; i++)
+		for (int i = 0; i < appl.getSize() ; i++)
 		{
-			p["table"]="\"\"\"" + appelation[i] + "\"\"\"";
+			p["table"]="\"\"\"" + appl.getAppelations()[i] + "\"\"\"";
 			layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
 
-			lyr.add_style(appelation[i]);
-			lyr.queryable();
-			lyr.set_srs(srs_layers);
-
-//			mapnik::layer_descriptor desc = lyr.datasource()->get_descriptor();
-//			std::cout << "Available attributes:" << std::endl;
-//			for (const auto& attr : desc.get_descriptors()) {
-//				std::cout << " - " << attr.get_name() << std::endl;
-//			}
-//			auto expr = mapnik::parse_expression("[zaxis]");
-//			mapnik::query query(lyr.envelope()); // Query the entire extent of the layer
-//			auto features = lyr.datasource()->features(query);
-//			while (auto feature = features->next()) {
-//				std::cout << "Feature ID: " << feature->id() << std::endl;
-//				std::cout << "Feature val: " << feature->get("type") << std::endl;
-//					
-//			}
-//
 			layer lyr_cont("Contour");
 			lyr_cont.set_datasource(datasource_cache::instance().create(p));
-			lyr_cont.add_style(appelation[i] + "_contour");
+			lyr_cont.add_style(appl.getAppelations()[i] + "_contour");
 			lyr_cont.set_srs(srs_layers);
 
 			m.add_layer(lyr_cont);
-//			m.add_layer(clear_lyr);
-		//	m.add_layer(lyr);
-
 		}
 		m.zoom_all();
 
-		// Provinces (polygon)
-		feature_type_style appelation_style[num_appellation];
-		for (int i = 0; i < num_appellation; i++)
+		feature_type_style appelation_style[appl.getSize()];
+		for (int i = 0; i < appl.getSize(); i++)
 		{
 			appelation_style[i].reserve(1); // prevent reallocation and copying in add_rule
 			{
 				rule r;
-				//r.set_filter(parse_expression(commune_irouleguy + " or " + commune_bearne));
-
 				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
-				r.set_max_scale(396775);
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 0 + (i*15)%255, 80));
@@ -162,7 +122,6 @@ int main(int ac, char** av)
 				appelation_style[i].add_rule(std::move(r));
 				rule r2;
 				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
-				r2.set_max_scale(396775);
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 25 + (i*15)%255, 100));
@@ -173,7 +132,6 @@ int main(int ac, char** av)
 				appelation_style[i].add_rule(std::move(r2));
 				rule r3;
 				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
-				r3.set_max_scale(396775);
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 50 + (i*15)%255, 120));
@@ -185,7 +143,7 @@ int main(int ac, char** av)
 			}
 			appelation_style[i].set_opacity(0.80);
 			//appelation_style[i].set_comp_op(contrast);
-			m.insert_style(appelation[i] + "_contour", std::move(appelation_style[i]));
+			m.insert_style(appl.getAppelations()[i] + "_contour", std::move(appelation_style[i]));
 		}
 
         image_rgba8 buf(m.width(), m.height());
@@ -200,10 +158,8 @@ int main(int ac, char** av)
         msg += "Have a look!\n";
         std::cout << msg;
 
-        //std::cout << m.scale() << std::endl;
-		//std::cout << m.scale_denominator() << std::endl;
-        save_map(m, "/home/owmuser/src/openstreetmap-carto/" + reg_name + ".xml");
-        std::cout << "XML output at: /home/owmuser/src/openstreetmap-carto/" + reg_name + ".xml" << std::endl;
+        save_map(m, "/home/owmuser/src/openstreetmap-carto/" + reg_name + "_brd.xml");
+        std::cout << "XML output at: /home/owmuser/src/openstreetmap-carto/" + reg_name + "_brd.xml" << std::endl;
     }
     catch (std::exception const& ex)
     {

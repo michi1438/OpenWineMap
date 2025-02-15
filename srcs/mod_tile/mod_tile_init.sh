@@ -112,7 +112,7 @@ pushd /home/owmuser/db_connect/
 popd
 
 pushd /.MAP/mapnik/demo/test_mapnik/
-	make && ./sud_ouest && ./sud_ouest_brd;
+	make && ./poly_draw SudOuest && ./brd_draw SudOuest;
 popd
 
 rm -rf /var/cache/renderd/tiles/*

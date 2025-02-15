@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> <!-- TODO import your own like Control.Opacity for more controle (like the bottom right leaflet)-->
         <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
 
 		<script src="dist/L.Control.Opacity.js"></script>
@@ -24,6 +24,7 @@
 
     <body>
         <div id="map"></div>
+
 		<script>
 			var popup = L.popup();
 
@@ -34,7 +35,7 @@
 					var myData = httpRequest.responseText;
 					popup
 						.setLatLng(e.latlng)
-						.setContent(myData + "You clicked the map at " + e.latlng.toString())
+						.setContent(myData + "You clicked: " + e.latlng.toString())
 						.openOn(map);
 				}
 				httpRequest.send("latlong=" + e.latlng.toString());
@@ -48,22 +49,22 @@
 			});
 			var sud_ouest = L.tileLayer('/tile/france/sud_ouest/{z}/{x}/{y}.png', {
 				maxZoom: 18,
-				minZoom: 2,
+				minZoom: 5,
 				interactive: true,
 				id: 'OWM'
 			});
 			var sud_ouest_brd = L.tileLayer('/tile/france/sud_ouest_brd/{z}/{x}/{y}.png', {
 				maxZoom: 18,
-				minZoom: 2,
+				minZoom: 11,
 				interactive: true,
 				id: 'OWM'
 			});
 
 
 			// show the scale bar on the lower left corner
-			//L.control.scale({imperial: true, metric: true}).addTo(map);
+			//L.control.scale({imperial: false, metric: true}).addTo(map);
 
-			var map = L.map('map', {layers: [osm, sud_ouest, sud_ouest_brd]}).setView({lon: 0, lat: 0}, 3);
+			var map = L.map('map', {layers: [osm, sud_ouest, sud_ouest_brd]}).setView({lon: 2.7, lat: 46.6}, 5);
 
 
 			const baseLayers = {
@@ -75,7 +76,7 @@
 				'sud_ouest_brd': sud_ouest_brd,
 			};
 			var layerControl = L.control.layers(baseLayers, addLayers, {
-				collapsed: false,
+				collapsed: true,
 			})
 			.addTo(map); 
 
@@ -86,8 +87,6 @@
 					label: 'Layers Opacity',
 				})
 				.addTo(map);
-			// show a marker on the map
-		//	L2.marker({lon: 0, lat: 0}).bindPopup('The center of the world').addTo(map);
 
         </script>
     </body>
