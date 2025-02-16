@@ -47,24 +47,12 @@
 				minZoom: 2,
 				id: 'base'
 			});
-			var sud_ouest = L.tileLayer('/tile/france/sud_ouest/{z}/{x}/{y}.png', {
-				maxZoom: 18,
-				minZoom: 5,
-				interactive: true,
-				id: 'OWM'
-			});
-			var sud_ouest_brd = L.tileLayer('/tile/france/sud_ouest_brd/{z}/{x}/{y}.png', {
-				maxZoom: 18,
-				minZoom: 11,
-				interactive: true,
-				id: 'OWM'
-			});
-
+			// add the OWM tiles
 
 			// show the scale bar on the lower left corner
 			//L.control.scale({imperial: false, metric: true}).addTo(map);
 
-			var map = L.map('map', {layers: [osm, sud_ouest, sud_ouest_brd]}).setView({lon: 2.7, lat: 46.6}, 5);
+			// add leaflist
 
 
 			const baseLayers = {
@@ -72,8 +60,6 @@
 			};
 
 			const addLayers = {
-				'sud_ouest': sud_ouest,
-				'sud_ouest_brd': sud_ouest_brd,
 			};
 			var layerControl = L.control.layers(baseLayers, addLayers, {
 				collapsed: true,

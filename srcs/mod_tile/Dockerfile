@@ -74,7 +74,7 @@ RUN mkdir -p /run/renderd/ \
   &&  mkdir  -p  /home/$DB_USER/db_connect/  \
   &&  mkdir  -p  /.MAP \
   &&  mkdir  -p  /home/$DB_USER/src/  \
-  &&  mkdir  -p  /var/cache/renderd/tiles/france/  \
+  &&  mkdir  -p  /var/cache/renderd/tiles/  \
   &&  chown  -R  $DB_USER:  /data/  \
   &&  chown  -R  $DB_USER:  /home/$DB_USER/src/  \
   &&  chown  -R  $DB_USER:  /home/$DB_USER/db_connect/  \
@@ -89,9 +89,9 @@ COPY myrenderd.conf /myrenderd.conf
 COPY test_mapnik/ /test_mapnik/
 COPY L.Control.Opacity.css /var/www/html/dist/
 COPY L.Control.Opacity.js /var/www/html/dist/
-COPY def_aop/* /
+COPY def_aop/ /def_aop/
 
-RUN chmod -R 777 /cgi_hook.py
+RUN chmod -R 777 /def_aop/
 
 RUN sed "s/80/8080/" -i /etc/apache2/ports.conf
 

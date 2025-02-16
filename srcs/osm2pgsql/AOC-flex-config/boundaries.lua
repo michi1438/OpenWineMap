@@ -36,6 +36,7 @@ tables.polygons = osm2pgsql.define_area_table('polygons', {
     { column = 'type', type = 'text' },
     { column = 'zaxis', type = 'smallint' },
     { column = 'name', type = 'text' },
+    { column = 'reg', type = 'text' },
     { column = 'official_name', type = 'text' },
     { column = 'postal_code', type = 'text' },
     { column = 'tags', type = 'jsonb' },

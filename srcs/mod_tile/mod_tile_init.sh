@@ -73,20 +73,13 @@ else
 	)
 fi
 
-# Enable configuration
-a2enmod tile
-a2enmod cgi 
-a2enmod env 
-a2ensite 000-default
-
-source /etc/apache2/envvars
 
 mv -v /.ccls_host /.MAP/mapnik/.ccls
 rm -rf /.MAP/mapnik/demo/test_mapnik 
 mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
- 
+
 sed -i 's/.*ScriptAlias \/cgi-bin\/ \/usr\/lib\/cgi-bin\/.*/\t\tScriptAlias \/cgi-bin\/ \/var\/www\/cgi-bin\//' /etc/apache2/conf-available/serve-cgi-bin.conf 
 sed -i 's/.*<Directory "\/usr\/lib\/cgi-bin">.*/\t\t<Directory "\/var\/www\/cgi-bin\/">/' /etc/apache2/conf-available/serve-cgi-bin.conf
 sed -i 's/ -MultiViews +SymLinksIfOwnerMatch//' /etc/apache2/conf-available/serve-cgi-bin.conf
@@ -104,18 +97,26 @@ ScriptAlias /cgi-bin/ /var/www/cgi-bin/\n
 Options +ExecCGI\n
 AddHandler cgi-script .cgi .pl .py\n" >> /etc/apache2/apache2.conf
 
-pushd /home/owmuser/db_connect/
+pushd /home/$DB_USER/db_connect/
 	mv -v /cgi_hook.py /var/www/cgi-bin/
-	mv -v /def_appelations.py /home/$DB_USER/db_connect/
-	mv -v /SudOuest_data /home/$DB_USER/db_connect/
+	mv -v /def_aop/* ./
 	python3 def_appelations.py
+	python3 lay_renderd.py
 popd
 
 pushd /.MAP/mapnik/demo/test_mapnik/
-	make && ./poly_draw SudOuest && ./brd_draw SudOuest;
+	make 
+	./poly_draw SudOuest && ./brd_draw SudOuest;
+	./poly_draw LanguedocRoussillon && ./brd_draw LanguedocRoussillon;
 popd
 
-rm -rf /var/cache/renderd/tiles/*
+# Enable configuration
+a2enmod tile
+a2enmod cgi 
+a2enmod env 
+a2ensite 000-default
+
+source /etc/apache2/envvars
 
 service apache2 start
 renderd -f

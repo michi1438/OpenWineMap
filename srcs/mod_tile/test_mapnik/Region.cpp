@@ -5,7 +5,7 @@
 Region::Region(std::string name)
 {
 	this->Name = name;
-	std::ifstream input("/home/owmuser/db_connect/" + this->Name + "_data");
+	std::ifstream input("/home/owmuser/db_connect/" + this->Name + "_data"); // TODO owmuser --> $DB_USER
 	std::string line;
 	while (std::getline(input, line))
 	{
