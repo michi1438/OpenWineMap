@@ -5,7 +5,7 @@ COPY ./postgres_dirs.sh ./
 
 RUN apk add --no-cache postgresql postgis postgresql-contrib
 
-COPY bordeaux.sql /
+COPY commune_not_found.sql /
 RUN bash ./postgres_dirs.sh
 
 USER postgres

@@ -52,6 +52,52 @@ communes=Aniane,Arboras,Argelliers,Le Bosc,Brissac,Causse-de-la-Selle,Ceyras,Gig
 dep=11
 communes=Coursan,Gruissan,Armissan,Fleury,Narbonne,Salles-d'Aude,Vinassan
 }}
+[AOP]corbieres
+[BORDER_SZ]10
+{{
+dep=11
+communes=Albas,Arquettes-en-Val,Bages,Barbaira,Bizanet,Boutenac,Camplong-d'Aude,Canet,Capendu,Cascastel-des-Corbières,Caunettes-en-Val,Caves,Comigne,Conilhac-Corbières,Coustouge,Cruscades,Cucugnan,Davejean,Dernacueillette,Douzens,Duilhac-sous-Peyreperthuse,Durban-Corbières,Embres-et-Castelmaure,Escales,Fabrezan,Felines-Termenès,Ferrals-les-Corbières,Feuilla,Fitou,Floure,Fontcouverte,Fontiès-d'Aude,Fontjoncouse,Fraisse-des-Corbières,Gruissan,Jonquières,Labastide-en-Val,Lagrasse,Laroque-de-Fa,Leucate,Lézignan-Corbières,Luc-sur-Orbieu,Mayronnes,Maisons,Montbrun-des-Corbières,Montgaillard,Montirat,Montlaur,Montredon-des-Corbières,Montséret,Monze,Moux,Narbonne,Névian,Ornaisons,Padern,Palairac,La Palme,Paziols,Peyriac-de-Mer,Port-la-Nouvelle,Portel-des-Corbières,Pradelles-en-Val,Quintillan,Ribaute,Rieux-en-Val,Roquefort-des-Corbières,Rouffiac-des-Corbières,Saint-André-de-Roquelongue,Saint-Jean-de-Barrou,Saint-Laurent-de-la-Cabrerisse,Saint-Pierre-des-Champs,Serviès-en-Val,Sigean,Talairan,Taurize,Termes,Thézan-des-Corbières,Tournissan,Treilles,Tuchan,Vignevieille,Villar-en-Val,Villeneuve-les-Corbières,Villerouge-Termenès,Villesèque-des-Corbières,Villetritouls,Argens-Minervois,Armissan,Auriac,Badens,Blomac,Bouilhonnac,Carcassonne,Castelnau-d'Aude,Clermont-sur-Lauquet,Coursan,Cuxac-d'Aude,Fajac-en-Val,Fleury,Greffeil,Ladern-sur-Lauquet,Lairière,Mailhac,Marcorignan,Marseillette,Mas-des-Cours,Massac,Montjoi,Moussan,Mouthoumet,Palaja,Paraza,Puicheric,Raissac-d'Aude,Roquecourbe-Minervois,Roubia,Rustiques,Saint-Couat-d'Aude,Saint-Martin-des-Puits,Soulatgé,Tourouzelle,Trèbes,Villedaigne,Vinassan
+dep=66
+communes=Le Barcarès,Maury,Opoul-Perillos,Rivesaltes,Saint-Paul-de-Fenouillet,Salses-le-Château,Tautavel,Vingrau
+}}
+[AOP]cote_du_roussillon
+[BORDER_SZ]10
+{{
+dep=66
+communes=Ansignan,Arboussols,Argelès-sur-Mer,Bages,Baho,Baixas,Banyuls-dels-Aspres,Bélesta,Le Boulou,Brouilla,Cabestany,Calce,Camélas,Canet-en-Roussillon,Canohès,Caramany,Cases-de-Pène,Cassagnes,Castelnou,Caudiès-de-Fenouillèdes,Céret,Claira,Corbère,Corbère-les-Cabanes,Corneilla-la-Rivière,Corneilla-del-Vercol,Elne,Espira-de-l'Agly,Espira-de-Conflent,Estagel,Estoher,Felluns,Finestret,Fourques,Ille-sur-Têt,Lansac,Laroque-des-Albères,Latour-de-France,Lesquerde,Llauro,Llupia,Maureillas-las-Illas,Maury,Millas,Montalba-le-Château,Montauriol,Montescot,Montesquieu-des-Albères,Montner,Néfiach,Oms,Opoul-Périllos,Ortaffa,Palau-del-Vidre,Passa,Perpignan,Peyrestortes,Pézilla-la-Rivière,Pia,Planèzes,Pollestres,Ponteilla,Prugnanes,Rasiguères,Rigarda,Rivesaltes,Rodès,Saint-André,Saint-Arnac,Saint-Estève,Saint-Féliu-d'Amont,Saint-Féliu-d'Avall,Saint-Génis-des-Fontaines,Saint-Hippolyte,Saint-Jean-Lasseille,Saint-Jean-Pla-de-Corts,Saint-Martin,Saint-Nazaire,Saint-Paul-de-Fenouillet,Sainte-Colombe-de-la-Commanderie,Saleilles,Salses-le-Château,Le Soler,Sorède,Tarerach,Tautavel,Terrats,Thuir,Tordères,Toulouges,Tresserre,Trévillach,Trilla,Trouillas,Villelongue-dels-Monts,Villemolaque,Villeneuve-de-la-Raho,Villeneuve-la-Rivière,Vinça,Vingrau,Vivès,Le Vivier,Alenya,Amélie-les-Bains-Palalda,Arboussols,Bompas,Bouleternère,Caixas,Collioure,Les Cluses,Estoher,Finestret,Fosse,Ille-sur-Têt,Joch,Latour-Bas-Elne,Marquixanes,Pézilla-de-Conflent,Prats-de-Sournia,Reynès,Saint-Cyprien,Saint Laurent-de-la-Salanque,Sainte-Marie,Saint-Michel-de-Llotes,Sournia,Taillet,Théza,Torreilles,Villelongue-de-la-Salanque,Le Vivier
+}}
+[AOP]cote_du_roussillon_village
+[BORDER_SZ]10
+{{
+dep=66
+communes=Ansignan,Arboussols,Argelès-sur-Mer,Bages,Baho,Baixas,Banyuls-dels-Aspres,Bélesta,Le Boulou,Brouilla,Cabestany,Calce,Camélas,Canet-en-Roussillon,Canohès,Caramany,Cases-de-Pène,Cassagnes,Castelnou,Caudiès-de-Fenouillèdes,Céret,Claira,Corbère,Corbère-les-Cabanes,Corneilla-la-Rivière,Corneilla-del-Vercol,Elne,Espira-de-l'Agly,Espira-de-Conflent,Estagel,Estoher,Felluns,Finestret,Fourques,Ille-sur-Têt,Lansac,Laroque-des-Albères,Latour-de-France,Lesquerde,Llauro,Llupia,Maureillas-las-Illas,Maury,Millas,Montalba-le-Château,Montauriol,Montescot,Montesquieu-des-Albères,Montner,Néfiach,Oms,Opoul-Périllos,Ortaffa,Palau-del-Vidre,Passa,Perpignan,Peyrestortes,Pézilla-la-Rivière,Pia,Planèzes,Pollestres,Ponteilla,Prugnanes,Rasiguères,Rigarda,Rivesaltes,Rodès,Saint-André,Saint-Arnac,Saint-Estève,Saint-Féliu-d'Amont,Saint-Féliu-d'Avall,Saint-Génis-des-Fontaines,Saint-Hippolyte,Saint-Jean-Lasseille,Saint-Jean-Pla-de-Corts,Saint-Martin,Saint-Nazaire,Saint-Paul-de-Fenouillet,Sainte-Colombe-de-la-Commanderie,Saleilles,Salses-le-Château,Le Soler,Sorède,Tarerach,Tautavel,Terrats,Thuir,Tordères,Toulouges,Tresserre,Trévillach,Trilla,Trouillas,Villelongue-dels-Monts,Villemolaque,Villeneuve-de-la-Raho,Villeneuve-la-Rivière,Vinça,Vingrau,Vivès,Le Vivier,Alenya,Amélie-les-Bains-Palalda,Arboussols,Bompas,Bouleternère,Caixas,Collioure,Les Cluses,Estoher,Finestret,Fosse,Ille-sur-Têt,Joch,Latour-Bas-Elne,Marquixanes,Pézilla-de-Conflent,Prats-de-Sournia,Reynès,Saint-Cyprien,Saint Laurent-de-la-Salanque,Sainte-Marie,Saint-Michel-de-Llotes,Sournia,Taillet,Théza,Torreilles,Villelongue-de-la-Salanque,LeVivier
+}}
+[AOP]limoux_(blanquette-cremant-methode_ancestrale)
+[BORDER_SZ]10
+{{
+dep=11
+communes=Ajac,Alet-les-Bains,Antugnac,Bouriège,Campagne-sur-Aude,Cassaignes,Castelreng,Cépie,Conilhac-de-la-Montagne,Couiza,Cournanel,Coustaussa,La Digne-d'Amont,La Digne-d'Aval,Espéraza,Fa,Festes-et-Saint-André,Gaja-et-Villedieu,Gardie,Ladern-sur-Lauquet,Limoux,Loupia,Luc-sur-Aude,Magrie,Malras,Montazels,Pauligne,Peyrolles,Pieusse,Pomas,Roquetaillade,Rouffiac-d'Aude,Saint-Couat-du-Razès,Saint-Hilaire,Saint-Polycarpe,La Serpent,Serres,Tourreilles,Villar-Saint-Anselme,Villebazy,Villelongue-d'Aude
+}}
+[AOP]malepere
+[BORDER_SZ]10
+{{
+dep=11
+communes=Alaigne,Alairac,Arzens,Bellegarde-du-Razès,Belvèze-du-Razès,Brézilhac,Brugairolles,Cailhau,Cailhavel,Cambieure,Carcassonne,La Cassaigne,Caux-et-Sauzens,Couffoulens,La Courtète,Donazac,Fanjeaux,Fenouillet-du-Razès,Ferran,La Force,Gramazie,Hounoux,Lasserre-de-Prouille,Laurac,Lauraguel,Lavalette,Malviès,Mazerolles-du-Razès,Montclar,Montgradail,Montréal,Preixan,Roullens,Routier,Saint-Martin-de-Villereglan,Villarzel-du-Razès,Villeneuve-lès-Montréal,Villesèquelande,Villesiscle,Alzonne,Berriac,Bram,Cavanac,Cazilhac,Cépie,Escueillens-et-Saint-Just-de-Bélengard,Gaja-et-Villedieu,Laurabuc,Leuc,Limoux,Loupia,Monthaut,Montirat,Palaja,Pauligne,Pennautier,Pezens,Pieusse,Pomas,Rouffiac-d'Aude,Sainte-Eulalie,Trèbes,Verzeille,Villasavary,Villedubert,Villemoustaussou,Villelongue-d'Aude
+}}
+[AOP]minervois
+[BORDER_SZ]10
+{{
+dep=11
+communes=Aigues-Vives,Argeliers,Argens,Azille,Badens,Bagnoles,Bize-Minervois,Blomac,Bouilhonnac,Cabrespine,Castelnau,Caunes-Minervois,Ginestas,Homps,La Redorte,Laure-Minervois,Limousis,Mailhac,Malves,Marseillette,Mirepeisset,Paraza,Pépieux,Peyriac-Minervois,Pouzols-Minervois,Puichéric,Rieux-Minervois,Roquecourbe,Roubia,Rustiques,Saint-Couat,Saint-Frichoux,Saint-Nazaire,Sainte-Valière,Sallèles,Salsigne,Tourouzelle,Trassanel,Trausse-Minervois,Trèbes,Ventenac-Minervois,Villalier,Villarzel,Villegly,Villeneuve-Minervois
+dep=34
+communes=Agel,Aigne,Aigues-Vives,Azillanet,Beaufort,Cassagnoles,Cesseras,Félines-Minervois,La Caunette,La Livinière,Minerve,Montouliers,Olonzac,Oupia,Saint-Jean-de-Minervois,Siran
+}}
+[AOP]saint-chinian
+[BORDER_SZ]10
+{{
+dep=34
+communes=Assignan,Babeau-Bouldoux,Berlou,Causses-et-Veyran,Cazedarnes,Cébazan,Cessenon-sur-Orb,Creissan,Cruzy,Ferrières-Poussarou,Murviel-lès-Béziers,Pierrerue,Prades-sur-Vernazobre,Puisserguier,Quarante,Roquebrun,Saint-Chinian,Saint-Nazaire-de-Ladarez,Vieussan,Villespassans
+}}
 [AOP]saint-christol-languedoc
 [BORDER_SZ]5
 {{
@@ -99,4 +145,98 @@ communes=Juvignac,Lavérune,Murviel-lès-Montpellier,Pignan,Saint-Georges-d'Orqu
 {{
 dep=34
 communes=Arboras,Jonquières,Saint-Guiraud,Saint-Saturnin-de-Lucian,Montpeyroux,Saint-André-de-Sangonis,Saint-Félix-de-Lodez
+}}
+[AOP]cabardes
+[BORDER_SZ]5
+{{
+dep=11
+communes=Alzonne,Aragon,Conques-sur-Orbiel,Fournes-Cabardès,Fraisse-Cabardès,Les Ilhes,Lastours,Montolieu,Moussoulens,Pennautier,Pezens,Sainte-Eulalie,Ventenac-Cabardès,Villanière,Villardonnel,Villedubert,Villegailhenc,Villemoustaussou,Arzens,Bagnoles,Berriac,Bouilhonnac,Bram,Brousses-et-Villaret,Cabrespine,Carcassonne,Caux-et-Sauzens,Cuxac-Cabardès,Limousis,Malves-en-Minervois,Mas-Cabardès,Raissac-sur-Lampy,Roquefère,Sallèles-Cabardès,Salsigne,Saint-Martin-le-Vieil,Trassanel,Trèbes,Villalier,Villegly,Villesèquelande
+}}
+[AOP]clairette_du_languedoc
+[BORDER_SZ]5
+{{
+dep=34
+communes=Adissan,Aspiran,Le Bosc,Cabrières,Ceyras,Fontès,Lieuran-Cabrières,Nizas,Paulhan,Péret,Saint-André-de-Sangonis,Bédarieux,Lézignan-la-Cèbe,Puilacher,Saint-Bauzille-de-la-Sylve,Tressan
+}}
+[AOP]collioure
+[BORDER_SZ]5
+{{
+dep=66
+communes=Banyuls-sur-Mer,Cerbère,Collioure,Port-Vendres,Cases-de-Pène,Elne,Ortaffa,Prats-de-Mollo
+}}
+[AOP]minervois-la_liviniere
+[BORDER_SZ]5
+{{
+dep=11
+communes=Azille
+dep=34
+communes=Azillanet,Cesseras,Félines-Minervois,La Livinière,Siran
+}}
+[AOP]picpoul_de_pinet
+[BORDER_SZ]5
+{{
+dep=34
+communes=Castelnau-de-Guers,Florensac,Mèze,Montagnac,Pinet,Pomérols
+}}
+[AOP]saint-chinian (berlou)
+[BORDER_SZ]5
+{{
+dep=34
+communes=Berlou,Cessenon-sur-Orb,Prades-sur-Vernazobre,Roquebrun,Vieussan
+}}
+[AOP]saint-chinian (roquebrun)
+[BORDER_SZ]5
+{{
+dep=34
+communes=Cessenon-sur-Orb,Roquebrun,Saint-Nazaire-de-Ladarez,Vieussan
+}}
+[AOP]corbieres-boutenac
+[BORDER_SZ]5
+{{
+dep=11
+communes=Boutenac,Fabrezan,Ferrals-lesCorbières,Lézignan-Corbières,Luc-sur-Orbieu,Montséret,Ornaisons,Saint-André-de-Roquelongue,Saint-Laurent-de-la-Cabrerisse,Thézan-des-Corbières,Bizanet,Narbonne
+}}
+[AOP]faugeres
+[BORDER_SZ]5
+{{
+dep=34
+communes=Autignac,Cabrerolles,Caussiniojouls,Faugères,Fos,Laurens,Roquessels
+}}
+[AOP]fitou
+[BORDER_SZ]5
+{{
+dep=11
+communes=Cascastel-des-Corbières,Caves,Fitou,Leucate,La Palme,Paziols,Treilles,Tuchan,Villeneuve-les-Corbières
+}}
+[AOP]maury
+[BORDER_SZ]5
+{{
+dep=66
+communes=Maury,Rasiguères,Saint-Paul-de-Fenouillet,Tautavel 
+}}
+[AOP]muscat_de_frontignan
+[BORDER_SZ]5
+{{
+dep=34
+communes=Frontignan,Vic-la-Gardiole
+}}
+[AOP]muscat_de_lunel
+[BORDER_SZ]5
+{{
+dep=34
+communes=Lunel,Lunel-Viel,Saturargues,Vérargue
+}}
+[AOP]muscat_de_mireval
+[BORDER_SZ]5
+{{
+dep=34
+communes=Mireval,Vic-la-Gardiole
+}}
+[AOP]muscat_de_rivesaltes
+[BORDER_SZ]5
+{{
+dep=11
+communes=Cascatel-des-Corbières,Caves,Fitou,Leucate,La Palme,Paziols,Treilles,Tuchan,Villeneuve-les-Corbières,Bages,Gruissan,Narbonne,Peyriac-de-Mer,Portel-des-Corbières,Port-la-Nouvelle,Sigean
+dep=66
+communes=Argelès-sur-Mer,Bages,Baho,Baixas,Banyuls-dels-Aspres,Bélesta,LeBoulou,Brouilla,Cabestany,Caixas,Calce,Camélas,Canet-en-Roussillon,Canohès,Cases-de-Pène,Cassagnes,Castelnou,Céret,Claira,Les Cluses,Corbère,Corbère-les-Cabanes,Corneilla-del-Vercol,Corneilla-la-Rivière,Elne,Espira-de-l'Agly,Estagel,Fourques,Ille-sur-Têt,Laroque-des-Albères,Latour-Bas-Elne,Latour-de-France,Lesquerde,Llauro,Llupia,Maureillas-las-Illas,Maury,Millas,Montauriol,Montescot,Montesquieu-des-Albères,Montner,Néfiach,Opoul-Périllos,Ortaffa,Palau-del-Vidre,Passa,Perpignan,Peyrestortes,Pézilla-la-Rivière,Pia,Planèzes,Pollestres,Ponteilla,Rasiguères,Reynès,Rivesaltes,Saint-André,Sainte-Colombe-de-la-Commanderie,Saint-Estève,Saint-Féliu-d'Amont,Saint-Féliu-d'Avall,Saint-Génis-des-Fontaines,Saint-Hippolyte,Saint-Jean-Lasseille,Saint-Jean-Pla-de-Corts,Saint-Nazaire,Saint-Paul-de-Fenouillet,Saleilles,Salses-le-Château,Le Soler,Sorède,Tautavel,Terrats,Thuir,Tordères,Toulouges,Tresserre,Trouillas,Villelongue-dels-Monts,Villemolaque,Villeneuve-de-la-Raho,Villeneuve-la-Rivière,Vingrau,Vivès,Alénya,Ansignan,Banyuls-sur-Mer,Le Barcarès,Bompas,Bouleternère,Caramany,Caudiès-de-Fenouillèdes,Cerbère,Collioure,Felluns,Lansac,Montalba-le-Château,Oms,Port-Vendres,Prugnanes,Rodès,Saint-Arnac,Saint-Cyprien,Sainte-Marie-la-Mer,Saint-Laurent-de-la-Salanque,Saint-Martin,Saint-Michel-de-Llotes,Tarerach,Théza,Torreilles,Trévillach,Trilla,Villelongue-de-la-Salanque
 }}

@@ -116,7 +116,7 @@ int main(int ac, char** av)
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 0 + (i*15)%255, 80));
 					put(line_sym, keys::stroke_width, 24);
-					put(line_sym, keys::smooth, 0.5);
+					put(line_sym, keys::smooth, 0.75);
 					r.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r));
@@ -126,7 +126,7 @@ int main(int ac, char** av)
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 25 + (i*15)%255, 100));
 					put(line_sym, keys::stroke_width, 14);
-					put(line_sym, keys::smooth, 0.5);
+					put(line_sym, keys::smooth, 0.75);
 					r2.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r2));
@@ -136,12 +136,12 @@ int main(int ac, char** av)
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 50 + (i*15)%255, 120));
 					put(line_sym, keys::stroke_width, 4);
-					put(line_sym, keys::smooth, 0.5);
+					put(line_sym, keys::smooth, 0.75);
 					r3.append(std::move(line_sym));
 				}
 				appelation_style[i].add_rule(std::move(r3));
 			}
-			appelation_style[i].set_opacity(0.80);
+			appelation_style[i].set_opacity(0.95);
 			//appelation_style[i].set_comp_op(contrast);
 			m.insert_style(appl.getAppelations()[i] + "_contour", std::move(appelation_style[i]));
 		}

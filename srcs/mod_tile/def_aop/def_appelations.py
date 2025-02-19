@@ -73,7 +73,7 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
             sql_statement = SQL("INSERT INTO {} SELECT * FROM polygons WHERE (name = ANY(%(comm)s) OR official_name = ANY(%(comm)s)) AND postal_code = ANY(%(dep)s);").format(Identifier(aop))
             cursor.execute(sql_statement, exec_var)
         line = aoc_data.readline()
-    sql_statement = SQL("INSERT INTO {aop} (name, reg, official_name, geom, zaxis) VALUES ('the_whole_appelation', %(reg)s, %(off_aop)s, (SELECT ST_union(geom) FROM {aop}), %(border_sz)s);").format(
+    sql_statement = SQL("INSERT INTO {aop} (name, reg, official_name, geom, zaxis) VALUES ('the_whole_appelation', %(reg)s, %(off_aop)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s);").format(
             aop=Identifier(aop))
     cursor.execute(sql_statement, exec_var)
     print ("THE APPELATION", aop.upper(), "WAS CREATED !!\n")

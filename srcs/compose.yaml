@@ -25,6 +25,8 @@ services:
       - DB_CONN:/home/owmuser/db_connect/
     networks: ["OWM_network"]
     build: mod_tile/
+    depends_on: 
+      - postgres 
     env_file: ".env"
     restart: on-failure
 
