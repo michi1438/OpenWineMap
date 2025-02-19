@@ -115,7 +115,7 @@ int main(int ac, char** av)
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 0 + (i*15)%255, 80));
-					put(line_sym, keys::stroke_width, 28);
+					put(line_sym, keys::stroke_width, 24);
 					put(line_sym, keys::smooth, 0.5);
 					r.append(std::move(line_sym));
 				}
@@ -125,7 +125,7 @@ int main(int ac, char** av)
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 25 + (i*15)%255, 100));
-					put(line_sym, keys::stroke_width, 18);
+					put(line_sym, keys::stroke_width, 14);
 					put(line_sym, keys::smooth, 0.5);
 					r2.append(std::move(line_sym));
 				}
@@ -135,7 +135,7 @@ int main(int ac, char** av)
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 50 + (i*15)%255, 120));
-					put(line_sym, keys::stroke_width, 8);
+					put(line_sym, keys::stroke_width, 4);
 					put(line_sym, keys::smooth, 0.5);
 					r3.append(std::move(line_sym));
 				}

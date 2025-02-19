@@ -28,15 +28,18 @@ x = cursor.fetchone()[0]
 print("Content-Type: text/html;charset=utf-8")                                                                                                                                                                                                                                                                                  
 print ("Content-type:text/html\r\n")                                                                                                                                                                                                                                                                                            
 
-aoc_data = open("/home/" + os.environ['DB_USER'] + "/db_connect/SudOuest_data", "r")
-line = aoc_data.readline()
-while line: 
-    if line.strip().find("[AOP]") == 0:
-        aop = f'"{line[5:].strip()}"'
-        cursor.execute(SQL("SELECT official_name from {aop} where name = 'the_whole_appelation' AND ST_Contains(geom, ST_GeomFromText('{point}', 3857))").format(
-            point=SQL(x),
-            aop=Identifier(aop)))
-    line = aoc_data.readline()
-    records = cursor.fetchall()
-    for row in records:
-        print("<p>" + str(row[0]) + "</p>")
+_data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
+for n in _data: 
+    if n.find("_data") > 1:
+        aoc_data = open("/home/" + os.environ['DB_USER'] + f"/db_connect/{n}", "r")
+        line = aoc_data.readline()
+        while line: 
+            if line.strip().find("[AOP]") == 0:
+                aop = f'"{line[5:].strip()}"'
+                cursor.execute(SQL("SELECT official_name from {aop} where name = 'the_whole_appelation' AND ST_Contains(geom, ST_GeomFromText('{point}', 3857))").format(
+                    point=SQL(x),
+                    aop=Identifier(aop)))
+            line = aoc_data.readline()
+            records = cursor.fetchall()
+            for row in records:
+                print("<p>" + str(row[0]) + "</p>")

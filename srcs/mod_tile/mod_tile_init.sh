@@ -98,16 +98,14 @@ Options +ExecCGI\n
 AddHandler cgi-script .cgi .pl .py\n" >> /etc/apache2/apache2.conf
 
 pushd /home/$DB_USER/db_connect/
-	mv -v /cgi_hook.py /var/www/cgi-bin/
+	mv -v /def_aop/cgi_hook.py /var/www/cgi-bin/
 	mv -v /def_aop/* ./
 	python3 def_appelations.py
 	python3 lay_renderd.py
 popd
 
 pushd /.MAP/mapnik/demo/test_mapnik/
-	make 
-	./poly_draw SudOuest && ./brd_draw SudOuest;
-	./poly_draw LanguedocRoussillon && ./brd_draw LanguedocRoussillon;
+	python3 iter_mapnik.py
 popd
 
 # Enable configuration

@@ -41,25 +41,25 @@
 				httpRequest.send("latlong=" + e.latlng.toString());
 			}
 
-			// add the OpenStreetMap tiles
+			// the OpenStreetMap tiles
 			var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				maxZoom: 18,
 				minZoom: 2,
 				id: 'base'
 			});
-			// add the OWM tiles
+			// ADD the OWM tiles
 
 			// show the scale bar on the lower left corner
 			//L.control.scale({imperial: false, metric: true}).addTo(map);
 
-			// add leaflist
+			// ADD leaflist
 
 
 			const baseLayers = {
 				'OpenStreetMap': osm,
 			};
 
-			const addLayers = {
+			const addLayers = { //ADD the layer_list
 			};
 			var layerControl = L.control.layers(baseLayers, addLayers, {
 				collapsed: true,

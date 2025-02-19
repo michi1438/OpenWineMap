@@ -73,6 +73,17 @@ end
 -- Called for every relation in the input. The `object` argument contains the
 -- same information as with nodes and additionally an array of members
 -- (`object.members`).
+function sub_or_nil(object)
+	if object.tags.postal_code ~= nil then
+		return string.sub(object.tags.postal_code, 1, 2)
+	elseif object.tags['addr:postcode'] ~= nil then
+		return string.sub(object.tags['addr:postcode'], 1, 2)
+	elseif object.tags['ref:INSEE'] ~= nil and string.match(object.tags['ref:INSEE'], "[1234567890]") then
+		return string.sub(object.tags['ref:INSEE'], 1, 2)
+	end
+	return
+end
+
 function osm2pgsql.process_relation(object)
     --  Uncomment next line to look at the object data:
     --  print(inspect(object))
@@ -83,13 +94,14 @@ function osm2pgsql.process_relation(object)
 
     -- Store multipolygons and boundaries as polygons
     if  object.tags.type == 'boundary' 
-		and object.tags.postal_code ~= nil
+		and object.tags.admin_level ~= nil
+		and string.match(object.tags.admin_level, "[89]")
 		and object.tags.name ~= nil then
          tables.polygons:insert({
             type = object.tags.type,
-            name = object.tags.name, -- TODO change the weird character into something more general....
-            official_name = object.tags.official_name,
-            postal_code = string.sub(object.tags.postal_code, 1, 2),
+            name = object.tags.name, -- TODO change the weird character into something more general..  
+            official_name = object.tags.official_name, -- TODO or old_name.
+            postal_code = sub_or_nil(object),
             tags = object.tags,
             geom = object:as_multipolygon()
         })

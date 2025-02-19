@@ -1,21 +1,3 @@
-[AOP]pacherenc_du_vic_bilh
-[BORDER_SZ]5
-{{
-dep=32
-communes=Maumusson-Laguian,Cannet,Viella
-dep=65
-communes=Castelnau-Rivière-Basse,Hagedet,Lascazères,Madiran,Saint-Lanne,Soublecause
-dep=64
-communes=Arricau-Bordes,Arrosès,Aubous,Aurions-Idernes,Aydie,Bétracq,Burosse-Mendousse,Cadillon,Castetpugon,Castillon (Canton de Lembeye),Conchez-de-Béarn,Corbère-Abères,Crouseilles,Diusse,Escurès,Gayon,Lasserre,Lembeye,Mascaraàs-Haron,Moncaup,Moncla,Monpezat,Mont-Disse,Portet,Saint-Jean-Poudge,Séméacq-Blachon,Tadousse-Ussau,Vialer
-}}
-[AOP]tursan
-[BORDER_SZ]10
-{{
-dep=40
-communes=Aire-sur-l'Adour,Arboucave,Aubagnan,Bahus-Soubiran,Bats,Buanes,Castelnau-Tursan,Classun,Clèdes,Coudures,Duhort-Bachen,Eugénie-les-Bains,Eyres-Moncube,Fargues,Geaune,Larrivière-Saint-Savin,Latrille,Lauret,Mauries,Miramont-Sensacq,Montgaillard,Montsoué,Payros-Cazautets,Pécorade,Pimbo,Puyol-Cazalet,Renung,Saint-Agnet,Saint-Loubouer,Sarraziet,Sarron,Serres-Gaston,Sorbets,Urgons,Vielle-Tursan
-dep=32
-communes=Ségos
-}}
 [AOP]bearne
 [BORDER_SZ]15
 {{
@@ -26,11 +8,49 @@ communes=Castelnau-Rivière-Basse,Hagedet,Lascazères,Madiran,Saint-Lanne,Souble
 dep=64
 communes=Abos,Arbus,Arricau-Bordes,Arrosès,Artiguelouve,Aubertin,Aubous,Aurions-Idernes,Aydie,Baigts-de-Béarn,Bellocq,Bérenx,Bétracq,Bosdarros,Burosse-Mendousse,Cadillon,Cardesse,Carresse-Cassaber,Castagnède,Castetpugon,Castillon (Canton de Lembeye),Conchez-de-Béarn,Corbère-Abères,Crouseilles,Cuqueron,Diusse,Escurès,Estialescq,Gan,Gayon,Gelos,Haut-de-Bosdarros,L'Hôpital-d'Orion,Jurançon,Lacommande,Lagor,Lahontan,Lahourcade,Laroin,Lasserre,Lasseube,Lasseubetat,Lespielle,Lucq-de-Béarn,Mascaraàs-Haron,Mazères-Lezons,Moncaup,Moncla,Monein,Monpezat,Mont-Disse,Mourenx,Narcastet,Ogenne-Camptort,Oraàs,Orthez,Parbayse,Portet,Puyoô,Ramous,Rontignon,Saint-Faust,Saint-Jean-Poudge,Salies-de-Béarn,Salles-Mongiscard,Sauvelade,Séméacq-Blachon,Taron-Sadirac-Viellenave,Tadousse-Ussau,Uzos,Vialer,Vielleségure
 }}
+[AOP]cotes_de_bergerac
+[BORDER_SZ]15
+{{
+dep=24
+communes=Baneuil,Bergerac,Boisse,Bonneville-et-Saint-Avit-de-Fumadières,Bouniagues,Campsegret,Carsac-de-Gurson,Colombier,Conne-de-Labarde,Cours-de-Pile,Creysse,Cunèges,Eymet,Faurilles,Flaugeac,Le Fleix,Fonroque,La Force,Fraisse,Gageac-et-Rouillac,Gardonne,Ginestet,Issigeac,Lalinde,Lamonzie-Saint-Martin,Lamothe-Montravel,Lanquais,Les Lèches,Lembras,Lunas,Maurens,Mescoules,Minzac,Monbazillac,Monestier,Monfaucon,Monmadalès,Monmarvès,Monsaguel,Montazeau,Montcaret,Montpeyroux,Mouleydier,Moulin-Neuf,Nastringues,Naussannes,Nojals-et-Clotte,Plaisance,Pomport,Prigonrieux,Queyssac,Rampieux,Razac-d'Eymet,Razac-de-Saussignac,Ribagnac,Rouffignac-de-Sigoulès,Sadillac,Saint-Agne,Saint-Antoine-de-Breuilh,Saint-Aubin-de-Cadelech,Saint-Aubin-de-Lanquais,Saint-Capraise-d'Eymet,Saint-Cernin-de-Labarde,Saint-Germain-et-Mons,Saint-Géry,Saint-Julien-d'Eymet,Saint-Laurent-des-Vignes,Saint-Léon-d'Issigeac,Saint-Martin-de-Gurson,Saint-Méard-de-Gurçon,Saint-Michel-de-Montaigne,Saint-Nexans,Saint-Perdoux,Saint-Pierre-d'Eyraud,Saint-Rémy,Saint-Sauveur,Saint-Seurin-de-Prats,Saint-Vivien,Sainte-Eulalie-d'Eymet,Sainte-Innocence,Saussignac,Serres-et-Montguyard,Sigoulès,Singleyrac,Thénac,Vélines,Verdon,Villefranche-de-Lonchat,Cause-de-Clérans,Saint-Géraud-de-Corps
+dep=33
+communes=Caplong,Castillon-la-Bataille,Francs,Gardegan-et-Tourtirac,Gensac,Les Lèves-et-Thoumeyragues,Margueron,Pineuilh,Saint-Avit-Saint-Nazaire,Saint-Cibard,Saint-Émilion,Port-Sainte-Foy-et-Ponchapt,Fougueyrolles
+dep=47
+communes=Duras,Loubès-Bernac,Saint-Jean-de-Duras
+}}
+[AOP]cotes_du_duras
+[BORDER_SZ]10
+{{
+dep=47
+communes=Auriac-sur-Dropt,Baleyssagues,Duras,Esclottes,Loubès-Bernac,Moustier,Pardaillan,Saint-Astier,Saint-Jean-de-Duras,Saint-Sernin,Sainte-Colombe-de-Duras,La Sauvetat-du-Dropt,Savignac-de-Duras,Soumensac,Villeneuve-de-Duras,Lévignac-de-Guyenne,Mauvezin-sur-Gupie,Monteton,Roumagne
+dep=24
+communes=Sadillac,Thénac
+dep=33
+communes=Dieulivol,Landerrouat,Les Lèves-et-Thoumeyragues,Margueron,Monségur,Pellegrue,Riocaud,Saint-Avit-Saint-Nazaire
+}}
+[AOP]bergerac
+[BORDER_SZ]10
+{{
+dep=24
+communes=Baneuil,Bergerac,Boisse,Bonneville-et-Saint-Avit-de-Fumadières,Bouniagues,Campsegret,Carsac-de-Gurson,Colombier,Conne-de-Labarde,Cours-de-Pile,Creysse,Cunèges,Eymet,Faurilles,Le Fleix,Fonroque,La Force,Fraisse,Gageac-et-Rouillac,Gardonne,Ginestet,Issigeac,Lalinde,Lamonzie-Saint-Martin,Lamothe-Montravel,Lanquais,Les Lèches,Lembras,Lunas,Mescoules,Minzac,Monbazillac,Monestier,Monfaucon,Monmadalès,Monmarvès,Monsaguel,Montazeau,Montcaret,Montpeyroux,Mouleydier,Moulin-Neuf,Nastringues,Naussannes,Plaisance,Pomport,Prigonrieux,Queyssac,Rampieux,Razac-de-Saussignac,Razac-d'Eymet,Ribagnac,Rouffignac-de-Sigoulès,Sadillac,Saint-Agne,Saint-Antoine-de-Breuilh,Saint-Aubin-de-Cadelech,Saint-Aubin-de-Lanquais,Saint-Capraise-d'Eymet,Saint-Cernin-de-Labarde,Saint-Germain-et-Mons,Saint-Géry,Saint-Julien-Innocence-Eulalie,Saint-Laurent-des-Vignes,Saint-Léon-d'Issigeac,Saint-Martin-de-Gurson,Saint-Méard-de-Gurçon,Saint-Michel-de-Montaigne,Saint-Nexans,Saint-Perdoux,Saint-Pierre-d'Eyraud,Saint-Rémy,Saint-Sauveur,Saint-Seurin-de-Prats,Saint-Vivien,Saussignac,Serres-et-Montguyard,Sigoulès-et-Flaugeac,Singleyrac,Thénac,Vélines,Verdon,Villefranche-de-Lonchat,Cause-de-Clérans,Saint-Géraud-de-Corps
+dep=33
+communes=Caplong,Castillon-la-Bataille,Francs,Gardegan-et-Tourtirac,Gensac,Les Lèves-et-Thoumeyragues,Margueron,Pineuilh,Puisseguin,Saint-Avit-Saint-Nazaire,Saint-Cibard,Saint-Émilion,Fougueyrolles,Port-Sainte-Foy-et-Ponchapt
+dep=47
+communes=Duras,Loubès-Bernac,Saint-Jean-de-Duras
+}}
+[AOP]tursan
+[BORDER_SZ]10
+{{
+dep=40
+communes=Aire-sur-l'Adour,Arboucave,Aubagnan,Bahus-Soubiran,Bats,Buanes,Castelnau-Tursan,Classun,Clèdes,Coudures,Duhort-Bachen,Eugénie-les-Bains,Eyres-Moncube,Fargues,Geaune,Larrivière-Saint-Savin,Latrille,Lauret,Mauries,Miramont-Sensacq,Montgaillard,Montsoué,Payros-Cazautets,Pécorade,Pimbo,Puyol-Cazalet,Renung,Saint-Agnet,Saint-Loubouer,Sarraziet,Sarron,Serres-Gaston,Sorbets,Urgons,Vielle-Tursan
+dep=32
+communes=Ségos
+}}
 [AOP]irouleguy
 [BORDER_SZ]5
 {{
 dep=64
-communes=Aincille,Anhaux,Ascarat,Bidarray,Bussunarits-Sarrasquette,Bustince-Iriberry,Irouléguy,Ispoure,Jaxu,Lasse,Lecumberry,Ossès,Saint-Etienne-de-Baïgorry,Saint-Jean-le-Vieux,Saint-Martin-d'Arrossa
+communes=Aincille,Anhaux,Ascarat,Bidarray,Bussunarits-Sarrasquette,Bustince-Iriberry,Irouléguy,Ispoure,Jaxu,Lasse,Lecumberry,Ossès,Saint-Étienne-de-Baïgorry,Saint-Jean-le-Vieux,Saint-Martin-d'Arrossa
 }}
 [AOP]madiran
 [BORDER_SZ]10
@@ -52,33 +72,39 @@ communes=Abos,Arbus,Artiguelouve,Aubertin,Bosdarros,Cardesse,Cuqueron,Estialescq
 [BORDER_SZ]10
 {{
 dep=31
-communes=Bouloc,Castelnau-d’Estrétefonds,Fronton,Saint-Rustice,Vacquiers,Villaudric,Villematier,Villemur-sur-Tarn,Villeneuve-lès-Bouloc
+communes=Bouloc,Castelnau-d'Estrétefonds,Fronton,Saint-Rustice,Vacquiers,Villaudric,Villematier,Villemur-sur-Tarn,Villeneuve-lès-Bouloc
 dep=82
 communes=Bessens,Campsas,Canals,Dieupentale,Fabas,Grisolles,Labastide-Saint-Pierre,Montbartier,Nohic,Orgueil,Pompignan
 }}
-[AOP]saint-mont
-[BORDER_SZ]5
+[AOP]buzet
+[BORDER_SZ]10
 {{
-dep=32
-communes=Aignan,Arblade-le-Bas,Armous-et-Cau,Aurensan,Avéron-Bergelle,Beaumarchés,Bernède,Bouzon-Gellenave,Castelnavet,Caumont,Corneillan,Couloumé-Mondebat,Courties,Dému,Fustérouau,Gazax-et-Baccarisse,Jû-Belloc,Labarthète,Ladevèze-Rivière,Ladevèze-Ville,Lannux,Lasserade,Lelin-Lapujolle,Louslitges,Loussous-Débat,Lupiac,Marciac,Margouët-Meymes,Maulichères,Peyrusse-Grande,Peyrusse-Vieille,Plaisance,Pouydraguin,Projan,Riscle,Sabazan,Saint-Aunix-Lengros,Saint-Mont,Saint-Pierre-d'Aubézies,Sarragachies,Séailles,Tasque,Termes-d'Armagnac,Tieste-Uragnoux,Tourdun,Verlus
+dep=47
+communes=Ambrus,Anzex,Barbaste,Bruch,Buzet-sur-Baïse,Calignac,Caubeyres,Damazan,Espiens,Feugarolles,Lavardac,Leyritz-Moncassin,Moncaut,Montagnac-sur-Auvignon,Montesquieu,Montgaillard-en-Albret,Nérac,Pompiey,Puch-d'Agenais,Razimet,Saint-Léon,Saint-Pierre-de-Buzet,Sainte-Colombe-en-Bruilhois,Sérignac-sur-Garonne,Vianne,Villefranche-du-Queyran,Xaintrailles
 }}
 [AOP]gaillac
 [BORDER_SZ]10
 {{
 dep=81
-communes=Alos,Amarens,Andillac,Arthès,Aussac,Bellegarde-Marsal Bernac,Bournazel,Brens,Broze,Busque,Les Cabannes,Cadalen,Cahuzac-sur-Vère,Cambon,Campagnac,Carlus,Castanet,Castelnau-de-Lévis,Castelnau-de-Montmiral,Cestayrols,Combefa,Cordes-sur-Ciel,Coufouleux,Cunac,Donnazac,Fayssac,Fénols,Florentin,Frausseilles,Fréjairolles,Gaillac,Giroussens,Itzac,Labastide-de-Lévis,Labessière-Candeil,Lagrave,Larroque,Lasgraisses,Lisle-sur-Tarn,Livers-Cazelles,Loubers,Loupiac,Milhavet,Montans,Montels,Mouzieys-Panens,Mouzieys-Teulet,Noailles,Parisot,Peyrole,Puycelci,Rabastens,Rivières,Rouffiac,Saint-Beauzile,Saint-Grégoire,Saint-Juéry,Saint-MarcelCampes,Saint-Sulpice,Sainte-Cécile-du-Cayrou,Sainte-Croix,Salvagnac,Senouillac,Souel,Técou,Tonnac,Le Verdier,Vieux,Villeneuve-sur-Vère,Vindrac-Alayrac,Virac
+communes=Alos,Amarens,Andillac,Arthès,Aussac,Bellegarde-Marsal,Bernac,Bournazel,Brens,Broze,Busque,Les Cabannes,Cadalen,Cahuzac-sur-Vère,Cambon,Campagnac,Carlus,Castanet,Castelnau-de-Lévis,Castelnau-de-Montmiral,Cestayrols,Combefa,Cordes-sur-Ciel,Coufouleux,Cunac,Donnazac,Fayssac,Fénols,Florentin,Frausseilles,Fréjairolles,Gaillac,Giroussens,Itzac,Labastide-de-Lévis,Labessière-Candeil,Lagrave,Larroque,Lasgraisses,Lisle-sur-Tarn,Livers-Cazelles,Loubers,Loupiac,Milhavet,Montans,Montels,Mouzieys-Panens,Mouzieys-Teulet,Noailles,Parisot,Peyrole,Puycelsi,Rabastens,Rivières,Rouffiac,Saint-Beauzile,Saint-Grégoire,Saint-Juéry,Saint-Marcel-Campes,Saint-Sulpice-la-Pointe,Sainte-Cécile-du-Cayrou,Sainte-Croix,Salvagnac,Senouillac,Souel,Técou,Tonnac,Le Verdier,Vieux,Villeneuve-sur-Vère,Vindrac-Alayrac,Virac
+}}
+[AOP]montbazillac
+[BORDER_SZ]10
+{{
+dep=24
+communes=Colombier,Monbazillac,Pomport,Rouffignac-de-Sigoulès,Saint-Laurent-des-Vignes,Bergerac,Bouniagues,Conne-de-Labarde,Cunèges,Flaugeac,Gageac-et-Rouillac,Lamonzie-Saint-Martin,Lembras,Mescoules,Ribagnac,Saint-Nexans,Sigoulès
 }}
 [AOP]cote-du-marmandais
 [BORDER_SZ]5
 {{
 dep=47
-communes=Beaupuy,Bouglon,Cambes,Caubon-Saint-Sauveur,Castelnau-sur-Gupie,Cocumont,Escassefort,Guérin,Lachapelle,Lagupie,Lévignac-deGuyenne,Marcellus,Marmande,Mauvezin-sur-Gupie,Meilhan-sur-Garonne,Monteton,Montpouillan,Peyrière,Romestaing,Saint-Avit,Saint-Géraud,Saint-Martin-Petit,Saint-Sauveur-de-Meilhan,Sainte-Bazeille,Samazan,Seyches et Virazeil
+communes=Beaupuy,Bouglon,Cambes,Caubon-Saint-Sauveur,Castelnau-sur-Gupie,Cocumont,Escassefort,Guérin,Lachapelle,Lagupie,Lévignac-de-Guyenne,Marcellus,Marmande,Mauvezin-sur-Gupie,Meilhan-sur-Garonne,Monteton,Montpouillan,Peyrière,Romestaing,Saint-Avit,Saint-Géraud,Saint-Martin-Petit,Saint-Sauveur-de-Meilhan,Sainte-Bazeille,Samazan,Seyches,Virazeil
 }}
 [AOP]saint-sardos
 [BORDER_SZ]5
 {{
 dep=31
-communes=Bellesserre,(Le) Burgaud,Lagraulet-Saint-Nicolas
+communes=Bellesserre,Le Burgaud,Lagraulet-Saint-Nicolas
 dep=82
 communes=Beaumont-de-Lomagne,Beaupuy,Belbèze-en-Lomagne,Bouillac,Bourret,Comberouger,Cordes-Tolosannes,Escazeaux,Faudoas,Gariès,Labourgade,Lafitte,Larrazet,Mas-Grenier,Montaïn,Saint-Sardos,Savenès,Sérignac,Verdun-sur-Garonne,Vigueron
 }}
@@ -90,13 +116,13 @@ communes=Gimbrède,Flamarens,Peyrecave,Saint-Antoine
 dep=47
 communes=Astaffort,Aubiac,Caudecoste,Clermont-Soubiran,Cuq,Estillac,Fals,Fieux,Grayssas,Lamontjoie,Laplume,Layrac,Marmont-Pachas,Moirax,Nomdieu,Puymirol,Roquefort,Saint-Jean-de-Thurac,Saint-Pierre-de-Clairac,Saint-Romain-le-Noble,Saint-Urcisse,Saint-Vincent-de-Lamontjoie,Saumont
 dep=82
-communes=Auvillar,Bardigues,Castelsagrat,Caumont,Donzac,Dunes,Gasques,Montjoi,Perville,Le Pin,SaintCirice,Saint-Clair,Saint-Loup,Saint-Michel,Sistels
+communes=Auvillar,Bardigues,Castelsagrat,Caumont,Donzac,Dunes,Gasques,Montjoi,Perville,Le Pin,Saint-Cirice,Saint-Clair,Saint-Loup,Saint-Michel,Sistels
 }}
 [AOP]coteaux-du-quercy
 [BORDER_SZ]5
 {{
 dep=46
-communes=Belfort-du-Quercy,Belmontet,Castelnau Montratier-Sainte Alauzie,Cézac,Labastide-Marnhac,Lascabanes,Lendou-en-Quercy,(Le) Montat,Montcuq-en-Quercy-Blanc,Montdoumerc,Montlauzun,Saint-Daunès,Saint-Pantaléon,Saint-Paul-de-Loubressac,Saint-Paul-Flaugnac,Sainte-Alauzie,Valprionde
+communes=Belfort-du-Quercy,Belmontet,Castelnau-Montratier,Sainte-Alauzie,Cézac,Labastide-Marnhac,Lascabanes,Lendou-en-Quercy,Le Montat,Montcuq-en-Quercy-Blanc,Montdoumerc,Montlauzun,Saint-Daunès,Saint-Pantaléon,Saint-Paul-de-Loubressac,Saint-Paul-Flaugnac,Valprionde
 dep=82
 communes=Auty,Bruniquel,Caussade,Cayriech,Labarthe,Lapenche,Lavaurette,Mirabel,Molières,Montaigu-de-Quercy,Montalzat,Montfermier,Montpezat-de-Quercy,Puygaillard-de-Quercy,Puylaroque,Réalville,Saint-Georges,Saint-Vincent-d'Autéjac,Sauveterre,Vaïssac,Vazerac
 }}
@@ -116,7 +142,7 @@ communes=Coubisou,Estaing,Sébrazac
 [BORDER_SZ]5
 {{
 dep=12
-communes=Campouriez,Entraygues-sur-Truyère,(Le) Fel,Florentin-la-Capelle,Golinhac,Saint-Hippolyte
+communes=Campouriez,Entraygues-sur-Truyère,Le Fel,Florentin-la-Capelle,Golinhac,Saint-Hippolyte
 dep=15
 communes=Cassaniouze,Vieillevie
 }}
@@ -124,5 +150,53 @@ communes=Cassaniouze,Vieillevie
 [BORDER_SZ]5
 {{
 dep=12
-communes=Aguessac,Broquiès,Castelnau-Pégayrols,Compeyre,Comprégnac,Creissels,(La) Cresse,Millau,Montjaux,Mostuéjouls,Paulhe,Peyreleau,Rivière-sur-Tarn,Saint-Georges-de-Luzençon,Saint-Rome-de-Tarn,(Le) Truel,Viala-du-Tarn
+communes=Aguessac,Broquiès,Castelnau-Pégayrols,Compeyre,Comprégnac,Creissels,La Cresse,Millau,Montjaux,Mostuéjouls,Paulhe,Peyreleau,Rivière-sur-Tarn,Saint-Georges-de-Luzençon,Saint-Rome-de-Tarn,Le Truel,Viala-du-Tarn
+}}
+[AOP]pacherenc_du_vic_bilh
+[BORDER_SZ]5
+{{
+dep=32
+communes=Maumusson-Laguian,Cannet,Viella
+dep=65
+communes=Castelnau-Rivière-Basse,Hagedet,Lascazères,Madiran,Saint-Lanne,Soublecause
+dep=64
+communes=Arricau-Bordes,Arrosès,Aubous,Aurions-Idernes,Aydie,Bétracq,Burosse-Mendousse,Cadillon,Castetpugon,Castillon (Canton de Lembeye),Conchez-de-Béarn,Corbère-Abères,Crouseilles,Diusse,Escurès,Gayon,Lasserre,Lembeye,Mascaraàs-Haron,Moncaup,Moncla,Monpezat,Mont-Disse,Portet,Saint-Jean-Poudge,Séméacq-Blachon,Tadousse-Ussau,Vialer
+}}
+[AOP]cahors
+[BORDER_SZ]5
+{{
+dep=46
+communes=Albas,Anglars-Juillac,Arcambal,Bagat-en-Quercy,Bélaye,Le Boulvé,Cahors,Caillac,Cambayrac,Carnac-Rouffiac,Castelfranc,Catus,Cieurac,Crayssac,Douelle,Duravel,Fargues,Flaujac-Poujols,Floressas,Grézels,Labastide-du-Vert,Lacapelle-Cabanac,Lagardelle,Lamagdelaine,Luzech,Mauroux,Mercuès,Nuzéjouls,Parnac,Pescadoires,Pontcirq,Pradines,Prayssac,Puy-l'Évêque,Saint-Matré,Saint-Médard,Saint-Vincent-Rive-d'Olt,Saux,Sauzet,Sérignac,Soturac,Touzac,Trespoux-Rassiels,Villesèque,Vire-sur-Lot,Labastide-Marnhac,Le Montat,Saint-Géry,Saint-Martin-le-Redon,Valroufié
+}}
+[AOP]saint-mont
+[BORDER_SZ]5
+{{
+dep=32
+communes=Aignan,Arblade-le-Bas,Armous-et-Cau,Aurensan,Avéron-Bergelle,Beaumarchés,Bernède,Bouzon-Gellenave,Castelnavet,Caumont,Corneillan,Couloumé-Mondebat,Courties,Dému,Fustérouau,Gazax-et-Baccarisse,Jû-Belloc,Labarthète,Ladevèze-Rivière,Ladevèze-Ville,Lannux,Lasserrade,Lelin-Lapujolle,Louslitges,Loussous-Débat,Lupiac,Marciac,Margouët-Meymes,Maulichères,Peyrusse-Grande,Peyrusse-Vieille,Plaisance,Pouydraguin,Projan,Riscle,Sabazan,Saint-Aunix-Lengros,Saint-Mont,Saint-Pierre-d'Aubézies,Sarragachies,Séailles,Tasque,Termes-d'Armagnac,Tieste-Uragnoux,Tourdun,Verlus
+}}
+[AOP]montravel
+[BORDER_SZ]5
+{{
+dep=24
+communes=Bonneville-et-Saint-Avit-de-Fumadières,Le Fleix,Lamothe-Montravel,Monfaucon,Montcaret,Montazeau,Montpeyroux,Nastringues,Saint-Antoine-de-Breuilh,Saint-Méard-de-Gurçon,Saint-Michel-de-Montaigne,Saint-Seurin-de-Prats,Saint-Vivien,Vélines,Bergerac,Saint-Laurent-des-Vignes,Saint-Seurin-de-Prats
+dep=33
+communes=Gardegan-et-Tourtirac,Gensac,Francs,Landerrouat,Les Lèves-et-Thoumeyragues,Pineuilh,Saint-Avit-Saint-Nazaire,Saint-Émilion,Port-Sainte-Foy-et-Ponchapt,Fougueyrolles
+}}
+[AOP]saussignac
+[BORDER_SZ]5
+{{
+dep=24
+communes=Gageac-et-Rouillac,Monestier,Razac-de-Saussignac,Saussignac,Cunèges,Gardonne,Lamonzie-Saint-Martin,Mescoules,Pomport,Saint-Laurent-des-Vignes,Thénac
+}}
+[AOP]rosettte
+[BORDER_SZ]5
+{{
+dep=24
+communes=Bergerac,Creysse,Ginestet,Lembras,Maurens,Prigonrieux,La Force,Queyssac,Saint-Sauveur
+}}
+[AOP]pecharmant
+[BORDER_SZ]5
+{{
+dep=24
+communes=Bergerac,Creysse,Lembras,Saint-Sauveur
 }}
