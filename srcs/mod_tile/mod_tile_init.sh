@@ -52,6 +52,7 @@ if [ ! -f /tmp/mod_tile_build/src/renderd ]; then
    	(
 		git clone --progress --depth 1 \
 			https://github.com/openstreetmap/mod_tile.git . 
+		sed -i 's/100$/10000/' includes/render_config.h
 	)
 	cd /tmp/mod_tile_build
 	(
@@ -105,9 +106,13 @@ pushd /home/$DB_USER/db_connect/
 popd
 
 pushd /.MAP/mapnik/demo/test_mapnik/
+	mkdir -v /home/$DB_USER/src/openstreetmap-carto/highlighted/
 	python3 iter_mapnik.py
 popd
 
+pushd /home/$DB_USER/db_connect/
+	python3 lay_highlights.py
+popd
 # Enable configuration
 a2enmod tile
 a2enmod cgi 

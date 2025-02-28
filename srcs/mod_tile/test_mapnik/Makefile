@@ -3,15 +3,18 @@ LDFLAGS = $(shell mapnik-config --libs --dep-libs --ldflags)
 
 OBJ = poly_draw.o Region.o
 OBJ2 = brd_draw.o Region.o
+OBJ3 = highlighted_draw.o Region.o
 
 BIN = poly_draw 
 BIN2 = brd_draw
+BIN3 = highlighted_draw 
 
-all : $(BIN) $(BIN2)
+all : $(BIN) $(BIN2) $(BIN3)
 
-$(BIN) : $(OBJ) $(OBJ2)
+$(BIN) : $(OBJ) $(OBJ2) $(OBJ3)
 	$(CXX) $(OBJ) $(LDFLAGS) -o $(BIN)
 	$(CXX) $(OBJ2) $(LDFLAGS) -o $(BIN2)
+	$(CXX) $(OBJ3) $(LDFLAGS) -o $(BIN3)
 
 .c.o :
 	$(CXX) -c $(CXXFLAGS) $<

@@ -20,5 +20,5 @@ for n in _data:
     if n.find("_data") > 1:
         subprocess.run(["./poly_draw", n[:-5]])
         subprocess.run(["./brd_draw", n[:-5]])
-
+        subprocess.run(["./highlighted_draw", n[:-5]])
 print (bcolors.OKCYAN + "Done building the .xml file. ##############################" + bcolors.ENDC)

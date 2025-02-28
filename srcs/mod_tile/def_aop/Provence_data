@@ -1,0 +1,96 @@
+[AOP]cotes-de-provence
+[BORDER_SZ]15
+{{
+dep=13
+communes=Allauch,Bouc-Bel-Air,Ceyreste,Châteauneuf-le-Rouge,La Ciotat,Cuges-les-Pins,Meyreuil,Mimet,Peynier,Puyloubier,Roquefort-la-Bédoule,Rousset,Simiane-Collongue,Le Tholonet,Trets,Aubagne,Auriol,La Bouilladisse,Cassis,La Destrousse,Fuveau,Gardanne,Gémenos,Peypin,Roquevaire,Riboux
+dep=83
+communes=Les Arcs,Bagnols-en-Forêt,Le Beausset,Besse-sur-Issole,Bormes-les-Mimosas,Cabasse,La Cadière-d'Azur,Callas,Le Cannet-des-Maures,Carcès,Carnoules,Carqueiranne,Le Castellet,Cavalaire-sur-Mer,Cogolin,Collobrières,Correns,Cotignac,La Crau,La Croix-Valmer,Cuers,Draguignan,Entrecasteaux,Évenos,La Farlède,Figanières,Flassans-sur-Issole,Flayosc,Fréjus,La Garde,La Garde-Freinet,Gassin,Gonfaron,Grimaud,Hyères,La Londe-les-Maures,Lorgues,Le Luc,Les Mayons,Montfort-sur-Argens,La Môle,La Motte,Le Muy,Pierrefeu-du-Var,Pignans,Le Plan-de-la-Tour,Pourcieux,Pourrières,Le Pradet,Puget-sur-Argens,Puget-Ville,Ramatuelle,Roquebrune-sur-Argens,Saint-Antonin-du-Var,Saint-Cyr-sur-Mer,Sainte-Maxime,Saint-Paul-en-Forêt,Saint-Raphaël,Saint-Tropez,Sanary-sur-Mer,Seillans,Six-Fours-les-Plages,Solliès-Pont,Taradeau,Le Thoronet,Trans-en-Provence,La Valette-du-Var,Vidauban,Bandol,Barjols,Belgentier,Bras,Brignoles,Brue-Auriac,Camps-la-Source,La Celle,Châteauvert,Fayence,Forcalqueiret,Garéoult,Le Lavandou,Mazaugues,Méounes-lès-Montrieux,Nans-les-Pins,Néoules,Ollières,Ollioules,Plan-d'Aups-Sainte-Baume,Pontevès,Rayol-Canadel-sur-Mer,Le Revest-les-Eaux,Rocbaron,La Roquebrussanne,Rougiers,Saint-Mandrier-sur-Mer,Saint-Maximin-la-Sainte-Baume,Saint-Zacharie,Sainte-Anastasie-sur-Issole,Sillans-la-Cascade,Seillons-Source-d'Argens,La Seyne-sur-Mer,Signes,Solliès-Ville,Toulon,Tourves,Le Val,Villecroze,Vins-sur-Caramy
+}}
+[AOP]les_baux_de_provence
+[BORDER_SZ]15
+{{
+dep=13
+communes=Les Baux-de-Provence,Fontvieille,Maussane-les-Alpilles,Mouriès,Paradou,Saint-Étienne-du-Grès,Saint-Rémy-de-Provence,Eygalières,Mas-Blanc-des-Alpilles
+}}
+[AOP]coteaux_varois_en_provence
+[BORDER_SZ]15
+{{
+dep=83
+communes=Barjols,Bras,Brignoles,Brue-Auriac,Camps-la-Source,La Celle,Châteauvert,Forcalqueiret,Garéoult,Méounes-lès-Montrieux,Nans-les-Pins,Néoules,Ollières,Pontevès,Rocbaron,La Roquebrussanne,Rougiers,Saint-Maximin-la-Sainte-Baume,Saint-Zacharie,Sainte-Anastasie-sur-Issole,Salernes,Seillons-Source-d'Argens,Signes,Tavernes,Tourves,Le Val,Varages,Villecroze,Besse-sur-Issole,Carcès,Correns,Cotignac,Cuers,Entrecasteaux,Flassans-sur-Issole,Montfort-sur-Argens,Pierrefeu-du-Var,Pourcieux
+dep=13
+communes=Auriol
+}}
+[AOP]coteaux_d'aix-en-provence
+[BORDER_SZ]15
+{{
+dep=13
+communes=Aix-en-Provence,Alleins,Aurons,La Barben,Les Baux-de-Provence,Berre-l'Étang,Charleval,Châteauneuf-les-Martigues,Cornillon-Confoux,Coudoux,Éguilles,Ensuès-la-Redonne,Eygalières,Eyguières,La Fare-les-Oliviers,Fontvieille,Gignac-la-Nerthe,Istres,Jouques,Lamanon,Lambesc,Lançon-Provence,Mallemort,Martigues,Maussane-les-Alpilles,Meyrargues,Mouriès,Paradou,Pélissanne,Peyrolles-en-Provence,Port-de-Bouc,Le Puy-Sainte-Réparade,Rognac,Rognes,Saint-Cannat,Saint-Chamas,Saint-Estève-Janson,Saint-Étienne-du-Grès,Saint-Marc-Jaumegarde,Saint-Mitre-les-Remparts,Saint-Rémy-de-Provence,Salon-de-Provence,Vauvenargues,Velaux,Venelles,Ventabren,Vernègues,Arles,Aureille,Beaurecueil,Bouc-Bel-Air,Cabriès,Carry-le-Rouet,Eyragues,Fos-sur-Mer,Gardanne,Grans,Maillane,Meyreuil,Miramas,Mollégès,Noves,Orgon,Les Pennes-Mirabeau,La Roque-d'Anthéron,Marignane,Le Rove,Saint-Antonin-sur-Bayon,Saint-Martin-de-Crau,Saint-Paul-lès-Durance,Sausset-les-Pins,Sénas,Tarascon,Le Tholonet,Vitrolles
+dep=83
+communes=Artigues,Rians,Esparron,Ollières
+}}
+[AOP]pierrevert
+[BORDER_SZ]10
+{{
+dep=04
+communes=Corbières-en-Provence,Gréoux-les-Bains,Manosque,Montfuron,Pierrevert,Quinson,Saint-Laurent-du-Verdon,Saint-Martin-de-Brômes,Sainte-Tulle,Villeneuve,Volx,Allemagne-en-Provence,Aubenas-les-Alpes,Brunet,Céreste-en-Luberon,Dauphin,Esparron-de-Verdon,Forcalquier,Limans,Mane,Montagnac-Montpezat,Montjustin,Niozelles,Oppedette,Pierrerue,Puimoisson,Reillanne,Riez,Roumoules,Sainte-Croix-à-Lauze,Sainte-Croix-du-Verdon,Saint-Maime,Saint-Martin-les-Eaux,Saint-Michel-l'Observatoire,Sigonce,Vachères,Valensole,Villemus
+dep=83
+communes=Aiguines,Artignosc-sur-Verdon,Artigues,Aups,Baudinard-sur-Verdon,Bauduen,Fox-Amphoux,Ginasservis,Moissac-Bellevue,Montmeyan,Régusse,Rians,Saint-Julien,Les Salles-sur-Verdon,Sillans-la-Cascade,Tavernes,La Verdière,Vérignon,Vinon-sur-Verdon
+dep=84
+communes=Ansouis,La Bastide-des-Jourdans,La Bastidonne,Beaumont-de-Pertuis,Cabrières-d'Aigues,Grambois,Mirabeau,La Motte-d'Aigues,Pertuis,Peypin-d'Aigues,Saint-Martin-de-la-Brasque,Sannes,La Tour-d'Aigues,Vitrolles-en-Lubéron
+}}
+[AOP]cotes-de-provence_saint-victoire
+[BORDER_SZ]10
+{{
+dep=13
+communes=Châteauneuf-le-Rouge,Meyreuil,Peynier,Puyloubier,Rousset,Le Tholonet,Trets
+dep=83
+communes=Pourcieux,Pourrières
+}}
+[AOP]cotes-de-provence_frejus
+[BORDER_SZ]10
+{{
+dep=83
+communes=Fréjus,La Motte,Le Muy,Puget-sur-Argens,Roquebrune-sur-Argens,Saint-Raphaël,Callas,Trans-en-Provence
+}}
+[AOP]cotes-de-provence_la_londe
+[BORDER_SZ]10
+{{
+dep=83
+communes=Hyères,La Londe-les-Maures,Bormes-les-Mimosas,La Crau
+}}
+[AOP]cotes-de-provence_pierrefeu
+[BORDER_SZ]10
+{{
+dep=83
+communes=Cuers,Pierrefeu-du-Var,Puget-Ville,Solliès-Pont,La Garde,La Farlède,La Valette-du-Var,Carqueiranne,Le Pradet,La Crau,Carnoules,Collobrières
+}}
+[AOP]cotes-de-provence_notre-dame_des_anges
+[BORDER_SZ]10
+{{
+dep=83
+communes=Les Mayons,Les Arcs,Le Cannet-des-Maures,Carnoules,La Garde-Freinet,Gonfaron,Le Luc,Pignans,Taradeau,Vidauban
+}}
+[AOP]bellet
+[BORDER_SZ]5
+{{
+dep=06
+communes=Nice
+}}
+[AOP]bandol
+[BORDER_SZ]5
+{{
+dep=83
+communes=Bandol,Le Beausset,La Cadière-d'Azur,Le Castellet,Évenos,Ollioules,Sanary-sur-Mer,Saint-Cyr-sur-Mer
+}}
+[AOP]cassis
+[BORDER_SZ]5
+{{
+dep=13
+communes=Cassis,Roquefort-la-Bédoule
+}}
+[AOP]palette
+[BORDER_SZ]5
+{{
+dep=13
+communes=Aix-en-Provence,Meyreuil,Le Tholonet
+}}

@@ -46,13 +46,12 @@ for n in _data:
                 line += f"\t\t\tvar {n[:-5]} = L.tileLayer('/tile/france/{n[:-5].lower()}/{{z}}/{{x}}/{{y}}.png', {{" + os.linesep
                 line += f"\t\t\t\tmaxZoom: 18," + os.linesep
                 line += f"\t\t\t\tminZoom: 5," + os.linesep
-                line += f"\t\t\t\tinteractive: true," + os.linesep
+                line += f"\t\t\t\topacity: 0.5," + os.linesep
                 line += f"\t\t\t\tid: 'OWM'" + os.linesep
                 line += f"\t\t\t}});" + os.linesep
                 line += f"\t\t\tvar {n[:-5]}_brd = L.tileLayer('/tile/france/{n[:-5].lower()}_brd/{{z}}/{{x}}/{{y}}.png', {{" + os.linesep
                 line += f"\t\t\t\tmaxZoom: 18," + os.linesep
                 line += f"\t\t\t\tminZoom: 11," + os.linesep
-                line += f"\t\t\t\tinteractive: true," + os.linesep
                 line += f"\t\t\t\tid: 'OWM'" + os.linesep
                 line += f"\t\t\t}});" + os.linesep
                 leaf_list += f", {n[:-5]}, {n[:-5]}_brd"

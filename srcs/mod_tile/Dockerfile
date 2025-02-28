@@ -65,6 +65,7 @@ COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # leaflet
 COPY leaflet-demo.html /var/www/html/index.html
+COPY tech_sheet/ /var/www/html/tech_sheet/
 
 # Create volume directories
 RUN mkdir -p /run/renderd/ \
@@ -82,13 +83,13 @@ RUN mkdir -p /run/renderd/ \
   &&  ln  -s  /data/style              /home/$DB_USER/src/openstreetmap-carto  \
 ;
 
+
 RUN chmod -R 777 /home/$DB_USER/src/*
 COPY mod_tile_init.sh /
 
 COPY myrenderd.conf /myrenderd.conf
 COPY test_mapnik/ /test_mapnik/
-COPY L.Control.Opacity.css /var/www/html/dist/
-COPY L.Control.Opacity.js /var/www/html/dist/
+COPY import_for_leaflet/* /var/www/html/dist/
 COPY def_aop/ /def_aop/
 
 RUN chmod -R 777 /def_aop/
