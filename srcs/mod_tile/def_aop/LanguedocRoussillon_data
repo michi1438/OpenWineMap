@@ -72,7 +72,7 @@ communes=Ansignan,Arboussols,Argelès-sur-Mer,Bages,Baho,Baixas,Banyuls-dels-Asp
 dep=66
 communes=Ansignan,Arboussols,Argelès-sur-Mer,Bages,Baho,Baixas,Banyuls-dels-Aspres,Bélesta,Le Boulou,Brouilla,Cabestany,Calce,Camélas,Canet-en-Roussillon,Canohès,Caramany,Cases-de-Pène,Cassagnes,Castelnou,Caudiès-de-Fenouillèdes,Céret,Claira,Corbère,Corbère-les-Cabanes,Corneilla-la-Rivière,Corneilla-del-Vercol,Elne,Espira-de-l'Agly,Espira-de-Conflent,Estagel,Estoher,Feilluns,Finestret,Fourques,Ille-sur-Têt,Lansac,Laroque-des-Albères,Latour-de-France,Lesquerde,Llauro,Llupia,Maureillas-las-Illas,Maury,Millas,Montalba-le-Château,Montauriol,Montescot,Montesquieu-des-Albères,Montner,Néfiach,Oms,Opoul-Périllos,Ortaffa,Palau-del-Vidre,Passa,Perpignan,Peyrestortes,Pézilla-la-Rivière,Pia,Planèzes,Pollestres,Ponteilla,Prugnanes,Rasiguères,Rigarda,Rivesaltes,Rodès,Saint-André,Saint-Arnac,Saint-Estève,Saint-Féliu-d'Amont,Saint-Féliu-d'Avall,Saint-Génis-des-Fontaines,Saint-Hippolyte,Saint-Jean-Lasseille,Saint-Jean-Pla-de-Corts,Saint-Martin-de-Fenouillet,Saint-Nazaire,Saint-Paul-de-Fenouillet,Sainte-Colombe-de-la-Commanderie,Saleilles,Salses-le-Château,Le Soler,Sorède,Tarerach,Tautavel,Terrats,Thuir,Tordères,Toulouges,Tresserre,Trévillach,Trilla,Trouillas,Villelongue-dels-Monts,Villemolaque,Villeneuve-de-la-Raho,Villeneuve-la-Rivière,Vinça,Vingrau,Vivès,Le Vivier,Alénya,Amélie-les-Bains-Palalda,Arboussols,Bompas,Bouleternère,Caixas,Collioure,Les Cluses,Estoher,Finestret,Fosse,Ille-sur-Têt,Joch,Latour-Bas-Elne,Marquixanes,Pézilla-de-Conflent,Prats-de-Sournia,Reynès,Saint-Cyprien,Saint-Laurent-de-la-Salanque,Sainte-Marie-la-Mer,Saint-Michel-de-Llotes,Sournia,Taillet,Théza,Torreilles,Villelongue-de-la-Salanque,Le Vivier
 }}
-[AOP]limoux_(blanquette-cremant-methode_ancestrale)
+[AOP]limoux_blanquette_cremant_methode_ancestrale
 [BORDER_SZ]10
 {{
 dep=11
@@ -178,13 +178,13 @@ communes=Azillanet,Cesseras,Félines-Minervois,La Livinière,Siran
 dep=34
 communes=Castelnau-de-Guers,Florensac,Mèze,Montagnac,Pinet,Pomérols
 }}
-[AOP]saint-chinian (berlou)
+[AOP]saint-chinian_berlou
 [BORDER_SZ]5
 {{
 dep=34
 communes=Berlou,Cessenon-sur-Orb,Prades-sur-Vernazobre,Roquebrun,Vieussan
 }}
-[AOP]saint-chinian (roquebrun)
+[AOP]saint-chinian_roquebrun
 [BORDER_SZ]5
 {{
 dep=34

@@ -139,7 +139,7 @@ int main(int ac, char** av)
 			agg_renderer<image_rgba8> ren(m, buf);
 
 			ren.apply();
-			save_map(m, "/home/owmuser/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml");
+			save_map(m, "/home/owmuser/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml"); // TODO change the name to the unix file version
 			std::cout << "XML output at: /home/owmuser/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml" << std::endl;
 
 		}

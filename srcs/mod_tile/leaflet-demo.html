@@ -56,6 +56,20 @@
 		</div>
 
 		<script>
+			var popup = L.popup();
+			function onMapClick(e) {
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open('POST', '/cgi-bin/cgi_hook.py', true);
+				httpRequest.onload = function() {
+					var myData = httpRequest.responseText;
+					popup
+						.setLatLng(e.latlng)
+						.setContent(myData + "You clicked: " + e.latlng.toString())
+						.openOn(map);
+				}
+				httpRequest.send("latlong=" + e.latlng.toString());
+			}
+
 			var highlighted_aop = L.tileLayer({
 					maxZoom: 18,
 					minZoom: 2,
@@ -64,15 +78,18 @@
 
 			var lock = 0;
 			function show_poly(e) {
-				highlighted_aop
-					.setUrl('/tile/france/' + e.toString() + '/{z}/{x}/{y}.png')
-				.addTo(map);
+				if (lock == 0)
+					highlighted_aop
+						.setUrl('/tile/france/' + e.toString() + '/{z}/{x}/{y}.png')
+					.addTo(map);
 			}
+
 			function lock_poly() {
 				lock = 1;
 			}
+
 			function hide_poly() {
-				if (lock != 0)
+				if (lock == 0)
 					highlighted_aop.remove();
 			}
 
@@ -86,6 +103,7 @@
 			function show_split(e) {
 				document.getElementById("split").style.display = "block"
 				lock_poly();
+				popup.remove();
 			}
 
 			// the OpenStreetMap tiles
@@ -113,20 +131,6 @@
 				collapsed: true,
 			})
 			.addTo(map); 
-
-			var popup = L.popup();
-			function onMapClick(e) {
-				var httpRequest = new XMLHttpRequest();
-				httpRequest.open('POST', '/cgi-bin/cgi_hook.py', true);
-				httpRequest.onload = function() {
-					var myData = httpRequest.responseText;
-					popup
-						.setLatLng(e.latlng)
-						.setContent(myData + "You clicked: " + e.latlng.toString())
-						.openOn(map);
-				}
-				httpRequest.send("latlong=" + e.latlng.toString());
-			}
 
 			map.on('click', onMapClick);
 
