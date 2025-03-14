@@ -33,11 +33,14 @@ def main():
             if n.find("_data") > 1:
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()} #################################" + bcolors.ENDC)
                 reg = n[:-5] 
-                aoc_data = open("./" + n, "r")
+                aoc_data = open("./" + n, "r+")
                 line = aoc_data.readline()
+                aop_list = []
+                cursor.execute(SQL("DROP VIEW IF EXISTS combined_table;"))
                 while line: 
                     if line.strip().find("[AOP]") == 0:
                         aop = f'"{line[5:].strip()}"'
+                        aop_list.append(f"\"\"{aop}\"\"")
                         print ("aop = ", aop)
                     elif line.strip().find("[BORDER_SZ]") == 0:
                         border_sz = line[11:].strip()
@@ -45,6 +48,21 @@ def main():
                     elif line.find("{{\n") == 0:
                         create_aop(reg, cursor, aop, border_sz, aoc_data)
                     line = aoc_data.readline()
+                sql_view = ""
+                for x in aop_list:
+                    if sql_view == "":
+                        sql_view = f"CREATE VIEW combined_table AS SELECT geom, name FROM {x} "
+                    else:
+                        sql_view += f"UNION ALL SELECT geom, name FROM {x} "
+                sql_view +=";"
+                cursor.execute(SQL(sql_view + "select st_extent(st_flipcoordinates(st_transform(st_envelope(geom), 4326))) from combined_table"))
+                # L.latLngBounds(L.latLng(50.736455, -6.328125),L.latLng(40.553080, 9.843750))
+                extent = cursor.fetchall()[0][0][3:]
+                print ("extent of the region = " + extent) 
+                ind = extent.find(",")
+                ext_leaflet = "L.latLngBounds(L.latLng" + extent[:ind] + "),L.latLng(" + extent[extent.find(",") + 1:] + ")"
+                aoc_data.write(ext_leaflet.replace(" ", ", ") + "\n")
+                        
                 aoc_data.close()
                 connection.commit()
 

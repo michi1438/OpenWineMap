@@ -1,0 +1,514 @@
+[AOP]cremant_de_loire
+BORDER_SZ]15
+{{
+dep=79
+communes=Argenton-l'Église,Bouillé-Loretz,Brion-près-Thouet,Louzy,Mauzé-Thouarsais,Oiron,Saint-Cyr-la-Lande,Sainte-Radegonde,Sainte-Verge,Saint-Martin-de-Mâcon,Saint-Martin-de-Sanzay,Thouars,Tourtenay,Val-en-Vignes
+dep=37
+communes=Amboise,Anché,Artannes-sur-Indre,Athée-sur-Cher,Avoine,Avon-les-Roches,Azay-le-Rideau,Azay-sur-Cher,Beaumont-en-Véron,Benais,Bléré,Bossay-sur-Claise,Bourgueil,Brizay,Candes-Saint-Martin,Cangey,Chambray-lès-Tours,Chançay,Chanceaux-sur-Choisille,La Chapelle-sur-Loire,Chargé,Cheillé,Chemillé-sur-Indrois,Chenonceaux,Chinon,Chisseaux,Chouzé-sur-Loire,Cinais,Cinq-Mars-la-Pile,Civray-de-Touraine,Coteaux-sur-Loire,Couziers,Cravant-les-Côteaux,La Croix-en-Touraine,Crouzilles,Dierre,Draché,Épeigné-les-Bois,Esvres,Fondettes,Francueil,Genillé,Huismes,L'Ȋle-Bouchard,Joué-lès-Tours,Langeais,Larçay,Lémeré,Lerné,Lignières-de-Touraine,Ligré,Limeray,Lussault-sur-Loire,Luynes,Luzillé,Marçay,Montlouis-sur-Loire,Montreuil-en-Touraine,Mosnes,Nazelles-Négron,Neuillé-le-Lierre,Noizay,Panzoult,Parçay-Meslay,Pocé-sur-Cisse,Pont-de-Ruan,Razines,Restigné,Reugny,Rigny-Ussé,Rivarennes,Rivière,La Roche-Clermault,Rochecorbon,Saché,Saint-Avertin,Saint-Benoît-la-Forêt,Sainte-Maure-de-Touraine,Saint-Étienne-de-Chigny,Saint-Germain-sur-Vienne,Saint-Martin-le-Beau,Saint-Nicolas-de-Bourgueil,Saint-Ouen-les-Vignes,Saint-Règle,Savigny-en-Véron,Savonnières,Sazilly,Seuilly,Souvigny-de-Touraine,Tavant,Theneuil,Thilouze,Thizay,Tours,Vallères,Véretz,Vernou-sur-Brenne,Villaines-les-Rochers,Vouvray
+dep=41
+communes=Angé,Blois,Candé-sur-Beuvron,Cellettes,Chailles,Châteauvieux,Châtillon-sur-Cher,Chaumont-sur-Loire,Chémery,Cheverny,Chissay-en-Touraine,Chitenay,Choussy,Contres,Cormeray,Couddes,Couffy,Cour-Cheverny,Faverolles-sur-Cher,Feings,Fougères-sur-Bièvre,Fresnes,Huisseau-sur-Cosson,Mareuil-sur-Cher,Maslives,Méhers,Mesland,Meusnes,Monteaux,Monthou-sur-Bièvre,Monthou-sur-Cher,Les Montils,Montlivault,Mont-près-Chambord,Montrichard Val de Cher,Muides-sur-Loire,Noyers-sur-Cher,Oisly,Ouchamps,Pontlevoy,Pouillé,Rilly-sur-Loire,Saint-Aignan,Saint-Claude-de-Diray,Saint-Dyé-sur-Loire,Saint-Georges-sur-Cher,Saint-Julien-de-Chédon,Saint-Laurent-Nouan,Saint-Romain-sur-Cher,Sambin,Sassay,Seigy,Seur,Soings-en-Sologne,Thenay,Thésée,Tour-en-Sologne,Valaire,Valencisse,Veuzain-sur-Loire,Vineuil
+dep=49
+communes=Allonnes,Angers,Antoigné,Artannes-sur-Thouet,Aubigné-sur-Layon,Beaulieu-sur-Layon,Bellevigne-en-Layon,Blaison-Saint-Sulpice,Bouchemaine,Brain-sur-Allonnes,Brézé,Brissac Loire Aubance,Brossay,Cernusson,Chacé,Chalonnes-sur-Loire,Champtocé-sur-Loire,Chaudefonds-sur-Layon,Chemillé-en-Anjou,Cizay-la-Madeleine,Cléré-sur-Layon,Le Coudray-Macouard,Courchamps,Denée,Dénezé-sous-Doué,Distré,Doué-en-Anjou,Épieds,Fontevraud-l'Abbaye,Les Garennes sur Loire,Gennes-Val-de-Loire,Huillé,Ingrandes-Le Fresnesur Loire,Jarzé Villages,Louresse-Rochemenier,Lys-Haut-Layon,Mauges-sur-Loire,Mazé-Milon,Montilliers,Montreuil-Bellay,Montsoreau,Mozé-sur-Louet,Mûrs-Erigné,Orée d'Anjou,Parnay,Passavant-sur-Layon,La Possonnière,Le Puy-Notre-Dame,Rochefort-sur-Loire,Rou-Marson,Saint-Cyr-en-Bourg,Sainte-Gemmes-sur-Loire,Saint-Georges-sur-Loire,Saint-Germain-des-Prés,Saint-Just-sur-Dive,Saint-Macaire-du-Bois,Saint-Melaine-sur-Aubance,Saumur,Savennières,Soulaines-sur-Aubance,Souzay-Champigny,Terranjou,Tuffalun,Turquant,Les Ulmes,Val-du-Layon,Varennes-sur-Loire,Varrains,Vaudelnay,Villevêque 
+dep=86
+communes=Berrie,Curçay-sur-Dive,Glénouze,Pouançay,Ranton,Saint-Léger-de-Montbrillais,Saix,Ternay,Les Trois-Moutiers
+}}
+[AOP]rose_de_loire
+[BORDER_SZ]15
+{{
+dep=79
+communes=Argenton-l'Église,Bouillé-Loretz,Brion-près-Thouet,Louzy,Mauzé-Thouarsais,Oiron,Saint-Cyr-la-Lande,Sainte-Radegonde,Sainte-Verge,Saint-Martin-de-Mâcon,Saint-Martin-de-Sanzay,Thouars,Tourtenay,Val-en-Vignes
+dep=37
+communes=Amboise,Anché,Artannes-sur-Indre,Athée-sur-Cher,Avoine,Avon-les-Roches,Azay-le-Rideau,Azay-sur-Cher,Beaumont-en-Véron,Benais,Bléré,Bossay-sur-Claise,Bourgueil,Brizay,Candes-Saint-Martin,Cangey,Chambray-lès-Tours,Chançay,Chanceaux-sur-Choisille,La Chapelle-sur-Loire,Chargé,Cheillé,Chemillé-sur-Indrois,Chenonceaux,Chinon,Chisseaux,Chouzé-sur-Loire,Cinais,Cinq-Mars-la-Pile,Civray-de-Touraine,Coteaux-sur-Loire,Couziers,Cravant-les-Côteaux,La Croix-en-Touraine,Crouzilles,Dierre,Draché,Épeigné-les-Bois,Esvres,Fondettes,Francueil,Genillé,Huismes,L'Ȋle-Bouchard,Joué-lès-Tours,Langeais,Larçay,Lémeré,Lerné,Lignières-de-Touraine,Ligré,Limeray,Lussault-sur-Loire,Luynes,Luzillé,Marçay,Montlouis-sur-Loire,Montreuil-en-Touraine,Mosnes,Nazelles-Négron,Neuillé-le-Lierre,Noizay,Panzoult,Parçay-Meslay,Pocé-sur-Cisse,Pont-de-Ruan,Razines,Restigné,Reugny,Rigny-Ussé,Rivarennes,Rivière,La Roche-Clermault,Rochecorbon,Saché,Saint-Avertin,Saint-Benoît-la-Forêt,Sainte-Maure-de-Touraine,Saint-Étienne-de-Chigny,Saint-Germain-sur-Vienne,Saint-Martin-le-Beau,Saint-Nicolas-de-Bourgueil,Saint-Ouen-les-Vignes,Saint-Règle,Savigny-en-Véron,Savonnières,Sazilly,Seuilly,Souvigny-de-Touraine,Tavant,Theneuil,Thilouze,Thizay,Tours,Vallères,Véretz,Vernou-sur-Brenne,Villaines-les-Rochers,Vouvray
+dep=41
+communes=Angé,Blois,Chailles,Châteauvieux,Châtillon-sur-Cher,Chaumont-sur-Loire,Chémery,Chissay-en-Touraine,Choussy,Contres,Couddes,Couffy,Faverolles-sur-Cher,Mareuil-sur-Cher,Méhers,Mesland,Meusnes,Monteaux,Monthou-sur-Bièvre,Monthou-sur-Cher,Montrichard Val de Cher,Noyers-sur-Cher,Oisly,Pontlevoy,Pouillé,Rilly-sur-Loire,Saint-Aignan,Saint-Georges-sur-Cher,Saint-Julien-de-Chédon,Saint-Romain-sur-Cher,Sassay,Seigy,Soings-en-Sologne,Thenay,Thésée,Valaire,Valencisse,Vallières-les-Grandes,Valloire-sur-Cisse,Veuzain-sur-Loire
+dep=49
+communes=Allonnes,Angers,Antoigné,Artannes-sur-Thouet,Aubigné-sur-Layon,Beaulieu-sur-Layon,Bellevigne-en-Layon,Blaison-Saint-Sulpice,Bouchemaine,Brain-sur-Allonnes,Brézé,Brissac-Loire-Aubance,Brossay,Cernusson,Chacé,Chalonnes-sur-Loire,Champtocé-sur-Loire,Chaudefonds-sur-Layon,Chemillé-en-Anjou,Cizay-la-Madeleine,Cléré-sur-Layon,Le Coudray-Macouard,Courchamps,Denée,Dénezé-sous-Doué,Distré,Doué-en-Anjou,Épieds,Fontevraud-l'Abbaye,Les Garennes sur Loire,Gennes-Val-de-Loire,Huillé,Ingrandes-Le Fresne sur Loire,Jarzé Villages,Louresse-Rochemenier,Lys-Haut-Layon,Mauges-sur-Loire,Mazé-Milon,Montilliers,Montreuil-Bellay,Montsoreau,Mozé-sur-Louet,Mûrs-Erigné,Orée d'Anjou,Parnay,Passavant-sur-Layon,La Possonnière,Le Puy-Notre-Dame,Rochefort-sur-Loire,Rou-Marson,Saint-Cyr-en-Bourg,Sainte-Gemmes-sur-Loire,Saint-Georges-sur-Loire,Saint-Germain-des-Prés,Saint-Just-sur-Dive,Saint-Macaire-du-Bois,Saint-Melaine-sur-Aubance,Saumur,Savennières,Soulaines-sur-Aubance,Souzay-Champigny,Terranjou,Tuffalun,Turquant,Les Ulmes,Val-du-Layon,Varennes-sur-Loire,Varrains,Vaudelnay,Villevêque
+dep=86
+communes=Berrie,Curçay-sur-Dive,Glénouze,Pouançay,Ranton,Saint-Léger-de-Montbrillais,Saix,Ternay,Les Trois-Moutiers
+}}
+[AOP]anjou_cabernet-d'anjou_rose-d'anjou
+[BORDER_SZ]15
+{{
+dep=79
+communes=Argenton-l'Eglise,Bouillé-Loretz,Bouillé-Saint-Paul,Brion-près-Thouet,Cersay,Louzy,Mauzé-Thouarsais,Oiron,Saint-Cyr-la-Lande,Saint-Martin-de-Mâcon,Saint-Martin-de-Sanzay,Sainte-Radegonde,Sainte-Verge,Thouars,Tourtenay
+dep=49
+communes=Les Alleuds,Allonnes,Ambillou-Château,Angers,Antoigné,Artannes-sur-Thouet,Aubigné-sur-Layon,Beaulieu-sur-Layon,Blaison-Gohier,Bouchemaine,Bouzillé,Brain-sur-Allonnes,Brézé,Brigné,Brissac-Quincé,Brossay,Cernusson,Les Cerqueux-sous-Passavant,Chacé,Chalonnes-sur-Loire,Champ-sur-Layon,Champtocé-sur-Loire,Champtoceaux,Chanzeaux,La Chapelle-Saint-Florent,Charcé-Saint-Ellier-sur-Aubance,Chaudefonds-sur-Layon,Chavagnes,Chemellier,Chênehutte-Trêves-Cunault,Cizay-la-Madeleine,Cléré-sur-Layon,Concourson-sur-Layon,Le Coudray-Macouard,Courchamps,Coutures,Denée,Dénezé-sous-Doué,Distré,Doué-la-Fontaine,Drain,Epieds,Faveraye-Mâchelles,Faye-d'Anjou,Fontaine-Milon,Fontevraud-l'Abbaye,Forges,La Fosse-de-Tigné,Gennes,Grézillé,Huillé,Ingrandes,Juigné-sur-Loire,La Jumellière,Landemont,Liré,Louerre,Louresse-Rochemenier,Lué-en-Baugeois,Luigné,Le Marillais,Martigné-Briand,Meigné,Le Mesnil-en-Vallée,Montfort,Montilliers,Montjean-sur-Loire,Montreuil-Bellay,Montsoreau,Mozé-sur-Louet,Mûrs-Erigné,Notre-Dame-d'Allençon,Noyant-la-Plaine,Nueil-sur-Layon,Parnay,Passavant-sur-Layon,Pellouailles-les-Vignes,La Pommeraye,La Possonnière,Le Puy-Notre-Dame,Rablay-sur-Layon,Rochefort-sur-Loire,Rou-Marson,Saint-Aubin-de-Luigné,Saint-Cyr-en-Bourg,Saint-Florent-le-Vieil,Saint-Georges-des-Sept-Voies,Saint-Georges-sur-Layon,Saint-Georges-sur-Loire,Saint-Germain-des-Prés,Saint-Jean-des-Mauvrets,Saint-Just-sur-Dive,Saint-Lambert-du-Lattay,Saint-Laurent-de-la-Plaine,Saint-Laurent-du-Mottay,Saint-Macaire-du-Bois,Saint-Melaine-sur-Aubance,Saint-Rémy-la-Varenne,Saint-Saturnin-sur-Loire,Saint-Sigismond,Saint-Sulpice-sur-Loire,Saint-Sylvain-d'Anjou,Sainte-Gemmes-sur-Loire,Saulgé-l'Hôpital,Saumur,Savennières,Soucelles,Soulaines-sur-Aubance,Souzay-Champigny,Tancoigné,Thouarcé,LeThoureil,Tigné,Trémont,Turquant,Les Ulmes,Valanjou,La Varenne,Varennes-sur-Loire,Varrains,Vauchrétien,Vaudelnay,Les Verchers-sur-Layon,Verrie,Vihiers,Villevêque
+dep=86
+communes=Berrie,Curçay-sur-Dive,Glénouze,Pouançay,Ranton,Saint-Léger-de-Montbrillais,Saix,Ternay,Les Trois-Moutiers
+}}
+[AOP]saumur
+[BORDER_SZ]15
+{{
+dep=49
+communes=Ambillou-Château,Antoigné,Artannes-sur-Thouet,Aubigné-Briand,Brézé,Brigné-sur-Layon,Brossay,Cernusson,Les Cerqueux-sous-Passavant,Chacé,Chemellier,Chênehutte-Trèves-Cunault,Cizay-la-Madeleine,Cléré-sur-Layon,Concourson-sur-Layon,Le Coudray-Macouard,Courchamps,Dénezé-sous-Doué,Distré,Doué-la-Fontaine,Épieds,Fontevraud-l'Abbaye,Forges,La Fosse-de-Tigné,Gennes,Grézillé,Martigné-Briand,Meigné,Montfort,Montilliers,Montreuil-Bellay,Montsoreau,Nueil-sur-Layon,Parnay,Passavant-sur-Layon,Le Puy-Notre-Dame,Rou-Marson,Saint-Cyr-en-Bourg,Saint-Georges-des-Sept-Voies,Saint-Georges-sur-Layon,Saint-Just-sur-Dive,Saint-Macaire-du-Bois,Saumur,Souzay-Champigny,Tancoigné,Le Thoureil,Tigné,Trémont,Turquant,Les Ulmes,Varrains,Vaudelnay,LesVerchers-sur-Layon,Verrie,Vihiers
+dep=79
+communes=Argenton-l'Église,Bouillé-Loretz,Bouillé-Saint-Paul,Brion-près-Thouet,Cersay,Mauzé-Thouarsais,Saint-Martin-de-Mâcon,Saint-Martin-de-Sanzay,Sainte-Verge,Tourtenay 
+dep=86
+communes=Berrie,Curçay-sur-Dive,Glénouze,Pouançay,Ranton,Saint-Léger-de-Montbrillais,Saix,Ternay,Les Trois-Moutiers
+}}
+[AOP]touraine
+[BORDER_SZ]15
+{{
+dep=37
+communes=Amboise,Anché,Artannes-sur-Indre,Athée-sur-Cher,Avoine,Avon-les-Roches,Azay-le-Rideau,Azay-sur-Cher,Beaumont-en-Véron,Benais,Bléré,Bossay-sur-Claise,Bourgueil,Brizay,Candes-Saint-Martin,Cangey,Chambray-lès-Tours,Chançay,Chanceaux-sur-Choisille,La Chapelle-sur-Loire,Chargé,Cheillé,Chemillé-sur-Indrois,Chenonceaux,Chinon,Chisseaux,Chouzé-sur-Loire,Cinais,Cinq-Mars-la-Pile,Civray-de-Touraine,Couziers,Cravant-les-Coteaux,La Croix-en-Touraine,Crouzilles,Dierre,Draché,Epeigné-les-Bois,Esvres,Fondettes,Francueil,Genillé,Huismes,L'Ile-Bouchard,Ingrandes-de Touraine,Joué-lès-Tours,Langeais,Larçay,Lémeré,Lerné,Lignières-de-Touraine,Ligré,Limeray,Lussault-sur-Loire,Luynes,Luzillé,Marçay,Montlouis-sur-Loire,Montreuil-en-Touraine,Mosnes,Nazelles-Négron,Neuillé-le-Lierre,Noizay,Panzoult,Parçay-Meslay,Pocé-sur-Cisse,Pont-de-Ruan,Razines,Restigné,Reugny,Rigny-Ussé,Rivarennes,Rivière,La Roche-Clermault,Rochecorbon,Saché,Saint-Avertin,Saint-Benoît-la-Forêt,Saint-Etienne-de-Chigny,Saint-Germain-sur-Vienne,Saint-Martin-le-Beau,Saint-Michel-sur-Loire,Saint-Nicolas-de-Bourgueil,Saint-Ouen-les-Vignes,Saint-Patrice,Saint-Règle,Sainte-Maure-de-Touraine,Savigny-en-Véron,Savonnières,Sazilly,Seuilly,Souvigny-de-Touraine,Tavant,Theneuil,Thilouze,Thizay,Tours,Vallères,Véretz,Vernou-sur-Brenne,Villaines-les-Rochers,Vouvray
+dep=41
+communes=Angé,Blois,Bourré,Chailles,Chambon-sur-Cisse,Châteauvieux,Châtillon-sur-Cher,Chaumont-sur-Loire,Chémery,Chissay-en-Touraine,Choussy,Chouzy-sur-Cisse,Contres,Couddes,Couffi,Faverolles-sur-Cher,Mareuil-sur-Cher,Méhers,Mesland,Meusnes,Molineuf,Monteaux,Monthou-sur-Bièvre,Monthou-sur-Cher,Montrichard,Noyers-sur-Cher,Oisly,Onzain,Pontlevoy,Pouillé,Rilly-sur-Loire,Saint-Aignan,Saint-Georges-sur-Cher,Saint-Julien-de-Chedon,Saint-Romain-sur-Cher,Sassay,Seigy,Soings-en-Sologne,Thenay,Thésée,Valaire,Vallières-les-Grandes
+}}
+[AOP]gros_plant_du_pays_nantais
+[BORDER_SZ]10
+{{
+dep=44
+communes=Aigrefeuille-sur-Maine,Ancenis,Anetz,Barbechat,Basse-Goulaine,la Bernerie-en-Retz,le Bignon,La Boissière-du-Doré,Bouaye,Bouguenais,Bourgneuf-en-Retz,Brains,Carquefou,le Cellier,laChapelle-Basse-Mer,la Chapelle-Heulin,Château-Thébaud,Cheix-en-Retz,Chéméré,la Chevrolière,Clisson,Corcoué-sur-Logne,Couffé,Fresnay-en-Retz,Frossay,Geneston,Gétigné,Gorges,Haute-Goulaine,la Haye-Fouassière,le Landreau,Legé,Ligné,la Limouzinière,le Loroux-Bottereau,Machecoul,Maisdon-sur-Sèvre,Mauves-sur-Loire,Mésanger,Monnières,Montbert,les Moutiers-en-Retz,Mouzillon,Oudon,le Pallet,Paulx,le Pellerin,la Planche,Pont-Saint-Martin,Pornic,Port-Saint-Père,la Regrippière,la Remaudière,Remouillé,Rezé,Rouans,Saint-Aignan-de-Grandieu,Saint-Colomban,Sainte-Pazanne,Saint-Etienne-de-Mer-Morte,Saint-Fiacre-sur-Maine,Saint-Géréon,Saint-Herblon,Saint-Hilaire-de-Chaléons,Saint-Hilaire-de-Clisson,Saint-Julien-de-Concelles,Saint-Léger-les-Vignes,Saint-Lumine-de-Clisson,Saint-Lumine-de-Coutais,Saint-Mars-de-Coutais,Saint-Même-le-Tenu,Saint-Michel-Chef-Chef,Saint-Philbert-de-Grandlieu,les Sorinières,Thouaré-sur-Loire,Touvois,Vallet,Varades,Vertou,Vieillevigne,Vue
+dep=49
+communes=Bouzillé,Champtoceaux,la Chapelle-Saint-Florent,la Chaussaire,Drain,Gesté,Landemont,Liré,le Marillais,Saint-Christophe-la-Couperie,Saint-Crespin-sur-Moine,Saint-Florent-le-Vieil,Saint Germain-sur-Moine,Saint-Laurent-des-Autels,Saint-Sauveur-de-Landemont,Tillières,la Varenne
+dep=89
+communes=Cugand,Rocheservière,Saint-Etienne-du-Bois,Saint-Hilaire-de-Loulay,Saint-Philbert-de-Bouaine
+}}
+[AOP]haut-poitou
+[BORDER_SZ]10
+{{
+dep=86
+communes=Amberre,Avanton,Beaumont,Blaslay,Chabournay,Champigny-le-sec,Charrais,Chénéché,Cherves,Chouppes,Cissé,Coussay,Craon,Cuhon,Dissay,Jaunay-Clan,Lencloître,Maisonneuve,Marigny-Brizay,Massognes,Mirebeau,Neuville-de-Poitou,le Rochereau,Saint-Cyr,Saint-Georges-les-Baillargeaux,Thurageau,Varennes,Vendeuvre-du-Poitou,Vouzailles,Yversay
+dep=79
+communes=Doux
+}}
+[AOP]orleans
+[BORDER_SZ]10
+{{
+dep=45
+communes=Baule,Beaugency,Chécy,Cléry-Saint-André,Mardié,Mareau-aux-Prés,Meung-sur-Loire,Mézières-lez-Cléry,Olivet,Orléans,Saint-Ay,Saint-Hilaire-Saint-Mesmin,Saint-Jean-de-Braye
+}}
+[AOP]pouilly-fume
+[BORDER_SZ]10
+{{
+dep=58
+communes=Garchy,Mesves-sur-Loire,Pouilly-sur-Loire,Saint-Andelain,Saint-Laurent-l'Abbaye,Saint-Martin-sur-Nohain,Tracy-sur-Loire
+}}
+[AOP]pouilly-sur-loire
+[BORDER_SZ]10
+{{
+dep=58
+communes=Garchy,Mesves-sur-Loire,Pouilly-sur-Loire,Saint-Andelain,Saint-Laurent-l'Abbaye,Saint-Martin-sur-Nohain,Tracy-sur-Loire
+}}
+[AOP]coteaux_de_saumur
+[BORDER_SZ]10
+{{
+dep=79
+communes=Saint-Martin-de-Mâcon,Tourtenay
+dep=49
+communes=Bellevigne-les-Châteaux,Cizay-la-Madeleine,Le Coudray-Macouard,Courchamps,Distré,Doué-en-Anjou,Épieds,Fontevraud-l'Abbaye,Montsoreau,Parnay,Le Puy-Notre-Dame,Saumur,Souzay-Champigny,Turquant,Les Ulmes,Varrains,Vaudelnay
+}}
+[AOP]saumur_puy-notre-dame
+[BORDER_SZ]10
+{{
+dep=49
+communes=Brézé,Brossay,Cizay-la-Madeleine,Distré,Doué-la-Fontaine,Épieds,Meigné,Montreuil-Bellay,LePuy-Notre-Dame,Les Ulmes,Vaudelnay,LesVerchers-sur-Layon
+dep=86
+communes=Berrie,Pouançay,Saint-Léger-de-Montbrillais,Saix,Les Trois-Moutiers
+}}
+[AOP]anjou_villages
+[BORDER_SZ]10
+{{
+dep=79
+communes=Loretz-d'Argenton,Val en Vignes
+dep=49
+communes=Aubigné-sur-Layon,Beaulieu-sur-Layon,Bellevigne-en-Layon,Blaison-Saint-Sulpice,Bouchemaine,Brissac Loire Aubance,Chalonnes-sur-Loire,Champtocé-sur-Loire,Chaudefonds-sur-Layon,Chemillé-en-Anjou,Cléré-sur-Layon,Doué-en-Anjou,Ingrandes-Le Fresne sur Loire,Lys-Haut-Layon,Mauges-sur-Loire,Passavant-sur-Layon,LaPossonnière,Rochefort-sur-Loire,Saint-Georges-sur-Loire,Saint-Germain-des-Prés,Savennières,Terranjou,Tuffalun,Val-du-Layon
+}}
+[AOP]saint-pourcain
+[BORDER_SZ]5
+{{
+dep=03
+communes=Besson,Bransat,Bresnay,Cesset,Chantelle,Chareil-Cintrat,Châtel-de-Neuvre,Chemilly,Contigny,Deneuille-lès-Chantelle,Fleuriel,Fourilles,Louchy-Montfand,Meillard,Monetay-sur-Allier,Montord,Saint-Pourçain-sur-Sioule,Saulcet,Verneuil-en-Bourbonnais
+}}
+[AOP]anjou_brissac
+[BORDER_SZ]5
+{{
+dep=49
+communes=Brissac Loire Aubance,Denée,Les Garennes sur Loire,Mozé-sur-Louet,Mûrs-Erigné,Saint-Melaine-sur-Aubance,Soulaines-sur-Aubance
+}}
+[AOP]anjou-coteaux_de_la_loire
+[BORDER_SZ]5
+{{
+dep=49
+communes=Bouchemaine,Chalonnes-sur-Loire,Champtocé-sur-Loire,Ingrandes-Le Fresne sur Loire,Mauges-sur-Loire,La Possonnière,Saint-Georges-sur-Loire,Saint-Germain-des-Prés
+}}
+[AOP]bonnezeaux
+[BORDER_SZ]5
+{{
+dep=49
+communes=Bellevigne-en-Layon
+}}
+[AOP]bourgueil
+[BORDER_SZ]5
+{{
+dep=37
+communes=Benais,Bourgueil,La Chapelle-sur-Loire,Chouzé-sur-Loire,Coteaux-Sur-Loire,Restigné,Saint-Nicolas-de-Bourgueil
+}}
+[AOP]chateaumeillant
+[BORDER_SZ]5
+{{
+dep=18
+communes=Châteaumeillant,Saint-Maur,Vesdun
+dep=36
+communes=Champillet,Feusines,Néret,Urciers
+}}
+[AOP]chinon
+[BORDER_SZ]5
+{{
+dep=37
+communes=Anché,Avoine,Avon-les-Roches,Beaumont-en-Véron,Brizay,Candes-Saint-Martin,Chinon,Cinais,Couziers,Cravant-les-Côteaux,Crouzilles,Huismes,L'Ile-Bouchard,Lerné,Ligré,Panzoult,Rivière,La Roche-Clermault,Saint-Benoît-la-Forêt,Saint-Germain-sur-Vienne,Savigny-en-Véron,Sazilly,Seuilly,Tavant,Theneuil,Thizay
+}}
+[AOP]cote_roannaise
+[BORDER_SZ]5
+{{
+dep=37
+communes=Ambierle,Bully,Changy,Le Crozet,Lentigny,La Pacaudière,Renaison,Saint-Alban-les-Eaux,Saint-André-d'Apchon,Saint-Haon-le-Châtel,Saint-Haon-le-Vieux,Saint-Jean-Saint-Maurice-sur-Loire,Villemontais,Villerest
+}}
+[AOP]coteaux_d'ancenis
+[BORDER_SZ]5
+{{
+dep=44
+communes=Ancenis,Carquefou,Le Cellier,Couffé,Divatte-sur-Loire,Ligné,Loireauxence,Mauves-sur-Loire,Mésanger,Montrelais,Oudon,Saint-Herblon,Thouaré-sur-Loire,Vair-sur-Loire
+dep=49
+communes=Mauges-sur-Loire,Orée d'Anjou
+}}
+[AOP]coteaux-de-l'aubance
+[BORDER_SZ]5
+{{
+dep=49
+communes=Brissac-Quincé,Denée,Juigné-sur-Loire,Mozé-sur-Louet,Mûrs-Erigné,Saint-Jean-des-Mauvrets,Saint-Melaine-sur-Aubance,Saint-Saturnin-sur-Loire,Soulaines-sur-Aubance,Vauchrétien
+dep=86
+communes=Berrie,Curçay-sur-Dive,Glénouze,Pouançay,Ranton,Saint-Léger-de-Montbrillais,Saix,Ternay,Les Trois-Moutiers
+}}
+[AOP]coteaux-du-giennois
+[BORDER_SZ]5
+{{
+dep=45
+communes=Beaulieu-sur-Loire,Bonny-sur-Loire,Briare,Gien,Ousson-sur-Loire,Thou
+dep=58
+communes=Alligny-Cosne,La Celle-sur-Loire,Cosne-Cours-sur-Loire,Myennes,Neuvy-sur-Loire,Pougny,Saint-Loup,Saint-Père
+}}
+[AOP]coteaux-du-layon
+[BORDER_SZ]5
+{{
+dep=49
+communes=Aubigné-sur-Layon,Beaulieu-sur-Layon,Brigné,Chalonnes-sur-Loire,Champ-sur-Layon,Chanzeaux,Chaudefonds-sur-Layon,Chavagnes,Cléré-sur-Layon,Concourson-sur-Layon,Faveraye-Mâchelles,Faye-d'Anjou,La Fosse-de-Tigné,La Jumellière,Martigné-Briand,Nueil-sur-Layon,Passavant-sur-Layon,Rablay-sur-Layon,Rochefort-sur-Loire,Saint-Aubin-de-Luigné,Saint-Lambert-du-Lattay,Saint-Georges-sur-Layon,Tancoigné,Thouarcé,Tigné,Trémont,Les Verchers-sur-Layon
+}}
+[AOP]coteaux-du-layon-chaume
+[BORDER_SZ]5
+{{
+dep=49
+communes=Rochefort-sur-Loire
+}}
+[AOP]coteaux_du_loir
+[BORDER_SZ]5
+{{
+dep=37
+communes=Bueil-en-Touraine,Saint-Aubin-le-Dépeint,Saint-Christophe-sur-le-Nais,Saint-Paterne-Racan,Villebourg
+dep=72
+communes=Beaumont-sur-Dême,Chahaignes,La Chartre-sur-le-Loir,Chenu,Dissay,Flée,Lhomme,Loir en Vallée,Marçon,Montval-sur-Loir,Nogent-sur-Loir,Saint-Germain-d'Arcé,Saint-Pierre-de-Chevillé
+}}
+[AOP]coteaux_du_vendomois
+[BORDER_SZ]5
+{{
+dep=41
+communes=Artins,Azé,Couture-sur-Loir,Les Essarts,Fontaine-les-Coteaux,Houssay,Lavardin,Lunay,Marcilly-en-Beauce,Mazangé,Montoire-sur-le-Loir,Naveil,Les Roches-l'Evêque,Saint-Martin-des-Bois,Saint-Ouen,Saint-Rimay,Sougé,Ternay,Thoré-la-Rochette,Tréhet,Troo,Vendôme,Villavard,Villedieu-le-Château,Villerable,Villiersfaux,Villiers-sur-Loir
+}}
+[AOP]cotes_d'auvergne
+BORDER_SZ]10
+{{
+dep=63
+communes=Sauvagnat-Sainte-Marthe,La Sauvetat,Sayat,Tallende,Vertaizon,Veyre-Monton,Vic-le-Comte,Volvic,Yssac-la-Tourette
+}}
+[AOP]cotes_d'auvergne-boudes
+BORDER_SZ]5
+{{
+dep=63
+communes=Boudes,Chalus,Saint-Hérent
+}}
+[AOP]cotes_d'auvergne-chanturgue
+BORDER_SZ]5
+{{
+dep=63
+communes=Cébazat,Clermont-Ferrand
+}}
+[AOP]cotes_d'auvergne-chateaugay
+BORDER_SZ]5
+{{
+dep=63
+communes=Cébazat,Châteaugay,Ménétrol
+}}
+[AOP]cotes_d'auvergne-corent
+BORDER_SZ]5
+{{
+dep=63
+communes=Corent,Les Martres-de-Veyre,La Sauvetat,Veyre-Monton
+}}
+[AOP]cotes_d'auvergne-madargue
+BORDER_SZ]5
+{{
+dep=63
+communes=Riom
+}}
+[AOP]cotes_du_forez
+BORDER_SZ]5
+{{
+dep=42
+communes=Arthun,Boën,Bussy-Albieu,Champdieu,Ecotay-l'Olme,Leigneux,Lezigneux,Marcilly-le-Châtel,Marcoux,Moingt-Montbrison,Pralong,Saint-Germain-Laval,Saint-Georges-Hauteville,Saint-Sixte,Saint-Thomas-la-Garde,Sainte-Agathe-la-Bouteresse,Trelins
+}}
+[AOP]cheverny
+[BORDER_SZ]10
+{{
+dep=41
+communes=Candé-sur-Beuvron,Cellettes,Cheverny,Chitenay,Cormeray,Cour-Cheverny,Feings,Fougères-sur-Bièvre,Fresnes,Huisseau-sur-Cosson,Maslives,Les Montils,Montlivault,Mont-près-Chambord,Muides-sur-Loire,Ouchamps,Saint-Claude-de-Diray,Saint-Dyé-sur-Loire,Saint-Laurent-Nouan,Sambin,Seur,Tour-en-Sologne,Vineuil,Monthou-sur-Bièvre
+}}
+[AOP]cour-cheverny
+[BORDER_SZ]5
+{{
+dep=41
+communes=Cellettes,Cheverny,Chitenay,Cormeray,Cour-Cheverny,Huisseau-sur-Cosson,Montlivault,Mont-près-Chambord,Saint-Claude-de-Diray,Tour-en-Sologne,Vineuil
+}}
+[AOP]fiefs-vendeens
+[BORDER_SZ]5
+{{
+dep=85
+communes=Auchay-sur-Vendée,Brem-sur-Mer,Bretignolles-sur-Mer,Le Champ-Saint-Père,Chantonnay,Château-Guibert,La Couture,L'Ȋle-d'Olonne,Longèves,Mareuil-sur-Lay-Dissais,Olonne-sur-Mer,Pissotte,Le Poiré-sur-Velluire,Rives de l'Yon,Rosnay,Le Tablier,Vairé,Vix
+}}
+[AOP]fiefs-vendeens_brem
+[BORDER_SZ]5
+{{
+dep=85
+communes=Brem-sur-Mer,Bretignolles-sur-Mer,L'Ȋled'Olonne,Olonne-sur-Mer,Vairé
+}}
+[AOP]fiefs-vendeens_chantonnay
+[BORDER_SZ]5
+{{
+dep=85
+communes=Chantonnay-Saint-Philbert-du-Pont-Charrault
+}}
+[AOP]fiefs-vendeens_mareuil
+[BORDER_SZ]5
+{{
+dep=85
+communes=Le Champ-Saint-Père,Château-Guibert,La Couture,Mareuil-sur-Lay-Dissais,Rives de l'Yon,Rosnay,Le Tablier
+}}
+[AOP]fiefs-vendeens_pissotte
+[BORDER_SZ]5
+{{
+dep=85
+communes=Pissotte
+}}
+[AOP]fiefs-vendeens_vix
+[BORDER_SZ]5
+{{
+dep=85
+communes=Auchay-sur-Vendéel,Longèves,Le Poiré-sur-Velluire,Vix
+}}
+[AOP]jasniere
+[BORDER_SZ]5
+{{
+dep=72
+communes=Lhomme,Loir en Vallée
+}}
+[AOP]menetou-salon
+[BORDER_SZ]5
+{{
+dep=18
+communes=Aubinges,Humbligny,Menetou-Salon,Morogues,Parassy,Pigny,Quantilly,Saint-Céols,Soulangis,Vignoux-sous-les-Aix
+}}
+[AOP]montlouis-sur-loire
+[BORDER_SZ]5
+{{
+dep=37
+communes=Lussault-sur-Loire,Montlouis-sur-Loire,Saint-Martin-le-Beau
+}}
+[AOP]muscadet
+[BORDER_SZ]15
+{{
+dep=44
+communes=Aigrefeuille-sur-Maine,Ancenis,Basse-Goulaine,Le Bignon,LaBoissière-du-Doré,Bouaye,Brains,Carquefou,Le Cellier,La Chapelle-Heulin,Château-Thébaud,LaChevrolière,Clisson,Corcoué-sur-Logne,Couffé,Divatte-sur-Loire,Geneston,Gétigné,Gorges,La Haie-Fouassière,Haute-Goulaine,Le Landreau,Legé,Ligné,LaLimouzinière,Le Loroux-Bottereau,Maisdon-sur-Sèvre,Mauves-sur-Loire,Monnières,Montbert,Mouzillon,Oudon,Le Pallet,La Planche,Pont-Saint-Martin,Port-Saint-Père,La Regrippière,LaRemaudière,Remouillé,Saint-Aignan-Grandlieu,Saint-Colomban,Sainte-Pazanne,Saint-Fiacre-sur-Maine,Saint-Géréon,Saint-Hilaire-de-Clisson,Saint-Julien-de-Concelles,Saint-Léger-les-Vignes,Saint-Lumine-de-Clisson,Saint-Lumine-de-Coutais,Saint-Mars-de-Coutais,Saint-Philbert-de-Grand-Lieu,Les Sorinières,Thouaré-sur-Loire,Vair-sur-Loire,Vallet,Vertou,Vieillevigne ,Villeneuve-en-Retz
+dep=49
+communes=Mauges-sur-Loire,Orée d'Anjou,Sèvremoine
+dep=85
+communes=Cugand,Rocheservière,Saint-Hilaire-de-Loulay,Saint-Philbert-de-Bouaine
+}}
+[AOP]muscadet_coteaux-de-la-loire
+[BORDER_SZ]10
+{{
+dep=44
+communes=Ancenis,Anetz,Barbechat,Carquefou,Le Cellier,Couffé,Ligné,Mauves-sur-Loire,Mésanger,,Oudon,Saint-Géréon,Saint-Herblon,Thouaré-sur-Loire,Varades
+dep=49
+communes=Bouzillé,Champtoceaux,La Chapelle-Saint-Florent,Drain,Landemont,Liré,Saint-Florent-le-Vieil,La Varenne
+}}
+[AOP]muscadet_cotes-de-grandlieu
+[BORDER_SZ]10
+{{
+dep=44
+communes=Le Bignon,Bouaye,Brains,La Chevrolière,Corcoué-sur-Logne,Geneston,Legé,La Limouzinière,La Planche,Montbert,Pont-Saint-Martin,Port-Saint-Père,Saint-Aignan-Grandlieu,Saint-Colomban,Sainte-Pazanne,Saint-Léger-les-Vignes,Saint-Lumine-de-Coutais,Saint-Mars-de-Coutais,Saint-Philbert-de-Grand-Lieu,Les Sorinières,Vieillevigne
+dep=85
+communes=Rocheservière,Saint-Philbert-de-Bouaine
+}}
+[AOP]muscadet_sevres-et-maine
+[BORDER_SZ]10
+{{
+dep=44
+communes=Aigrefeuille-sur-Maine,Basse-Goulaine,Le Bignon,La Chapelle-Heulin,Château-Thébaud,Clisson,Divatte-sur-Loire,Gétigné,Gorges,La Haie-Fouassière,Haute-Goulaine,Le Landreau,Le Loroux-Bottereau,Maisdon-sur-Sèvre,Monnières,Montbert,Mouzillon,Le Pallet,La Regrippière,Remouillé,Saint-Fiacre-sur-Maine,Saint-Hilaire-de-Clisson,Saint-Julien-de-Concelles,Saint-Lumine-de-Clisson,Les Sorinières,Vallet,Vertou
+dep=49
+communes=Sèvremoine,Tillières
+dep=85
+communes=Cugand,Saint-Hilaire-de-Loulay
+}}
+[AOP]muscadet_sevres-et-maine_chateau-thebaud
+[BORDER_SZ]5
+{{
+dep=44
+communes=Château-Thébaud,Maisdon-sur-Sèvre,Vertou 
+}}
+[AOP]muscadet_sevres-et-maine_clisson
+[BORDER_SZ]5
+{{
+dep=44
+communes=Aigrefeuille-sur-Maine,Château-Thébaud,Clisson,Gorges,Maisdon-sur-Sèvre,Saint-Lumine-de-Clisson 
+dep=49
+communes=Sèvremoine
+}}
+[AOP]muscadet_sevres-et-maine_gorges
+[BORDER_SZ]5
+{{
+dep=44
+communes=Clisson,Gorges,Monnières,Mouzillon
+}}
+[AOP]muscadet_sevres-et-maine_Clisson
+[BORDER_SZ]5
+{{
+dep=44
+communes=Clisson,Gorges,Monnières,Mouzillon
+}}
+[AOP]muscadet_sevres-et-maine_goulaine
+[BORDER_SZ]5
+{{
+dep=44
+communes=La Chapelle-Heulin,Haute-Goulaine,Le Landreau,Le Loroux-Bottereau,Saint-Julien-de-Concelles,Vallet
+}}
+[AOP]muscadet_sevres-et-maine_monnieres-saint-fiacre
+[BORDER_SZ]5
+{{
+dep=44
+communes=Maisdon-sur-Sèvre,Monnières,Saint-Fiacre-sur-Maine
+}}
+[AOP]muscadet_sevres-et-maine_mouzillon-Tilliere
+[BORDER_SZ]5
+{{
+dep=44
+communes=Mouzillon,Vallet
+dep=49
+communes=Sèvremoine
+}}
+[AOP]muscadet_sevres-et-maine_le_pallet
+[BORDER_SZ]5
+{{
+dep=44
+communes=La Chapelle-Heulin,Le Pallet
+}}
+[AOP]orleans-clery
+[BORDER_SZ]5
+{{
+dep=45
+communes=Cléry-Saint-André,Mareau-aux-Prés,Mézières-lez-Cléry,Olivet,Saint-Hilaire-Saint-Mesmin
+}}
+[AOP]quart-de-chaume
+[BORDER_SZ]5
+{{
+dep=49
+communes=Rochefort-sur-Loire
+}}
+[AOP]quincy
+[BORDER_SZ]5
+{{
+dep=18
+communes=Brinay,Quincy
+}}
+[AOP]reuilly
+[BORDER_SZ]5
+{{
+dep=18
+communes=Chéry,Lazenay,Lury-sur-Arnon,Preuilly
+dep=36
+communes=Diou,Reuilly
+}}
+[AOP]saint-nicolas-de-bourgueil
+[BORDER_SZ]5
+{{
+dep=37
+communes=Saint-Nicolas-de-Bourgueil
+}}
+[AOP]sancerre
+[BORDER_SZ]5
+{{
+dep=18
+communes=Bannay,Bué,Crézancy-en-Sancerre,Menetou-Râtel,Ménétréol-sous-Sancerre,Montigny,Saint-Satur,Sainte-Gemme-en-Sancerrois,Sancerre,Sury-en-Vaux,Thauvenay,Veaugues,Verdigny,Vinon
+}}
+[AOP]saumur-champigny
+[BORDER_SZ]5
+{{
+dep=49
+communes=Chacé,Montsoreau,Parnay,Saint-Cyr-en-Bourg,Saumur,Souzay-Champigny,Turquant,Varrains
+}}
+[AOP]savennieres
+[BORDER_SZ]5
+{{
+dep=49
+communes=Bouchemaine,La Possonnière,Savennières
+}}
+[AOP]touraine-amboise
+[BORDER_SZ]5
+{{
+dep=37
+communes=Amboise,Cangey,Chargé,Limeray,Montreuil-en-Touraine,Mosnes,Nazelles-Négron,Pocé-sur-Cisse,Saint-Ouen-les-Vignes,Saint-Règle
+}}
+[AOP]touraine-azay-le-rideau
+[BORDER_SZ]5
+{{
+dep=37
+communes=Artannes-sur-Indre,Azay-le-Rideau,Cheillé,Lignières-de-Touraine,Rivarennes,Saché,Thilouze,Vallères
+}}
+[AOP]touraine-chenonceaux
+[BORDER_SZ]5
+{{
+dep=37
+communes=Athée-sur-Cher,Bléré,Chenonceaux,Chisseaux,Civray-de-Touraine,La Croix-en-Touraine,Dierre,Francueil
+dep=41
+communes=Angé,Bourré,Châteauvieux,Châtillon-sur-Cher,Chissay-en-Touraine,Couffy,Faverolles-sur-Cher,Mareuil-sur-Cher,Meusnes,Monthou-sur-Cher,Montrichard,Noyers-sur-Cher,Pouillé,Saint-Aignan-sur-Cher,Saint-Georges-sur-Cher,Saint-Julien-de-Chedon,Saint-Romain-sur-Cher,Seigy,Thésée
+}}
+[AOP]touraine-mesland
+[BORDER_SZ]5
+{{
+dep=41
+communes=Chambon-sur-Cisse,Chouzy-sur-Cisse,Mesland,Molineuf,Monteaux,Onzain
+}}
+[AOP]touraine-oisly
+[BORDER_SZ]5
+{{
+dep=41
+communes=Chémery,Choussy,Contres,Couddes,Méhers,Oisly,Sassay,Soings-en-Sologne,Saint-Romain-sur-Cher,Thenay
+}}
+[AOP]touraine_noble-joue
+[BORDER_SZ]5
+{{
+dep=41
+communes=Chambray-lès-Tours,Esvres,Joué-lès-Tours,Larçay,Saint-Avertin
+}}
+[AOP]valencay
+[BORDER_SZ]5
+{{
+dep=36
+communes=Chabris,Faverolles,Fontguenand,Luçay-le-Mâle,Lye,Menetou-sur-Nahon,Parpeçay,Poulaines,Valençay,Varennes-sur-Fouzon,La Vernelle,Veuil,Villentrois
+dep=41
+communes=Selles-sur-Cher
+}}
+[AOP]vouvray
+[BORDER_SZ]5
+{{
+dep=37
+communes=Chançay,Noizay,Parçay-Meslay,Reugny,Rochecorbon,Tours-Sainte-Radegonde,Vernou-sur-Brenne,Vouvray
+}}

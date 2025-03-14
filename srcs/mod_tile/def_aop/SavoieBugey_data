@@ -1,4 +1,4 @@
-[AOP]savoie
+[AOP]savoie-roussette_de_savoie
 [BORDER_SZ]15
 {{
 dep=01
@@ -6,15 +6,23 @@ communes=Corbonod,Seyssel,Peyrieu
 dep=38
 communes=Chapareillan
 dep=73
-communes=Apremont,Arbin,Barby,Billième,Le Bourget-du-Lac,Brison-Saint-Innocent,Challes-les-Eaux,Chanaz,Chignin,Chindrieux,Cruet,Entrelacs,Fréterive,Jongieux,Lucey,Montmélian,Motz,Myans,Porte-de-Savoie,Ruffieux,Saint-Alban-Leysse,Saint-Baldoph,Saint-Jean-de-Chevelu,Saint-Jean-de-la-Porte,Saint-Jeoire-Prieuré,Saint-Pierre-d’Albigny,Serrières-en-Chautagne,Yenne
+communes=Apremont,Arbin,Barby,Billième,Le Bourget-du-Lac,Brison-Saint-Innocent,Challes-les-Eaux,Chanaz,Chignin,Chindrieux,Cruet,Entrelacs,Fréterive,Jongieux,Lucey,Montmélian,Motz,Myans,Porte-de-Savoie,Ruffieux,Saint-Alban-Leysse,Saint-Baldoph,Saint-Jean-de-Chevelu,Saint-Jean-de-la-Porte,Saint-Jeoire-Prieuré,Saint-Pierre-d'Albigny,Serrières-en-Chautagne,Yenne
 dep=74
 communes=Ayse,Ballaison,Bassy,Bonneville,Challonges,Chaumont,Chessenaz,Clarafond-Arcine,Desingy,Douvaine,Franclens,Frangy,Loisin,Marignier,Marin,Massongy,Musièges,Publier,Sciez,Thonon-les-Bains,Usinens,Vanzy,Ville-la-Grand
 }}
-[AOP]bugey
+[AOP]bugey-roussette_de_bugey
 [BORDER_SZ]15
 {{
 dep=01
 communes=L'Abergement-de-Varey,Ambérieu-en-Bugey,Ambléon,Andert-et-Condon,Anglefort,Arboys-en-Bugey,Argis,Artemare,Arvière-en-Valromey,Belley,Bénonces,Bohas-Meyriat-Rignat,Bolozon,Boyeux-Saint-Jérôme,Brens,Briord,Cerdon,Ceyzériat,Ceyzérieu,Chanay,Chazey-Bons,Cheignieu-la-Balme,Contrevoz,Conzieu,Cressin-Rochefort,Culoz-Béon,Cuzieu,Flaxieu,Groslée-Saint-Benoit,Izieu,Journans,Jujurieux,Lagnieu,Lavours,Lhuis,Magnieu,Marignieu,Massignieu-de-Rives,Mérignat,Montagnieu,Parves et Nattages,Peyrieu,Pollieu,Poncin,Rossillon,Saint-Alban,Saint-Germain-les-Paroisses,Saint-Jean-le-Vieux,Saint-Martin-de-Bavel,Saint-Martin-du-Mont,Saint-Sorlin-en-Bugey,Seillonnaz,Talissieu,Torcieu,Tossiat,Valromey-sur-Séran,Vaux-en-Bugey,Villebois,Virieu-le-Grand,Virignin,Vongnes
+}}
+[AOP]seyssel-seyssel_molette
+[BORDER_SZ]5
+{{
+dep=01
+communes=Corbonod,Seyssel
+dep=74
+communes=Seyssel
 }}
 [AOP]savoie_apremont
 [BORDER_SZ]10
@@ -38,13 +46,13 @@ communes=Chazey-Bons,Cheignieu-la-Balme
 [BORDER_SZ]5
 {{
 dep=01
-communes=Briord,Montagnieu,SeillonnaZ
+communes=Briord,Montagnieu,Seillonnaz
 }}
 [AOP]bugey_cerdon
 [BORDER_SZ]5
 {{
 dep=01
-communes=L’Abergement-de-Varey,Bohas-Meyriat-Rignat,Boyeux-Saint-Jérôme,Cerdon,Jujurieux,Mérignat,Poncin,Saint-Alban,Saint-Jean-le-Vieux,Saint-Martin-du-Mont
+communes=L'Abergement-de-Varey,Bohas-Meyriat-Rignat,Boyeux-Saint-Jérôme,Cerdon,Jujurieux,Mérignat,Poncin,Saint-Alban,Saint-Jean-le-Vieux,Saint-Martin-du-Mont
 }}
 [AOP]savoie_abymes
 [BORDER_SZ]5

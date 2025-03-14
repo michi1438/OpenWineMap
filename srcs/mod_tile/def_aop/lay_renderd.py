@@ -15,6 +15,7 @@ class bcolors:
 lyr_renderd = open("/etc/renderd.conf", "a")
 _data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
 leaf_list = ""
+lay_bnds = ""
 for n in _data: 
     if n.find("_data") > 1:
         lyr_renderd.writelines(["\n", f"[{n[:-5].lower()}]\n",
@@ -60,10 +61,22 @@ for n in _data:
                 line += f"\t\t\t\t'{n[:-5]}_brd': {n[:-5]}_brd," + os.linesep
             print(line, end="")
         print(f"Added the leaflet index.html js\n")
+        aoc_data = open(f"/home/" + os.environ['DB_USER'] + "/db_connect/" + n, "r+")
+        line = aoc_data.readline()
+        while line: 
+            if line.strip().find("L.latLngBounds") == 0:
+                lay_bnds += line.strip() + ','
+                lay_bnds += line.strip() + ','
+            line = aoc_data.readline()
+        aoc_data.close()
 
 for line in fileinput.FileInput("/var/www/html/index.html", inplace=True):
     if line.find("// ADD leaflist") >= 0:
         line += f"\t\t\tvar map = L.map('map', {{layers: [osm{leaf_list}]}}).setView({{lon: 2.7, lat: 46.6}}, 5);" + os.linesep
+    if line.find("// ADD lay_list") >= 0:
+        line += f"\t\t\tvar lay_list = [{leaf_list[1:]}];" + os.linesep
+    if line.find("// ADD lay_bounds") >= 0:
+        line += f"\t\t\tvar lay_bounds = [{lay_bnds[:-1]}];" + os.linesep
     print(line, end="")
 print(f"Added the leaflist to index js\n")
 

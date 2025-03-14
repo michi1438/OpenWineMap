@@ -34,15 +34,18 @@
 			}
 
 			.toggle-button {
-			  position: absolute;
-			  right: 0;
-			  z-index: 1000;
-			  background: white;
-			  height: inherit;
-			  width: 20px;
-			  border: 1px solid #ccc;
-			  cursor: pointer;
-			  opacity: 0.5;
+				position: absolute;
+				right: 0;
+				z-index: 1000;
+				background: white;
+				height: inherit;
+				width: 20px;
+				border: 1px solid #ccc;
+				cursor: pointer;
+				opacity: 0.5;
+			}
+			.leaflet-popup-content-wrapper {
+				opacity: 0.65;
 			}
         </style>
 
@@ -118,6 +121,24 @@
 			//L.control.scale({imperial: false, metric: true}).addTo(map);
 
 			// ADD leaflist
+
+			// ADD lay_list
+
+			// ADD lay_bounds
+
+			map.on('moveend', function() {
+			  var mapBounds = map.getBounds();
+			  for(var i = 0; i < lay_list.length; i++)
+			  {
+				  if (lay_bounds[i].intersects(mapBounds)) {
+					// Add the layer if the map view is within the extent
+					lay_list[i].addTo(map);
+				  } else {
+					// Remove the layer if the map view is outside the extent
+					map.removeLayer(lay_list[i]);
+				  }
+			  }
+			});
 
 
 			const baseLayers = {

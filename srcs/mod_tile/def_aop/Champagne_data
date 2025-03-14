@@ -1,0 +1,32 @@
+[AOP]champagne_coteaux-champenois
+[BORDER_SZ]15
+{{
+dep=02
+communes=Azy-sur-Marne,Barzy-sur-Marne,Baulne-en-Brie,Bézu-le-Guéry,Blesmes,Bonneil,Brasles,Celles-lès-Condé,La Chapelle-Monthodon,Charly-sur-Marne,Chartèves,Château-Thierry,Chézy-sur-Marne,Chierry,Connigis,Courtemont-Varennes,Crézancy,Crouttes-sur-Marne,Domptin,Essômes-sur-Marne,Étampes-sur-Marne,Fossoy,Gland,Jaulgonne,Mézy-Moulins,Monthurel,Montreuil-aux-Lions,Mont-Saint-Père,Nesles-la-Montagne,Nogentel,Nogent-l'Artaud,Passy-sur-Marne,Pavant,Reuilly-Sauvigny,Romeny-sur-Marne,Saint-Agnan,Saulchery,Trélou-sur-Marne,Villiers-Saint-Denis
+dep=10
+communes=Ailleville,Arconville,Argançon,Arrentières,Arsonval,Avirey-Lingey,Bagneux-la-Fosse,Balnot-sur-Laignes,Baroville,Bar-sur-Aube,Bar-sur-Seine,Bergères,Bertignolles,Bligny,Bragelogne-Beauvoir,Buxeuil,Buxières-sur-Arce,Celles-sur-Ource,Chacenay,Champignol-lez-Mondeville,Channes,Chervey,Colombé-la-Fosse,Colombé-le-Sec,Courteron,Couvignon,Cunfin,Dolancourt,Éguilly-sous-Bois,Engente,Essoyes,Fontaine,Fontette,Fravaux,Gyé-sur-Seine,Jaucourt,Landreville,Lignol-le-Château,Loches-sur-Ource,Merrey-sur-Arce,Meurville,Montgueux,Montier-en-l'Isle,Mussy-sur-Seine,Neuville-sur-Seine,Noé-les-Mallets,Plaines-Saint-Lange,Polisot,Polisy,Proverville,Les Riceys,Rouvres-les-Vignes,Saint-Usage,Saulcy,Spoy,Trannes,Urville,Verpillières-sur-Ource,Villenauxe-la-Grande,Ville-sur-Arce,Vitry-le-Croisé,Viviers-sur-Artaut,Voigny
+dep=51
+communes=Saint-Martin-d'Ablois,Allemant,Ambonnay,Arcis-le-Ponsart,Aubilly,Avenay-Val-d'Or,Avize,Ay,Barbonne-Fayel,Baslieux-sous-Châtillon,Bassu,Bassuet,Baye,Beaumont-sur-Vesle,Beaunay,Belval-sous-Châtillon,Bergères-lès-Vertus,Bergères-sous-Montmirail,Berru,Bethon,Bezannes,Billy-le-Grand,Binson-et-Orquigny,Bisseuil,Bligny,Bouilly,Bouleuse,Boursault,Bouzy,Branscourt,Le Breuil,Brimont,Brouillet,Broussy-le-Grand,Broyes,Brugny-Vaudancourt,Cauroy-lès-Hermonville,La Celle-sous-Chantemerle,Cernay-lès-Reims,Châlons-sur-Vesle,Chambrecy,Chamery,Champillon,Champlat-et-Boujacourt,Champvoisy,Changy,Chantemerle,Châtillon-sur-Marne,Chaumuzy,Chavot-Courcourt,Chenay,Chigny-les-Roses,Chouilly,Coizard-Joches,Val-des-Marais,Congy,Cormicy,Cormontreuil,Cormoyeux,Coulommes-la-Montagne,Courcelles-Sapicourt,Courjeonnet,Courmas,Courtagnon,Courthiézy,Courville,Couvrot,Cramant,Crugny,Cuchery,Cuis,Cuisles,Cumières,Damery,Dizy,Dormans,Val-de-Vière,Écueil,Épernay,Étoges,Étréchy,Faverolles-et-Coëmy,Fèrebrianges,Festigny,Fleury-la-Rivière,Fontaine-Denis-Nuisy,Fontaine-sur-Ay,Germaine,Germigny,Givry-lès-Loisy,Glannes,Grauves,Gueux,Hautvillers,Hermonville,Hourges,Igny-Comblizy,Janvry,Jonchery-sur-Vesle,Jonquery,Jouy-lès-Reims,Lagery,Leuvrigny,Lhéry,Lisse-en-Champagne,Loisy-en-Brie,Loisy-sur-Marne,Louvois,Ludes,Mailly-Champagne,Mancy,Mardeuil,Mareuil-le-Port,Mareuil-sur-Ay,Marfaux,Merfy,Merlaut,Méry-Prémecy,Les Mesneux,Le Mesnil-sur-Oger,Mondement-Montgivroux,Montbré,Montgenost,Monthelon,Montigny-sur-Vesle,Morangis,Moslins,Moussy,Mutigny,Nanteuil-la-Forêt,Nesle-le-Repons,La Neuville-aux-Larris,Nogent-l'Abbesse,Œuilly,Oger,Oiry,Olizy,Orbais-l'Abbaye,Ormes,Oyes,Pargny-lès-Reims,Passy-Grigny,Pévy,Pierry,Poilly,Pontfaverger-Moronvilliers,Pouillon,Pourcy,Prouilly,Puisieulx,Reims,Reuil,Rilly-la-Montagne,Romery,Romigny,Rosnay,Sacy,Saint-Amand-sur-Fion,Saint-Euphraise-et-Clairizet,Sainte-Gemme,Saint-Gilles,Saint-Lumier-en-Champagne,Saint-Thierry,Sarcy,Saudoy,Savigny-sur-Ardres,Selles,Sermiers,Serzy-et-Prin,Sézanne,Sillery,Soulières,Taissy,Talus-Saint-Prix,Tauxières-Mutry,Thil,Tours-sur-Marne,Tramery,Trépail,Treslon,Trigny,Trois-Puits,Troissy,Unchair,Vanault-le-Châtel,Vandeuil,Vandières,Vauciennes,Vaudemange,Vavray-le-Grand,Vavray-le-Petit,Venteuil,Verneuil,Vert-Toulon,Vertus,Verzenay,Verzy,Ville-Dommange,Ville-en-Tardenois,Villeneuve-Renneville-Chevigny,Villers-Allerand,Villers-aux-Nœuds,Villers-Franqueux,Villers-Marmery,Villers-sous-Châtillon,Villevenard,Vinay,Vincelles,Vindey,Vitry-en-Perthois,Voipreux,Vrigny
+dep=52
+communes=Colombey-les-Deux-Églises,Rizaucourt-Buchey
+dep=77
+communes=Citry,Nanteuil-sur-Marne,Saâcy-sur-Marne
+}}
+[AOP]champagne-premier_cru
+[BORDER_SZ]10
+{{
+dep=51
+communes=Ambonnay,Avenay-Val-d'Or,Avize,Ay,Beaumont-sur-Vesle,Bergères-lès-Vertus,Bezannes,Billy-le-Grand,Bisseuil,Bouzy,Chamery,Champillon,Chigny-les-Roses,Chouilly,Val-des-Marais,Cormontreuil,Coulommes-la-Montagne,Cramant,Cuis,Cumières,Dizy,Écueil,Étréchy,Grauves,Hautvillers,Jouy-lès-Reims,Louvois,Ludes,Mailly-Champagne,Mareuil-sur-Ay,Les Mesneux,Le Mesnil-sur-Oger,Montbré,Mutigny,Oger,Oiry,Pargny-lès-Reims,Pierry,Puisieulx,Rilly-la-Montagne,Sacy,Sermiers,Sillery,Taissy,Tauxières-Mutry,Tours-sur-Marne,Trépail,Trois-Puits,Vaudemange,Vertus,Verzenay,Verzy,Ville-Dommange,Villeneuve-Renneville-Chevigny,Villers-Allerand,Villers-aux-Nœuds,Villers-Marmery,Voipreux,Vrigny
+}}
+[AOP]champagne-grand_cru
+[BORDER_SZ]5
+{{
+dep=51
+communes=Ambonnay,Avize,Ay,Beaumont-sur-Vesle,Bouzy,Chouilly,Cramant,Louvois,Mailly-Champagne,Le Mesnil-sur-Oger,Oger,Oiry,Puisieulx,Sillery,Tours-sur-Marne,Verzenay,Verzy
+}}
+[AOP]rose_des_riceys
+[BORDER_SZ]5
+{{
+dep=10
+communes=Les Riceys
+}}

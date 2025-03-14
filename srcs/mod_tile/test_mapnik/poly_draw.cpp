@@ -76,7 +76,7 @@ int main(int ac, char** av)
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
-        Map m(1600, 1200);
+        Map m(800, 600);
         m.set_background(parse_color("#00000000"));
         m.set_srs(srs_map);
 
@@ -103,6 +103,8 @@ int main(int ac, char** av)
 
 		}
 		m.zoom_all();
+		std::cout << "current_extent = " << m.get_current_extent() << std::endl;
+		std::cout << "buffered_extent = " << m.get_buffered_extent() << std::endl;
 
 		feature_type_style provpoly_style[appl.getSize()];
 		for (int i = 0; i < appl.getSize(); i++)
