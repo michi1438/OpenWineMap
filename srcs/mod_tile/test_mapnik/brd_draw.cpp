@@ -63,6 +63,11 @@ int main(int ac, char** av)
 		if (ac != 2)
 			throw std::runtime_error("not enough arguments, expected 1\n");
 		std::string reg_name = av[1];	
+		std::string db_user = getenv("DB_USER");
+		std::string db_host = getenv("DB_HOST");
+		std::string db_user_pw = getenv("DB_USER_PW");
+		std::string db_port = getenv("DB_PORT");
+		std::string db_name = getenv("DB_NAME");
 
 		using namespace mapnik;
 		mapnik::setup();
@@ -84,11 +89,11 @@ int main(int ac, char** av)
 
 		parameters p;
 		p["type"]="postgis";
-		p["host"]="postgres";
-		p["port"]="5432";
-		p["dbname"]="owm";
-		p["user"]="owmuser";
-		p["password"]="toor";
+		p["host"]=db_host;
+		p["port"]=db_port;
+		p["dbname"]=db_name;
+		p["user"]=db_user;
+		p["password"]=db_user_pw;
 
 		for (int i = 0; i < appl.getSize() ; i++)
 		{
@@ -158,8 +163,8 @@ int main(int ac, char** av)
         msg += "Have a look!\n";
         std::cout << msg;
 
-        save_map(m, "/home/owmuser/src/openstreetmap-carto/" + reg_name + "_brd.xml");
-        std::cout << "XML output at: /home/owmuser/src/openstreetmap-carto/" + reg_name + "_brd.xml" << std::endl;
+        save_map(m, "/home/" + db_user + "/src/openstreetmap-carto/" + reg_name + "_brd.xml");
+        std::cout << "XML output at: /home/" + db_user + "/src/openstreetmap-carto/" + reg_name + "_brd.xml" << std::endl;
     }
     catch (std::exception const& ex)
     {

@@ -16,32 +16,26 @@ services:
     env_file: ".env"
     restart: on-failure
 
+###############################################################
+
   mod_tile:
     container_name: mod_tile
     volumes: 
       - MOD:/tmp/
-      - CGI:/var/www/cgi-bin/
       - MAP:/.MAP
-      - DB_CONN:/home/owmuser/db_connect/
     networks: ["OWM_network"]
-    build: mod_tile/
+    build:
+      context: mod_tile/ 
+      args:
+        DB_USER: ${DB_USER}
+        G_MESSAGES_DEBUG: ${G_MESSAGES_DEBUG}
+    ports: 
+      - 80:8080
     depends_on: 
       - postgres 
     env_file: ".env"
     restart: on-failure
 
-#  mapnik:
-#    container_name: mapnik
-#    volumes: 
-#      - MAP:/.MAP
-#      - MAP_inc:/usr/include
-#    networks: ["OWM_network"]
-#    build: mapnik/
-#    depends_on: 
-#      - builder 
-#    env_file: ".env"
-#    restart: on-failure
-#
   osm2pgsql:
     container_name: osm2pgsql
     volumes: 
@@ -89,18 +83,6 @@ volumes:
       type: none
       o: bind
       device: $HOME/.docker/OWM/MAP/
-  CGI:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: $HOME/.docker/OWM/CGI/
-  DB_CONN:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: $HOME/.docker/OWM/DB_CONN/
 
 networks:
   OWM_network:

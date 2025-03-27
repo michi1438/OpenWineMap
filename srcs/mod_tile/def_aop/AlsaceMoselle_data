@@ -2,9 +2,9 @@
 [BORDER_SZ]15
 {{
 dep=68
-communes=Ammerschwihr,Beblenheim,Bennwihr,Bergheim,Bergholtz,Bergholtz-Zell,Berrwiller,Buhl,Cernay,Colmar,Eguisheim,Gueberschwihr,Guebwiller,Hartmanswiller,Hattstatt,Herrlisheim,Houssen,Hunawihr,Husseren-les-Châteaux,Ingersheim,Jungholtz,Katzenthal,Kaysersberg Vignoble,Leimbach,Mittelwihr,Niedermorschwihr,Obermorschwihr,Orschwihr,Osenbach,Pfaffenheim,Ribeauvillé,Riquewihr,Rorschwihr,Rodern,Rouffach,Saint-Hippolyte,Soultz,Soultzmatt,Steinbach,Thann,Turckheim,Uffholtz,Vieux-Thann,Voegtlinshoffen,Walbach,Wattwiller,Westhalten,Wettolsheim,Wihr-au-Val,Wintzenheim,Wuenheim,Zellenberg,Zimmerbach
+communes=Ammerschwihr,Beblenheim,Bennwihr,Bergheim,Bergholtz,Bergholtzzell,Berrwiller,Buhl,Cernay,Colmar,Eguisheim,Gueberschwihr,Guebwiller,Hartmannswiller,Hattstatt,Herrlisheim-près-Colmar,Houssen,Hunawihr,Husseren-les-Châteaux,Ingersheim,Jungholtz,Katzenthal,Kaysersberg Vignoble,Leimbach,Mittelwihr,Niedermorschwihr,Obermorschwihr,Orschwihr,Osenbach,Pfaffenheim,Ribeauvillé,Riquewihr,Rorschwihr,Rodern,Rouffach,Saint-Hippolyte,Soultz-Haut-Rhin,Soultzmatt,Steinbach,Thann,Turckheim,Uffholtz,Vieux-Thann,Vœgtlinshoffen,Walbach,Wattwiller,Westhalten,Wettolsheim,Wihr-au-Val,Wintzenheim,Wuenheim,Zellenberg,Zimmerbach
 dep=67
-communes=Albé,Andlau,Avolsheim,Balbronn,Barr,Bergbieten,Bernardswiller,Bernardvillé,Bischoffsheim,Blienschwiller,Boersch,Bourgheim,Châtenois,Cleebourg,Dahlenheim,Dambach-la-Ville,Dangolsheim,Dieffenthal,Dorlisheim,Eichhoffen,Epfig,Ergersheim,Flexbourg,Furdenheim,Gertwiller,Gimbrett-Berstett,Goxwiller,Heiligenstein,Itterswiller,Kienheim,Kintzheim,Kirchheim,Kuttolsheim,Marlenheim,Mittelbergheim,Molsheim,Mutzig,Nothalten,Nordheim,Oberhoffen les Wissembourg,Obernai,Odratzheim,Orschwiller,Osthoffen,Ottrott,Reichsfeld,Riedseltz,Rosenwiller,Rosheim,Rott,Saint-Nabor,Saint-Pierre,Scharrachbergheim-Irmstett,Scherwiller,Soultz-les-Bains,Steinseltz,Stotzheim,Traenheim,Villé,Wangen,Westhoffen,Wissembourg,Wolxheim,Zellwiller
+communes=Albé,Andlau,Avolsheim,Balbronn,Barr,Bergbieten,Bernardswiller,Bernardvillé,Bischoffsheim,Blienschwiller,Bœrsch,Bourgheim,Châtenois,Cleebourg,Dahlenheim,Dambach-la-Ville,Dangolsheim,Dieffenthal,Dorlisheim,Eichhoffen,Epfig,Ergersheim,Flexbourg,Furdenheim,Gertwiller,Gimbrett,Goxwiller,Heiligenstein,Itterswiller,Kienheim,Kintzheim,Kirchheim,Kuttolsheim,Marlenheim,Mittelbergheim,Molsheim,Mutzig,Nothalten,Nordheim,Oberhoffen-lès-Wissembourg,Obernai,Odratzheim,Orschwiller,Osthoffen,Ottrott,Reichsfeld,Riedseltz,Rosenwiller,Rosheim,Rott,Saint-Nabor,Saint-Pierre,Scharrachbergheim-Irmstett,Scherwiller,Soultz-les-Bains,Steinseltz,Stotzheim,Traenheim,Villé,Wangen,Westhoffen,Wissembourg,Wolxheim,Zellwiller
 }}
 [AOP]alsace_bergheim
 [BORDER_SZ]5
@@ -22,15 +22,9 @@ communes=Blienschwiller
 [BORDER_SZ]5
 {{
 dep=68
-communes=Saint Hippolyte
+communes=Saint-Hippolyte
 dep=67
-communes=Chatenois,Kintzheim,Orschwiller 
-}}
-[AOP]alsace_côtes_de_barr
-[BORDER_SZ]5
-{{
-dep=67
-communes=Barr
+communes=Châtenois,Kintzheim,Orschwiller 
 }}
 [AOP]alsace_côtes_de_barr
 [BORDER_SZ]5
@@ -42,7 +36,7 @@ communes=Barr
 [BORDER_SZ]5
 {{
 dep=68
-communes=Barr
+communes=Pfaffenheim,Rouffach,Westhalten
 }}
 [AOP]alsace_klevener_de_heiligenstein
 [BORDER_SZ]5
@@ -59,14 +53,14 @@ communes=Ottrott,Obernai
 [AOP]alsace_rodern
 [BORDER_SZ]5
 {{
-dep=67
-communes=Rodern,Saint Hippolyte
+dep=68
+communes=Rodern,Saint-Hippolyte
 }}
 [AOP]alsace_saint_hippolyte
 [BORDER_SZ]5
 {{
 dep=68
-communes=Saint Hippolyte
+communes=Saint-Hippolyte
 dep=67
 communes=Orschwiller
 }}

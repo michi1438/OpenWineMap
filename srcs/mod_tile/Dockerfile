@@ -2,8 +2,8 @@ FROM ubuntu:22.04 AS compiler-common
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-ENV DB_USER owmuser
-ENV G_MESSAGES_DEBUG=all
+ARG DB_USER
+ARG G_MESSAGES_DEBUG=all
 
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
@@ -28,7 +28,7 @@ ENV REPLICATION_URL=https://planet.openstreetmap.org/replication/hour/
 ENV MAX_INTERVAL_SECONDS=3600
 ENV PG_VERSION 15
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+#RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Get packages
 RUN apt-get update \
@@ -68,20 +68,19 @@ COPY leaflet-demo.html /var/www/html/index.html
 COPY tech_sheet/ /var/www/html/tech_sheet/
 
 # Create volume directories
-RUN mkdir -p /run/renderd/ \
-  &&  mkdir  -p  /data/style/  \
-  &&  mkdir  -p  /var/www/htm/dist/  \
-  &&  mkdir  -p  /var/www/cgi-bin/  \
-  &&  mkdir  -p  /home/$DB_USER/db_connect/  \
-  &&  mkdir  -p  /.MAP \
-  &&  mkdir  -p  /home/$DB_USER/src/  \
-  &&  mkdir  -p  /var/cache/renderd/tiles/  \
-  &&  chown  -R  $DB_USER:  /data/  \
-  &&  chown  -R  $DB_USER:  /home/$DB_USER/src/  \
-  &&  chown  -R  $DB_USER:  /home/$DB_USER/db_connect/  \
-  &&  chown  -R  $DB_USER:  /run/renderd  \
-  &&  ln  -s  /data/style              /home/$DB_USER/src/openstreetmap-carto  \
-;
+RUN mkdir  -p /run/renderd/ \
+  && mkdir -p /data/style/  \
+  && mkdir -p /var/www/htm/dist/  \
+  && mkdir -p /var/www/cgi-bin/  \
+  && mkdir -p /home/$DB_USER/db_connect/  \
+  && mkdir -p /.MAP \
+  && mkdir -p /home/$DB_USER/src/  \
+  && mkdir -p /var/cache/renderd/tiles/  \
+  && mkdir -p /data/styler /home/$DB_USER/src/openstreetmap-carto \
+  && chown -R $DB_USER:  /data/  \
+  && chown -R $DB_USER:  /home/$DB_USER/src/  \
+  && chown -R $DB_USER:  /home/$DB_USER/db_connect/  \
+  && chown -R $DB_USER:  /run/renderd ;
 
 
 RUN chmod -R 777 /home/$DB_USER/src/*

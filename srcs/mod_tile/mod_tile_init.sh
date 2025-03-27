@@ -28,7 +28,7 @@ if [ ! -d /.MAP/mapnik ]; then
 	cd mapnik/
 	git submodule update --init
 	./configure	 DEMO=True
-	JOBS=$(nproc) make
+	JOBS=$(nproc --ignore=2) make
 	make install
 	popd
 else
@@ -45,7 +45,6 @@ cp -r -v /.MAP/mapnik/deps/mapbox/variant/include/* /usr/include/
 echo "MOD_TILE_INIT.SH: mapnik is built !!!"
 
 if [ ! -f /tmp/mod_tile_build/src/renderd ]; then
-	export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
 	rm -rf /tmp/mod_tile_src /tmp/mod_tile_build
 	mkdir /tmp/mod_tile_src /tmp/mod_tile_build
 	cd /tmp/mod_tile_src
@@ -80,6 +79,8 @@ rm -rf /.MAP/mapnik/demo/test_mapnik
 mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
+
+sed -i "s/<NUM_THREADS>/$(nproc --ignore=2)/" /etc/renderd.conf
 
 sed -i 's/.*ScriptAlias \/cgi-bin\/ \/usr\/lib\/cgi-bin\/.*/\t\tScriptAlias \/cgi-bin\/ \/var\/www\/cgi-bin\//' /etc/apache2/conf-available/serve-cgi-bin.conf 
 sed -i 's/.*<Directory "\/usr\/lib\/cgi-bin">.*/\t\t<Directory "\/var\/www\/cgi-bin\/">/' /etc/apache2/conf-available/serve-cgi-bin.conf

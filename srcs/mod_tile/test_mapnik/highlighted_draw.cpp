@@ -63,6 +63,11 @@ int main(int ac, char** av)
 		if (ac != 2)
 			throw std::runtime_error("not enough arguments, expected 1\n");
 		std::string reg_name = av[1];	
+		std::string db_user = getenv("DB_USER");
+		std::string db_host = getenv("DB_HOST");
+		std::string db_user_pw = getenv("DB_USER_PW");
+		std::string db_port = getenv("DB_PORT");
+		std::string db_name = getenv("DB_NAME");
 
 		using namespace mapnik;
 		mapnik::setup();
@@ -81,18 +86,18 @@ int main(int ac, char** av)
 
 		parameters p;
 		p["type"]="postgis";
-		p["host"]="postgres";
-		p["port"]="5432";
-		p["dbname"]="owm";
-		p["user"]="owmuser";
-		p["password"]="toor";
+		p["host"]=db_host;
+		p["port"]=db_port;
+		p["dbname"]=db_name;
+		p["user"]=db_user;
+		p["password"]=db_user_pw;
 
 
 		feature_type_style provpoly_style[appl.getSize()];
 
 		for (int i = 0; i < appl.getSize() ; i++)
 		{
-			Map m(1600, 1200);
+			Map m(800, 600);
 			m.set_background(parse_color("#00000000"));
 			m.set_srs(srs_map);
 
@@ -139,8 +144,8 @@ int main(int ac, char** av)
 			agg_renderer<image_rgba8> ren(m, buf);
 
 			ren.apply();
-			save_map(m, "/home/owmuser/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml"); // TODO change the name to the unix file version
-			std::cout << "XML output at: /home/owmuser/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml" << std::endl;
+			save_map(m, "/home/" + db_user + "/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml"); // TODO change the name to the unix file version
+			std::cout << "XML output at: /home/" + db_user + "/src/openstreetmap-carto/highlighted/" + appl.getAppelations()[i] + ".xml" << std::endl;
 
 		}
     }

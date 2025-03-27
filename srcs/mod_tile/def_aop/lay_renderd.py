@@ -21,7 +21,7 @@ for n in _data:
         lyr_renderd.writelines(["\n", f"[{n[:-5].lower()}]\n",
             f"URI=/tile/france/{n[:-5].lower()}/\n", # TODO add a var in futur for the country...
             "TILEDIR=/var/cache/renderd/tiles/\n",
-            f"XML=/home/owmuser/src/openstreetmap-carto/{n[:-5]}.xml\n",
+            "XML=/home/" + os.environ["DB_USER"] + f"/src/openstreetmap-carto/{n[:-5]}.xml\n",
             "HOST=localhost\n",
             "TILESIZE=256\n",
             "MAXZOOM=20\n"])
@@ -29,7 +29,7 @@ for n in _data:
         lyr_renderd.writelines(["\n", f"[{n[:-5].lower()}_brd]\n",
             f"URI=/tile/france/{n[:-5].lower()}_brd/\n", # TODO add a var in futur for the country...
             "TILEDIR=/var/cache/renderd/tiles/\n",
-            f"XML=/home/owmuser/src/openstreetmap-carto/{n[:-5]}_brd.xml\n",
+            "XML=/home/" + os.environ["DB_USER"] + f"/src/openstreetmap-carto/{n[:-5]}_brd.xml\n",
             "HOST=localhost\n",
             "TILESIZE=256\n",
             "MAXZOOM=20\n"])

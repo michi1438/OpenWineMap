@@ -20,7 +20,7 @@ for n in _data:
         lyr_renderd.writelines(["\n", f"[{n[:-4].lower()}]\n",
             f"URI=/tile/france/{n[:-4].lower()}/\n", # TODO add a var in futur for the country...
             "TILEDIR=/var/cache/renderd/tiles/\n",
-            f"XML=/home/owmuser/src/openstreetmap-carto/highlighted/{n}\n",
+            "XML=/home/" + os.environ["DB_USER"] + f"/src/openstreetmap-carto/highlighted/{n}\n",
             "HOST=localhost\n",
             "TILESIZE=256\n",
             "MAXZOOM=20\n"])
