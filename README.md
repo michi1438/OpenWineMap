@@ -9,11 +9,11 @@ If you are having trouble with speed it probably is because I have a very limite
 
 If you want to hack it please do... but then tell me how you did it at michaelguerga@gmail.com, It's probably not the most secure... Likewise if you have any comments or input on this site or on mistakes I've made send an email and add the object OpenWineMap in it so I may find them easily..
 
-Objectives for Beta version:
--Get a cleaner interface, more fluidity...
--Create a set of browser tools and cross-user checks for un-authenticated users to submit and add new appelations...
--Make a wiki.
--Host it for real..
+Objectives for Beta version: 
+ - Get a cleaner interface, more fluidity...
+ - Create a set of browser tools and cross-user checks for un-authenticated users to submit and add new appelations...
+ - Make a wiki.
+ - Host it for real..
 
 If you are looking at the site via an IP address it might not work anymore I'm doing this from a private router and the lease are not super long, just ask me for the new ip address.
 
