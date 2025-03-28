@@ -15,8 +15,6 @@ Objectives for Beta version:
  - Get a cleaner interface, more fluidity...
  - Create a set of browser tools and cross-user checks for un-authenticated users to submit and add new appelations...
  - Make a wiki.
- - Host it for real..
-
-If you are looking at the site via an IP address it might not work anymore I'm doing this from a private router and the lease are not super long, just ask me for the new ip address.
+ - Host it for real.
 
 This is an Alpha test of an opensource/opendata project, don't hold back on feed back...
