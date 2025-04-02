@@ -13,6 +13,7 @@ If you want to hack it please do... but then tell me how you did it at michaelgu
 
 Objectives for Beta version: 
  - Get a cleaner interface, more fluidity...
+   --> Base mod_tile on alpine in an other branch just like the other docker instances should work the same 
  - Create a set of browser tools and cross-user checks for un-authenticated users to submit and add new appelations...
  - Make a wiki.
  - Host it for real.
