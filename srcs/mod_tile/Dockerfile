@@ -60,7 +60,7 @@ RUN apt-get update \
 RUN adduser --disabled-password --gecos "" $DB_USER 
 
 # Install python libraries
-# Configure Apache
+# Configure  Apache
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # leaflet

@@ -22,7 +22,7 @@ if [ ! -d /.MAP/mapnik ]; then
 	git config --global http.lowSpeedTime 999999
 	git config --global core.compression 0
 
-	git clone --depth 1 --progress https://github.com/mapnik/mapnik.git
+	git clone --single-branch --branch "v4.0.4" --depth 1 --progress https://github.com/mapnik/mapnik.git
 	cd mapnik/
 	git fetch --unshallow
 	git pull
