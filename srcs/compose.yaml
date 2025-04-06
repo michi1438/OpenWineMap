@@ -24,6 +24,8 @@ services:
       - MOD:/tmp/
       - MAP:/.MAP
     networks: ["OWM_network"]
+    dns:
+      - 8.8.8.8
     build:
       context: mod_tile/ 
       args:
@@ -41,6 +43,8 @@ services:
     volumes: 
       - PBF:/.PBF/
     networks: ["OWM_network"]
+    dns:
+      - 8.8.8.8
     build: osm2pgsql/
     depends_on: 
       - builder 

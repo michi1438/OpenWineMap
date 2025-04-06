@@ -23,18 +23,18 @@ if [ ! -d /.MAP/mapnik ]; then
 	git config --global core.compression 0
 
 	git clone --depth 1 --progress https://github.com/mapnik/mapnik.git
+	cd mapnik/
 	git fetch --unshallow
 	git pull
-	cd mapnik/
 	git submodule update --init
 	./configure	 DEMO=True
 	JOBS=$(nproc --ignore=2) make
-	make install
+	JOBS=$(nproc --ignore=2) make install
 	popd
 else
 	cd /.MAP/mapnik/
 	(
-		make install
+		JOBS=$(nproc --ignore=2) make install
 	)
 fi
 cp -r -v /.MAP/mapnik/deps/mapbox/polylabel/include/* /usr/include/mapbox/ 
@@ -55,7 +55,7 @@ if [ ! -f /tmp/mod_tile_build/src/renderd ]; then
 	)
 	cd /tmp/mod_tile_build
 	(
-		cmake -B . -S /tmp/mod_tile_src \
+		CMAKE_BUILD_PARALLEL_LEVEL=$(nproc --ignore=2) cmake -B . -S /tmp/mod_tile_src \
 		  -DCMAKE_BUILD_TYPE:STRING=Release \
 		  -DCMAKE_INSTALL_LOCALSTATEDIR:PATH=/var \
 		  -DCMAKE_INSTALL_PREFIX:PATH=/usr \
@@ -72,7 +72,6 @@ else
 		echo "MOD_TILE_INIT.SH: mod_tile is up!!!"
 	)
 fi
-
 
 mv -v /.ccls_host /.MAP/mapnik/.ccls
 rm -rf /.MAP/mapnik/demo/test_mapnik 
