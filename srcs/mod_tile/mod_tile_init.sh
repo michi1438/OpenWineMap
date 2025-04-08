@@ -98,12 +98,13 @@ ScriptAlias /cgi-bin/ /var/www/cgi-bin/\n
 Options +ExecCGI\n
 AddHandler cgi-script .cgi .pl .py\n" >> /etc/apache2/apache2.conf
 
-pushd /home/$DB_USER/db_connect/
+cd /home/$DB_USER/db_connect/
+{
 	mv -v /def_aop/cgi_hook.py /var/www/cgi-bin/
 	mv -v /def_aop/* ./
-	python3 def_appelations.py > def_appelation.out
+	python3 def_appelations.py #> def_appelation.out
 	python3 lay_renderd.py
-popd
+}
 
 pushd /.MAP/mapnik/demo/test_mapnik/
 	mkdir -v /home/$DB_USER/src/openstreetmap-carto/highlighted/

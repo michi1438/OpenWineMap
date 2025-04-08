@@ -1,6 +1,8 @@
 #!/bin/python3
 import psycopg2
 import sys 
+import difflib
+import shutil 
 from psycopg2.sql import SQL, Identifier
 import os 
 
@@ -29,14 +31,22 @@ def main():
 
         _data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
 
+        if os.path.isdir('./prevData/') == False:
+            os.mkdir("./prevData/")
+
         for n in _data: 
-            if n.find("_data") > 1:
+            if n.find("_data") > 1 and (os.path.isfile(f'./prevData/{n}') == False or file_r_equal(f'{n}', f'./prevData/{n}') == False):
+                print("os.path.isfile(f'./prevData/{n}'): ")
+                print(os.path.isfile(f'./prevData/{n}'))
+                print("file_r_equal(f'{n}', f'./prevData/{n}'): ")
+                print(file_r_equal(f'{n}', f'./prevData/{n}'))
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()} #################################" + bcolors.ENDC)
                 reg = n[:-5] 
                 aoc_data = open("./" + n, "r+")
                 line = aoc_data.readline()
                 aop_list = []
                 cursor.execute(SQL("DROP VIEW IF EXISTS combined_table;"))
+                ext_exists = False
                 while line: 
                     if line.strip().find("[AOP]") == 0:
                         aop = f'"{line[5:].strip()}"'
@@ -47,7 +57,10 @@ def main():
                         print ("border_sz = ", border_sz)
                     elif line.find("{{\n") == 0:
                         create_aop(reg, cursor, aop, border_sz, aoc_data)
+                    elif line.find("L.latLngBounds(") == 0:
+                        ext_exists = True
                     line = aoc_data.readline()
+                shutil.copy2(f'{n}', f'./prevData/{n}') 
                 sql_view = ""
                 for x in aop_list:
                     if sql_view == "":
@@ -61,10 +74,14 @@ def main():
                 print ("extent of the region = " + extent) 
                 ind = extent.find(",")
                 ext_leaflet = "L.latLngBounds(L.latLng" + extent[:ind] + "),L.latLng(" + extent[extent.find(",") + 1:] + ")"
-                aoc_data.write(ext_leaflet.replace(" ", ", ") + "\n")
+                if ext_exists == False:
+                    aoc_data.write(ext_leaflet.replace(" ", ", ") + "\n")
                         
                 aoc_data.close()
                 connection.commit()
+                
+            elif n.find("_data") > 1:
+                print(bcolors.OKCYAN + f"\nREGION {n.upper()} ALREADY IMPORTED (no change) #################################" + bcolors.ENDC)
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -100,6 +117,24 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
     #for row in records:
         #print(row)
 
+def file_r_equal(file1, file2):
+    o_file1 = open(file1)
+    o_file2 = open(file2)
+
+    line_of_file1 = o_file1.readline()
+    line_of_file2 = o_file2.readline()
+    while line_of_file1 or line_of_file2:
+        if line_of_file1 != line_of_file2:
+            o_file1.close()
+            o_file2.close()
+            return False
+        line_of_file1 = o_file1.readline()
+        line_of_file2 = o_file2.readline()
+    if line_of_file1 == line_of_file2:
+        o_file1.close()
+        o_file2.close()
+        return True
+    
 
 if __name__=="__main__":
    main()

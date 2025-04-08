@@ -23,6 +23,7 @@ services:
     volumes: 
       - MOD:/tmp/
       - MAP:/.MAP
+      - DB_CONN:/home/${DB_USER}/db_connect/
     networks: ["OWM_network"]
     dns:
       - 8.8.8.8
@@ -69,6 +70,12 @@ volumes:
       type: none
       o: bind
       device: $HOME/.docker/OWM/DB/
+  DB_CONN:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/.docker/OWM/DB_CONN/
   PBF:
     driver: local
     driver_opts:

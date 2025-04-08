@@ -8,8 +8,7 @@ ARG G_MESSAGES_DEBUG=all
 RUN apt-get update \
 && apt-get install -y --no-install-recommends \
  ca-certificates gnupg lsb-release locales \
- wget curl \
- git-core unzip unrar \
+ git-core \
 && locale-gen $LANG && update-locale LANG=$LANG \
 && apt-get update && apt-get -y upgrade
 
@@ -44,10 +43,8 @@ RUN apt-get update \
  libpq-dev \
  gnupg2 \
  libgdal-dev\
- liblua5.3-dev \
  libharfbuzz-dev \
  pkg-config \
- lua5.3 \
  python3 \
  vim \
  proj-bin \
@@ -84,7 +81,7 @@ RUN mkdir  -p /run/renderd/ \
 
 
 RUN chmod -R 777 /home/$DB_USER/src/*
-COPY mod_tile_init.sh /
+copY mod_tile_init.sh /
 
 COPY myrenderd.conf /myrenderd.conf
 COPY test_mapnik/ /test_mapnik/
