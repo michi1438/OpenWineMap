@@ -73,9 +73,16 @@ else
 	)
 fi
 
+diff -x *.o -x *.out /test_mapnik /.MAP/mapnik/demo/test_mapnik
+if [ ! $? -eq 0 ]; then
+	rm -rf /.MAP/mapnik/demo/test_mapnik 
+	mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
+else
+	echo "MOD_TILE_INIT.SH: using the previous test_mapnik dir no change were spoted!!!"
+	echo
+fi
+
 mv -v /.ccls_host /.MAP/mapnik/.ccls
-rm -rf /.MAP/mapnik/demo/test_mapnik 
-mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
 
@@ -99,21 +106,23 @@ Options +ExecCGI\n
 AddHandler cgi-script .cgi .pl .py\n" >> /etc/apache2/apache2.conf
 
 cd /home/$DB_USER/db_connect/
-{
+(
 	mv -v /def_aop/cgi_hook.py /var/www/cgi-bin/
 	mv -v /def_aop/* ./
 	python3 def_appelations.py #> def_appelation.out
 	python3 lay_renderd.py
-}
+)
 
-pushd /.MAP/mapnik/demo/test_mapnik/
+cd /.MAP/mapnik/demo/test_mapnik/
+(
 	mkdir -v /home/$DB_USER/src/openstreetmap-carto/highlighted/
 	python3 iter_mapnik.py
-popd
+)
 
 pushd /home/$DB_USER/db_connect/
 	python3 lay_highlights.py
 popd
+
 # Enable configuration
 a2enmod tile
 a2enmod cgi 
@@ -122,5 +131,10 @@ a2ensite 000-default
 
 source /etc/apache2/envvars
 
-service apache2 start
-renderd -f
+echo
+echo Starting APACHE2
+apache2 -E apache2_startup.log; cat /etc/apache2/apache2_startup.log | grep warn 
+
+echo
+echo Starting RENDERD
+renderd -f > /var/log/renderd_output.log  #TODO filter output to not get all maps ouputed maybe with awk...

@@ -5,9 +5,9 @@ OBJ = poly_draw.o Region.o
 OBJ2 = brd_draw.o Region.o
 OBJ3 = highlighted_draw.o Region.o
 
-BIN = poly_draw 
-BIN2 = brd_draw
-BIN3 = highlighted_draw 
+BIN = poly_draw.out
+BIN2 = brd_draw.out
+BIN3 = highlighted_draw.out
 
 all : $(BIN) $(BIN2) $(BIN3)
 

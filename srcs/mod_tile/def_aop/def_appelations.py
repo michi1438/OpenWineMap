@@ -2,7 +2,6 @@
 import psycopg2
 import sys 
 import difflib
-import shutil 
 from psycopg2.sql import SQL, Identifier
 import os 
 
@@ -18,6 +17,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 def main():
+    print(bcolors.OKBLUE + "RUNNING " + __file__ + bcolors.ENDC)
     try:
 
         connection = psycopg2.connect(
@@ -36,10 +36,6 @@ def main():
 
         for n in _data: 
             if n.find("_data") > 1 and (os.path.isfile(f'./prevData/{n}') == False or file_r_equal(f'{n}', f'./prevData/{n}') == False):
-                print("os.path.isfile(f'./prevData/{n}'): ")
-                print(os.path.isfile(f'./prevData/{n}'))
-                print("file_r_equal(f'{n}', f'./prevData/{n}'): ")
-                print(file_r_equal(f'{n}', f'./prevData/{n}'))
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()} #################################" + bcolors.ENDC)
                 reg = n[:-5] 
                 aoc_data = open("./" + n, "r+")
@@ -60,7 +56,6 @@ def main():
                     elif line.find("L.latLngBounds(") == 0:
                         ext_exists = True
                     line = aoc_data.readline()
-                shutil.copy2(f'{n}', f'./prevData/{n}') 
                 sql_view = ""
                 for x in aop_list:
                     if sql_view == "":
@@ -85,6 +80,7 @@ def main():
 
     except Exception as e:
         print(f"An error occurred: {e}")
+    print (bcolors.OKBLUE + "END " + __file__ + "\n" + bcolors.ENDC)
 
 def create_aop(reg, cursor, aop, border_sz, aoc_data):
     cursor.execute(SQL("DROP TABLE IF EXISTS {};").format(Identifier(aop)))
@@ -124,16 +120,16 @@ def file_r_equal(file1, file2):
     line_of_file1 = o_file1.readline()
     line_of_file2 = o_file2.readline()
     while line_of_file1 or line_of_file2:
-        if line_of_file1 != line_of_file2:
+        if line_of_file1 == line_of_file2 or (line_of_file2.find("L.latLngBounds(L.latLng") == 0 and line_of_file1 == ""):
+            line_of_file1 = o_file1.readline()
+            line_of_file2 = o_file2.readline()
+        else: 
             o_file1.close()
             o_file2.close()
             return False
-        line_of_file1 = o_file1.readline()
-        line_of_file2 = o_file2.readline()
-    if line_of_file1 == line_of_file2:
-        o_file1.close()
-        o_file2.close()
-        return True
+    o_file1.close()
+    o_file2.close()
+    return True
     
 
 if __name__=="__main__":

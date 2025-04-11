@@ -77,7 +77,7 @@ int main(int ac, char** av)
 		const std::string srs_layers =
 			"+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0.0 +x_0=0.0 \
 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over";
-        std::cout << " running brd_draw for " << reg_name << "..." << std::endl;
+        std::cout << " running brd_draw.out for " << reg_name << "..." << std::endl;
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
