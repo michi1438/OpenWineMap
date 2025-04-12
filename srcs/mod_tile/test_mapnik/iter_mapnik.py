@@ -31,6 +31,7 @@ def main():
                 subprocess.run(["./poly_draw.out", n[:-5]])
                 subprocess.run(["./brd_draw.out", n[:-5]])
                 subprocess.run(["./highlighted_draw.out", n[:-5]])
+                shutil.copy2(dbconn_path + f'{n}', dbconn_path + f'./prevData/{n}') 
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()}.XML CREATED OR RECREATED #################################" + bcolors.ENDC)
             else:
                 shutil.copy2(dbconn_path + f"openstreetmap-carto/{n[:-5]}.xml", carto_path + "openstreetmap-carto/")
@@ -38,12 +39,13 @@ def main():
                 if copy_highlighted(dbconn_path, carto_path, n) == False:
                     subprocess.run(["./highlighted_draw.out", n[:-5]])
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()}.XML ALREADY CREATED(no change) #################################" + bcolors.ENDC)
-            shutil.copy2(dbconn_path + f'{n}', dbconn_path + f'./prevData/{n}') 
     print (bcolors.OKCYAN + "Done building the .xml file. ##############################" + bcolors.ENDC)
     shutil.copytree(carto_path + "openstreetmap-carto/", dbconn_path + "openstreetmap-carto/", dirs_exist_ok=True)
     print (bcolors.OKBLUE + "END " + __file__ + "\n" + bcolors.ENDC)
 
 def file_r_equal(file1, file2):
+    if os.path.isfile(file1) == False or os.path.isfile(file2) == False:
+        return False
     o_file1 = open(file1)
     o_file2 = open(file2)
 

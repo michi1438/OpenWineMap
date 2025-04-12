@@ -42,4 +42,6 @@ for n in _data:
             line = aoc_data.readline()
             records = cursor.fetchall()
             for row in records:
-                print(f"<p id=\"aop_name\" onmouseleave=\"hide_poly()\" onmouseenter=\"show_poly('" + str(row[0][4:].replace("'","\\'")) + f"')\">  <a href=\"tech_sheet/{str(row[0])[4:]}.html\" target=\"split\" onclick=\"show_split('{str(row[0])[4:]}')\"> " + str(row[0])[:4] + str(row[0])[4:].title() + "</a></p>")
+                print(f"<p id=\"aop_name\" onmouseleave=\"hide_poly()\" onmouseenter=\"show_poly('" + str(row[0][4:].replace("'","\\'")) + f"')\"> \
+                        <a href=\"tech_sheet/{str(row[0])[4:]}.html\" target=\"split\" onclick=\"show_split([[40.712, -74.227], [40.774, -74.125]])\"> " \
+                        + str(row[0])[:4] + str(row[0])[4:].title() + "</a></p>")

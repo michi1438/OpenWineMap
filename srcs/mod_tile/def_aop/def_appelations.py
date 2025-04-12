@@ -2,6 +2,7 @@
 import psycopg2
 import sys 
 import difflib
+import shutil 
 from psycopg2.sql import SQL, Identifier
 import os 
 
@@ -76,6 +77,7 @@ def main():
                 connection.commit()
                 
             elif n.find("_data") > 1:
+                shutil.copy2(f'./prevData/{n}',f'{n}')
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()} ALREADY IMPORTED (no change) #################################" + bcolors.ENDC)
 
     except Exception as e:

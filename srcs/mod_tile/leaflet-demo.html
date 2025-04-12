@@ -103,8 +103,10 @@
 				  hide_poly();
 			}
 
-			function show_split(e) {
+			function show_split(e, f) {
 				document.getElementById("split").style.display = "block"
+				console.log(f);
+				map.fitBounds(f);
 				lock_poly();
 				popup.remove();
 			}

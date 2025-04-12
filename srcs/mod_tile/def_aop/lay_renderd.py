@@ -62,7 +62,6 @@ def main():
                     line += f"\t\t\t\t'{n[:-5]}': {n[:-5]}," + os.linesep
                     line += f"\t\t\t\t'{n[:-5]}_brd': {n[:-5]}_brd," + os.linesep
                 print(line, end="")
-            print_debug(f"Added the leaflet index.html js\n")
             aoc_data = open(f"/home/" + os.environ['DB_USER'] + "/db_connect/" + n, "r+")
             line = aoc_data.readline()
             while line: 
@@ -71,6 +70,7 @@ def main():
                     lay_bnds += line.strip() + ','
                 line = aoc_data.readline()
             aoc_data.close()
+            print_debug(f"Added the leaflet index.html js\n")
 
     for line in fileinput.FileInput("/var/www/html/index.html", inplace=True):
         if line.find("// ADD leaflist") >= 0:
@@ -84,7 +84,7 @@ def main():
 
     print(bcolors.OKBLUE + "\nAdded modifications to : #########################\n\t- /etc/renderd.conf\n\t- /etc/apache2/sites-available/000-default.conf\n\t- /var/wwww/html/index.html\n" + bcolors.ENDC)
 
-    lyr_renderd.close()    
+    lyr_renderd.close()
     print (bcolors.OKBLUE + "END " + __file__ + "\n" + bcolors.ENDC)
 
 def print_debug(str_debug):

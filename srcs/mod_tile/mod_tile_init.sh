@@ -73,7 +73,7 @@ else
 	)
 fi
 
-diff -x *.o -x *.out /test_mapnik /.MAP/mapnik/demo/test_mapnik
+diff -x *.o -x *.png -x *.out /test_mapnik /.MAP/mapnik/demo/test_mapnik
 if [ ! $? -eq 0 ]; then
 	rm -rf /.MAP/mapnik/demo/test_mapnik 
 	mv -v /test_mapnik /.MAP/mapnik/demo/test_mapnik
@@ -82,7 +82,9 @@ else
 	echo
 fi
 
+
 mv -v /.ccls_host /.MAP/mapnik/.ccls
+mv -v /leaflet-demo.html /var/www/html/index.html
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
 

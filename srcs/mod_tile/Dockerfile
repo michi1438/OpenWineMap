@@ -61,7 +61,7 @@ RUN adduser --disabled-password --gecos "" $DB_USER
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # leaflet
-COPY leaflet-demo.html /var/www/html/index.html
+COPY leaflet-demo.html /
 COPY tech_sheet/ /var/www/html/tech_sheet/
 
 # Create volume directories
@@ -74,6 +74,7 @@ RUN mkdir  -p /run/renderd/ \
   && mkdir -p /home/$DB_USER/src/  \
   && mkdir -p /var/cache/renderd/tiles/  \
   && mkdir -p /data/styler /home/$DB_USER/src/openstreetmap-carto \
+  && chown -R $DB_USER:  /var/www/  \
   && chown -R $DB_USER:  /data/  \
   && chown -R $DB_USER:  /home/$DB_USER/src/  \
   && chown -R $DB_USER:  /home/$DB_USER/db_connect/  \
@@ -81,7 +82,7 @@ RUN mkdir  -p /run/renderd/ \
 
 
 RUN chmod -R 777 /home/$DB_USER/src/*
-copY mod_tile_init.sh /
+COPY mod_tile_init.sh /
 
 COPY myrenderd.conf /myrenderd.conf
 COPY test_mapnik/ /test_mapnik/
