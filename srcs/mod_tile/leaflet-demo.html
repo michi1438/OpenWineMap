@@ -103,10 +103,20 @@
 				  hide_poly();
 			}
 
-			function show_split(e, f) {
+			function show_split(e) {
 				document.getElementById("split").style.display = "block"
-				console.log(f);
-				map.fitBounds(f);
+				console.log(e);
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open('POST', '/cgi-bin/cgi_hook.py', true);
+				httpRequest.onload = function() {
+					var myData = httpRequest.responseText.split(',');
+					var ll1 = myData[0].split(' ')
+					var ll2 = myData[1].split(' ')
+					const corners = [[parseFloat(ll1[0]), parseFloat(ll1[1])],[parseFloat(ll2[0]),parseFloat(ll2[1])]]
+					//console.log(corners);	
+					map.fitBounds(corners);
+				}
+				httpRequest.send("appelation_name=" + e);
 				lock_poly();
 				popup.remove();
 			}

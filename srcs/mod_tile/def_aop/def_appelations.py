@@ -133,6 +133,5 @@ def file_r_equal(file1, file2):
     o_file2.close()
     return True
     
-
 if __name__=="__main__":
    main()
