@@ -31,13 +31,30 @@ def main():
         cursor = connection.cursor()
 
         _data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
+        
+        #TODO For testing..
+        cursor.execute(SQL("DROP TABLE IF EXISTS wine_types;"))
+        cursor.execute(SQL("DROP TABLE IF EXISTS grape_varieties;"))
+        cursor.execute(SQL("DROP TABLE IF EXISTS clim_n_geo;"))
+
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS wine_types(name text NOT NULL UNIQUE, description text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(name text NOT NULL UNIQUE, description text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(name text NOT NULL UNIQUE, description text);"))
 
         if os.path.isdir('./prevData/') == False:
             os.mkdir("./prevData/")
 
+        #TODO use that class
+        class crt_aop_data:
+            AOP = ''
+            BORDER_SZ = 0
+            VARIETY = None
+            CLIM_n_GEO = None
+
         for n in _data: 
             if n.find("_data") > 1 and (os.path.isfile(f'./prevData/{n}') == False or file_r_equal(f'{n}', f'./prevData/{n}') == False):
                 print(bcolors.OKCYAN + f"\nREGION {n.upper()} #################################" + bcolors.ENDC)
+                
                 reg = n[:-5] 
                 aoc_data = open("./" + n, "r+")
                 line = aoc_data.readline()
@@ -52,6 +69,10 @@ def main():
                     elif line.strip().find("[BORDER_SZ]") == 0:
                         border_sz = line[11:].strip()
                         print ("border_sz = ", border_sz)
+                    elif line.find("[VARIETY]") == 0:
+                        create_var(line.strip(), cursor, aoc_data)
+                    elif line.find("[CLIM_n_GEO]") == 0:
+                        create_climgeo(line.strip(), cursor, aoc_data)
                     elif line.find("{{\n") == 0:
                         create_aop(reg, cursor, aop, border_sz, aoc_data)
                     elif line.find("L.latLngBounds(") == 0:
@@ -84,17 +105,39 @@ def main():
         print(f"An error occurred: {e}")
     print (bcolors.OKBLUE + "END " + __file__ + "\n" + bcolors.ENDC)
 
+def create_var(variety, cursor, aoc_data):
+    varieties = variety[9:].split(',')
+    for n in varieties:
+        cursor.execute("""INSERT INTO wine_types (name) VALUES (%(var)s) ON CONFLICT DO NOTHING;""", {'var': n})
+    line = aoc_data.readline()
+    while line.find("}\n") != 0:
+        line = line.strip()
+        if line.find("prim=") == 0 or line.find("seco=") == 0: 
+            for n in line[5:].split(','):
+                cursor.execute("""INSERT INTO grape_varieties (name) VALUES(%(grp)s) ON CONFLICT DO NOTHING;""", {'grp': n})
+        #TODO link to current appelation many to many
+        line = aoc_data.readline()
+
+def create_climgeo(variety, cursor, aoc_data):
+        climgeo_attr = variety[12:].split(',')
+        for n in climgeo_attr:
+            cursor.execute("""INSERT INTO clim_n_geo (name) VALUES(%(attr)s) ON CONFLICT DO NOTHING;""", {'attr': n})
+
+
 def create_aop(reg, cursor, aop, border_sz, aoc_data):
     cursor.execute(SQL("DROP TABLE IF EXISTS {};").format(Identifier(aop)))
     cursor.execute(SQL("CREATE TABLE {} AS SELECT * FROM polygons WHERE 1 <> 1;").format(Identifier(aop)))
+    dep_list = ""
     off_aop = "AOP_" + aop[1:-1]
     line = aoc_data.readline()
     while line.find("}}\n") != 0:
-        if line.strip().find("dep=") == 0:
-            dep = line[4:].strip().split()
-            print ("dep =", dep)
-        elif line.strip().find("communes=") == 0:
-            communes = line[9:].strip().split(',')
+        line = line.strip()
+        if line.find("dep=") == 0:
+            dep = line[4:].split()
+            dep_list += dep[0] + ","
+            print ("dep_list =", dep_list)
+        elif line.find("communes=") == 0:
+            communes = line[9:].split(',')
             print ("communes =", communes)
             cursor.execute("""SELECT * FROM commune_not_found(%(comm)s, %(dep)s);""", {'comm': communes, 'dep': dep})
             records = cursor.fetchall()
@@ -106,7 +149,8 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
             sql_statement = SQL("INSERT INTO {} SELECT * FROM polygons WHERE (name = ANY(%(comm)s) OR official_name = ANY(%(comm)s)) AND postal_code = ANY(%(dep)s);").format(Identifier(aop))
             cursor.execute(sql_statement, exec_var)
         line = aoc_data.readline()
-    sql_statement = SQL("INSERT INTO {aop} (name, reg, official_name, geom, zaxis) VALUES ('the_whole_appelation', %(reg)s, %(off_aop)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s);").format(
+    exec_var = {'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
+    sql_statement = SQL("INSERT INTO {aop} (name, reg, official_name, geom, zaxis, postal_code) VALUES ('the_whole_appelation', %(reg)s, %(off_aop)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s, %(dep_list)s);").format(
             aop=Identifier(aop))
     cursor.execute(sql_statement, exec_var)
     print ("THE APPELATION", aop.upper(), "WAS CREATED !!\n")

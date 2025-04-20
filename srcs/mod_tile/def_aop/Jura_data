@@ -1,42 +1,61 @@
 [AOP]cotes_du_jura
 [BORDER_SZ]15
+[VARIETY]red,rose
+{
+	prim=Plousard_N,Trousseau_N,Pinot_N
+	seco=Chardonnay_B,Savagnin_B,Beclan_N,Enfarine_N,Franc noir de la Haute-Saone_N,Gamay_N
+}
+[VARIETY]white
+{
+	prim=Chardonnay_B,Savagnin_B
+	seco=Plousard_N,Trousseau_N,Pinot_N,Aligote_B,Chenin_B,Enfarine_N,Franc noir de la Haute-Saone_N,Ginget_B,Marsanne_B,Roussane_B,Sacy_B
+}
+[VARIETY]vin de paille
+{
+	prim=Chardonnay_B,Savagnin_B,Plousard_N,Trousseau_N
+}
+[VARIETY]vin jaune
+{
+	prim=Savagnin_B,Enfarine_N,Gringet_B
+}
+[CLIM_n_GEO]cool oceanic climate,ouest exposed,marls,300-500 meters
 {{
-dep=39
-communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,L'Aubépin,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort-Orbagna,Bersaillin,Blois-sur-Seille,Brainans,Bréry,Buvilly,Cesancey,La Chailleuse,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chazelles,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Grusse,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nanc-lès-Saint-Amour,Nevy-sur-Seille,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Lamain,Saint-Lothain,Sainte-Agnès,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Les Trois-Châteaux,Vadans,Val-Sonnette,Vaux-sur-Poligny,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Voiteur
+	dep=39
+	communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,L'Aubépin,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort-Orbagna,Bersaillin,Blois-sur-Seille,Brainans,Bréry,Buvilly,Cesancey,La Chailleuse,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chazelles,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Grusse,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nanc-lès-Saint-Amour,Nevy-sur-Seille,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Lamain,Saint-Lothain,Sainte-Agnès,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Les Trois-Châteaux,Vadans,Val-Sonnette,Vaux-sur-Poligny,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Voiteur
 }}
 [AOP]cremant_du_jura
 [BORDER_SZ]10
 {{
-dep=39
-communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,L'Aubépin,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort,Bersaillin,Blois-sur-Seille,Brainans,Bréry,Buvilly,Cesancey,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chazelles,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Grusse,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nanc-lès-Saint-Amour,Nevy-sur-Seille,Orbagna,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Germain-lès-Arlay,Saint-Jean-d'Étreux,Saint-Lamain,Saint-Laurent-la-Roche,Saint-Lothain,Sainte-Agnès,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Vadans,Vaux-sur-Poligny,Vercia,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Vincelles,Voiteur
+	dep=39
+	communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,L'Aubépin,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort,Bersaillin,Blois-sur-Seille,Brainans,Bréry,Buvilly,Cesancey,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chazelles,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Grusse,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nanc-lès-Saint-Amour,Nevy-sur-Seille,Orbagna,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Germain-lès-Arlay,Saint-Jean-d'Étreux,Saint-Lamain,Saint-Laurent-la-Roche,Saint-Lothain,Sainte-Agnès,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Vadans,Vaux-sur-Poligny,Vercia,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Vincelles,Voiteur
 }}
 [AOP]macvin_du_jura
 [BORDER_SZ]5
 {{
-dep=39
-communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort-Orbagna,Bersaillin,Blois-sur-Seille,Brainans,Buvilly,Cesancey,La Chailleuse,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nevy-sur-Seille,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Sainte-Agnès,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Lamain,Saint-Lothain,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Les Trois-Châteaux,Vadans,Val-Sonnette,Vaux-sur-Poligny,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Voiteur
+	dep=39
+	communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort-Orbagna,Bersaillin,Blois-sur-Seille,Brainans,Buvilly,Cesancey,La Chailleuse,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nevy-sur-Seille,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Sainte-Agnès,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Lamain,Saint-Lothain,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Les Trois-Châteaux,Vadans,Val-Sonnette,Vaux-sur-Poligny,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Voiteur
 }}
 [AOP]marc_du_jura
 [BORDER_SZ]5
 {{
-dep=39
-communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,L'Aubépin,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort,Bersaillin,Blois-sur-Seille,Brainans,Bréry,Buvilly,Cesancey,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chazelles,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Grusse,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nanc-lès-Saint-Amour,Nevy-sur-Seille,Orbagna,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Germain-lès-Arlay,Saint-Jean-d'Étreux,Saint-Lamain,Saint-Laurent-la-Roche,Saint-Lothain,Sainte-Agnès,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Vadans,Vaux-sur-Poligny,Vercia,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Vincelles,Voiteur
+	dep=39
+	communes=Abergement-le-Grand,Abergement-le-Petit,Aiglepierre,Arbois,Arlay,Les Arsures,L'Aubépin,Augea,Aumont,Balanod,Baume-les-Messieurs,Beaufort,Bersaillin,Blois-sur-Seille,Brainans,Bréry,Buvilly,Cesancey,Champagne-sur-Loue,La Chapelle-sur-Furieuse,Château-Chalon,Chazelles,Chevreaux,Chille,Chilly-le-Vignoble,Conliège,Courbouzon,Cousance,Cramans,Cuisia,Darbonnay,Digna,Domblans,L'Étoile,Frébuans,Frontenay,Gevingey,Gizia,Grange-de-Vaivre,Grozon,Grusse,Ladoye-sur-Seille,Lavigny,Lons-le-Saunier,Le Louverot,Macornay,Mantry,Marnoz,Mathenay,Maynal,Menétru-le-Vignoble,Mesnay,Messia-sur-Sorne,Miéry,Moiron,Molamboz,Monay,Montagna-le-Reconduit,Montaigu,Montain,Montholier,Montigny-lès-Arsures,Montmorot,Mouchard,Nanc-lès-Saint-Amour,Nevy-sur-Seille,Orbagna,Pagnoz,Pannessières,Passenans,Perrigny,Le Pin,Plainoiseau,Les Planches-près-Arbois,Poligny,Port-Lesney,Pretin,Pupillin,Quintigny,Revigny,Rotalier,Ruffey-sur-Seille,Saint-Amour,Saint-Cyr-Montmalin,Saint-Didier,Saint-Germain-lès-Arlay,Saint-Jean-d'Étreux,Saint-Lamain,Saint-Laurent-la-Roche,Saint-Lothain,Sainte-Agnès,Salins-les-Bains,Sellières,Toulouse-le-Château,Tourmont,Trenal,Vadans,Vaux-sur-Poligny,Vercia,Vernantois,Le Vernois,Villeneuve-sous-Pymont,Villette-lès-Arbois,Vincelles,Voiteur
 }}
 [AOP]L'Étoile
 [BORDER_SZ]5
 {{
-dep=39
-communes=L'Étoile,Plainoiseau,Quintigny,Saint-Didier
+	dep=39
+	communes=L'Étoile,Plainoiseau,Quintigny,Saint-Didier
 }}
 [AOP]arbois
 [BORDER_SZ]5
 {{
-dep=39
-communes=Abergement-le-Grand,Arbois,Les Arsures,Mathenay,Mesnay,Molamboz,Montigny-lès-Arsures,Les Planches-près-Arbois,Pupillin,Saint-Cyr-Montmalin,Vadans,Villette-lès-Arbois
+	dep=39
+	communes=Abergement-le-Grand,Arbois,Les Arsures,Mathenay,Mesnay,Molamboz,Montigny-lès-Arsures,Les Planches-près-Arbois,Pupillin,Saint-Cyr-Montmalin,Vadans,Villette-lès-Arbois
 }}
 [AOP]chateau-chalon
 [BORDER_SZ]5
 {{
-dep=39
-communes=Château-Chalon,Domblans,Menétru-le-Vignoble,Nevy-sur-Seille
+	dep=39
+	communes=Château-Chalon,Domblans,Menétru-le-Vignoble,Nevy-sur-Seille
 }}
