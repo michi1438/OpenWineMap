@@ -134,10 +134,6 @@ a2ensite 000-default
 source /etc/apache2/envvars
 
 echo
-echo Testing no internet no rendering, no server
-tail -f
-
-echo
 echo Starting APACHE2
 apache2 -E apache2_startup.log; cat /etc/apache2/apache2_startup.log | grep warn 
 
