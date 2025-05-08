@@ -77,6 +77,7 @@ int main(int ac, char** av)
 		const std::string srs_layers =
 			"+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0.0 +x_0=0.0 \
 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over";
+
         std::cout << " running poly_draw.out for " << reg_name << "..." << std::endl;
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
@@ -94,10 +95,10 @@ int main(int ac, char** av)
 		p["dbname"]=db_name;
 		p["user"]=db_user;
 		p["password"]=db_user_pw;
+		p["table"]="ww_appelations";
 
 		for (int i = 0; i < appl.getSize() ; i++)
 		{
-			p["table"]="\"\"\"" + appl.getAppelations()[i] + "\"\"\"";
 			layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
 
@@ -105,7 +106,6 @@ int main(int ac, char** av)
 			lyr.set_srs(srs_layers);
 
 			m.add_layer(lyr);
-
 		}
 		m.zoom_all();
 		//std::cout << "current_extent = " << m.get_current_extent() << std::endl;
@@ -117,7 +117,7 @@ int main(int ac, char** av)
 			provpoly_style[i].reserve(1);
 			{
 				rule r;
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
+				r.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 15"));
 				{
 					polygon_symbolizer poly_sym;
 					put(poly_sym, keys::fill, color(100, 0 + (i*15)%255, 80));
@@ -125,7 +125,7 @@ int main(int ac, char** av)
 				}
 				provpoly_style[i].add_rule(std::move(r));
 				rule r2;
-				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
+				r2.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 10"));
 				{
 					polygon_symbolizer poly_sym;
 					put(poly_sym, keys::fill, color(100, 25 + (i*15)%255, 100));
@@ -133,7 +133,7 @@ int main(int ac, char** av)
 				}
 				provpoly_style[i].add_rule(std::move(r2));
 				rule r3;
-				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
+				r3.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 5"));
 				{
 					polygon_symbolizer poly_sym;
 					put(poly_sym, keys::fill, color(100, 50 + (i*15)%255, 120));

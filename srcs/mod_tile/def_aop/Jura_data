@@ -3,7 +3,7 @@
 [VARIETY]red,rose
 {
 	prim=Plousard_N,Trousseau_N,Pinot_N
-	seco=Chardonnay_B,Savagnin_B,Beclan_N,Enfarine_N,Franc noir de la Haute-Saone_N,Gamay_N
+	seco=Chardonnay_B,Savagnin_B,Beclan_N,Enfarine_N,Franc noir de la Haute-Saone_N,Gamay_N,Malbec_N
 }
 [VARIETY]white
 {

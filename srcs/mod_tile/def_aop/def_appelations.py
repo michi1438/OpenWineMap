@@ -37,9 +37,11 @@ def main():
         cursor.execute(SQL("DROP TABLE IF EXISTS grape_varieties;"))
         cursor.execute(SQL("DROP TABLE IF EXISTS clim_n_geo;"))
 
-        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS wine_types(name text NOT NULL UNIQUE, description text);"))
-        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(name text NOT NULL UNIQUE, description text);"))
-        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(name text NOT NULL UNIQUE, description text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS wine_types(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
+
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS ww_appelations(id serial PRIMARY KEY, name text, reg text, geom geometry(Geometry,3857), zaxis smallint, postal_code text);"))
 
         if os.path.isdir('./prevData/') == False:
             os.mkdir("./prevData/")
@@ -65,10 +67,10 @@ def main():
                     if line.strip().find("[AOP]") == 0:
                         aop = f'"{line[5:].strip()}"'
                         aop_list.append(f"\"\"{aop}\"\"")
-                        print ("aop = ", aop)
+                        print ("aop =", aop)
                     elif line.strip().find("[BORDER_SZ]") == 0:
                         border_sz = line[11:].strip()
-                        print ("border_sz = ", border_sz)
+                        print ("border_sz =", border_sz)
                     elif line.find("[VARIETY]") == 0:
                         create_var(line.strip(), cursor, aoc_data)
                     elif line.find("[CLIM_n_GEO]") == 0:
@@ -127,6 +129,7 @@ def create_climgeo(variety, cursor, aoc_data):
 def create_aop(reg, cursor, aop, border_sz, aoc_data):
     cursor.execute(SQL("DROP TABLE IF EXISTS {};").format(Identifier(aop)))
     cursor.execute(SQL("CREATE TABLE {} AS SELECT * FROM polygons WHERE 1 <> 1;").format(Identifier(aop)))
+    cursor.execute(SQL("ALTER TABLE {} ADD id serial PRIMARY KEY;").format(Identifier(aop)))
     dep_list = ""
     off_aop = "AOP_" + aop[1:-1]
     line = aoc_data.readline()
@@ -135,7 +138,7 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
         if line.find("dep=") == 0:
             dep = line[4:].split()
             dep_list += dep[0] + ","
-            print ("dep_list =", dep_list)
+            print ("dep =", dep[0])
         elif line.find("communes=") == 0:
             communes = line[9:].split(',')
             print ("communes =", communes)
@@ -149,10 +152,18 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
             sql_statement = SQL("INSERT INTO {} SELECT * FROM polygons WHERE (name = ANY(%(comm)s) OR official_name = ANY(%(comm)s)) AND postal_code = ANY(%(dep)s);").format(Identifier(aop))
             cursor.execute(sql_statement, exec_var)
         line = aoc_data.readline()
+
+    #TODO make sure everything depends on ww_appelaions table then remove individual table creation...
     exec_var = {'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
     sql_statement = SQL("INSERT INTO {aop} (name, reg, official_name, geom, zaxis, postal_code) VALUES ('the_whole_appelation', %(reg)s, %(off_aop)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s, %(dep_list)s);").format(
             aop=Identifier(aop))
     cursor.execute(sql_statement, exec_var)
+
+    exec_var = {'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
+    sql_statement = SQL("INSERT INTO ww_appelations (name, reg, geom, zaxis, postal_code) VALUES (%(off_aop)s, %(reg)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s, %(dep_list)s);").format(
+            aop=Identifier(aop))
+    cursor.execute(sql_statement, exec_var)
+
     print ("THE APPELATION", aop.upper(), "WAS CREATED !!\n")
     #cursor.execute(SQL("SELECT name,official_name,postal_code FROM {};").format(Identifier(aop)))
     #records = cursor.fetchall()

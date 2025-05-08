@@ -43,7 +43,7 @@ def popup_list(form, cursor):
             while line: 
                 if line.strip().find("[AOP]") == 0:
                     aop = f'"{line[5:].strip()}"'
-                    cursor.execute(SQL("SELECT official_name from {aop} where name = 'the_whole_appelation' AND ST_Contains(geom, ST_GeomFromText('{point}', 3857))").format(
+                    cursor.execute(SQL("SELECT name from ww_appelations where ST_Contains(geom, ST_GeomFromText('{point}', 3857))").format(
                         point=SQL(x),
                         aop=Identifier(aop)))
                 line = aoc_data.readline()

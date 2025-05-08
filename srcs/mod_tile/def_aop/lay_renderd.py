@@ -66,8 +66,7 @@ def main():
             line = aoc_data.readline()
             while line: 
                 if line.strip().find("L.latLngBounds") == 0:
-                    lay_bnds += line.strip() + ','
-                    lay_bnds += line.strip() + ','
+                    lay_bnds += line.strip() + ',' + line.strip() + ','
                 line = aoc_data.readline()
             aoc_data.close()
             print_debug(f"Added the leaflet index.html js\n")
