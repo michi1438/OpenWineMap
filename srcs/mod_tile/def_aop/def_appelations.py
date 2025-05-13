@@ -41,7 +41,7 @@ def main():
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
 
-        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS ww_appelations(id serial PRIMARY KEY, name text, reg text, geom geometry(Geometry,3857), zaxis smallint, postal_code text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS ww_appelations(id serial PRIMARY KEY, name text UNIQUE, reg text, geom geometry(Geometry,3857), zaxis smallint, postal_code text);"))
 
         if os.path.isdir('./prevData/') == False:
             os.mkdir("./prevData/")
@@ -128,7 +128,7 @@ def create_climgeo(variety, cursor, aoc_data):
 
 def create_aop(reg, cursor, aop, border_sz, aoc_data):
     cursor.execute(SQL("DROP TABLE IF EXISTS {};").format(Identifier(aop)))
-    cursor.execute(SQL("CREATE TABLE {} AS SELECT * FROM polygons WHERE 1 <> 1;").format(Identifier(aop)))
+    cursor.execute(SQL("CREATE TABLE {} AS SELECT * FROM polygons WHERE 1 <> 1;").format(Identifier(aop))) # TODO no need to create individual Tables for each appelation anymore, ww_appelations groups them all...
     cursor.execute(SQL("ALTER TABLE {} ADD id serial PRIMARY KEY;").format(Identifier(aop)))
     dep_list = ""
     off_aop = "AOP_" + aop[1:-1]

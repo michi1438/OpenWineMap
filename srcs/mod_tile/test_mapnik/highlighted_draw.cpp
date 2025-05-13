@@ -91,7 +91,7 @@ int main(int ac, char** av)
 		p["dbname"]=db_name;
 		p["user"]=db_user;
 		p["password"]=db_user_pw;
-
+		p["table"]="ww_appelations";
 
 		feature_type_style provpoly_style[appl.getSize()];
 
@@ -104,7 +104,7 @@ int main(int ac, char** av)
 			provpoly_style[i].reserve(1);
 			{
 				rule r;
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
+				r.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 15"));
 				{
 					polygon_symbolizer poly_sym;
 					put(poly_sym, keys::fill, color(100, 0 + (i*15)%255, 80));
@@ -112,7 +112,7 @@ int main(int ac, char** av)
 				}
 				provpoly_style[i].add_rule(std::move(r));
 				rule r2;
-				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
+				r2.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 10"));
 				{
 					polygon_symbolizer poly_sym;
 					put(poly_sym, keys::fill, color(100, 25 + (i*15)%255, 100));
@@ -120,7 +120,7 @@ int main(int ac, char** av)
 				}
 				provpoly_style[i].add_rule(std::move(r2));
 				rule r3;
-				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
+				r3.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 5"));
 				{
 					polygon_symbolizer poly_sym;
 					put(poly_sym, keys::fill, color(100, 50 + (i*15)%255, 120));
@@ -128,10 +128,8 @@ int main(int ac, char** av)
 				}
 				provpoly_style[i].add_rule(std::move(r3));
 			}
-	//		provpoly_style[i].set_comp_op(overlay);
 			m.insert_style(appl.getAppelations()[i], std::move(provpoly_style[i]));
 
-			p["table"]="\"\"\"" + appl.getAppelations()[i] + "\"\"\"";
 			layer lyr("Provinces");
 			lyr.set_datasource(datasource_cache::instance().create(p));
 

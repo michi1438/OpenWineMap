@@ -81,7 +81,7 @@ int main(int ac, char** av)
         datasource_cache::instance().register_datasources("/usr/local/lib/mapnik/input/");
         freetype_engine::register_font("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 
-        Map m(1600, 1200);
+        Map m(800, 600);
         m.set_background(parse_color("#00000000"));
         m.set_srs(srs_map);
 
@@ -94,15 +94,13 @@ int main(int ac, char** av)
 		p["dbname"]=db_name;
 		p["user"]=db_user;
 		p["password"]=db_user_pw;
+		p["table"]="ww_appelations";
 
 		for (int i = 0; i < appl.getSize() ; i++)
 		{
-			p["table"]="\"\"\"" + appl.getAppelations()[i] + "\"\"\"";
-			layer lyr("Provinces");
-			lyr.set_datasource(datasource_cache::instance().create(p));
-
-			layer lyr_cont("Contour");
+			layer lyr_cont("Provinces");
 			lyr_cont.set_datasource(datasource_cache::instance().create(p));
+
 			lyr_cont.add_style(appl.getAppelations()[i] + "_contour");
 			lyr_cont.set_srs(srs_layers);
 
@@ -116,7 +114,7 @@ int main(int ac, char** av)
 			appelation_style[i].reserve(1); // prevent reallocation and copying in add_rule
 			{
 				rule r;
-				r.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 15"));
+				r.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 15"));
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 0 + (i*15)%255, 80));
@@ -126,7 +124,7 @@ int main(int ac, char** av)
 				}
 				appelation_style[i].add_rule(std::move(r));
 				rule r2;
-				r2.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 10"));
+				r2.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 10"));
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 25 + (i*15)%255, 100));
@@ -136,7 +134,7 @@ int main(int ac, char** av)
 				}
 				appelation_style[i].add_rule(std::move(r2));
 				rule r3;
-				r3.set_filter(parse_expression("[name] = 'the_whole_appelation' and [zaxis] = 5"));
+				r3.set_filter(parse_expression("[name] = \"AOP_" + appl.getAppelations()[i]+ "\" and [zaxis] = 5"));
 				{
 					line_symbolizer line_sym;
 					put(line_sym, keys::stroke, color(100, 50 + (i*15)%255, 120));

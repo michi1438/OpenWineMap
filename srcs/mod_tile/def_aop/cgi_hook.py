@@ -35,23 +35,13 @@ def popup_list(form, cursor):
     print("Content-Type: text/html;charset=utf-8")                                                                                                                                                                                                                                                                                  
     print ("Content-type:text/html\r\n")                                                                                                                                                                                                                                                                                            
 
-    _data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
-    for n in _data: 
-        if n.find("_data") > 1:
-            aoc_data = open("/home/" + os.environ['DB_USER'] + f"/db_connect/{n}", "r")
-            line = aoc_data.readline()
-            while line: 
-                if line.strip().find("[AOP]") == 0:
-                    aop = f'"{line[5:].strip()}"'
-                    cursor.execute(SQL("SELECT name from ww_appelations where ST_Contains(geom, ST_GeomFromText('{point}', 3857))").format(
-                        point=SQL(x),
-                        aop=Identifier(aop)))
-                line = aoc_data.readline()
-                records = cursor.fetchall()
-                for row in records:
-                    print(f"<p id=\"aop_name\" onmouseleave=\"hide_poly()\" onmouseenter=\"show_poly('" + str(row[0][4:].replace("'","\\'")) + f"')\"> \
-                            <a href=\"tech_sheet/{str(row[0])[4:]}.html\" target=\"split\" onclick=\"show_split('{str(row[0])[4:]}')\"> " \
-                            + str(row[0])[:4] + str(row[0])[4:].title() + "</a></p>")
+    cursor.execute(SQL("SELECT name from ww_appelations where ST_Contains(geom, ST_GeomFromText('{point}', 3857))").format(
+        point=SQL(x)))
+    records = cursor.fetchall()
+    for row in records:
+        print(f"<p id=\"aop_name\" onmouseleave=\"hide_poly()\" onmouseenter=\"show_poly('" + str(row[0][4:].replace("'","\\'")) + f"')\"> \
+                <a href=\"tech_sheet/{str(row[0])[4:]}.html\" target=\"split\" onclick=\"show_split('{str(row[0])[4:]}')\"> " \
+                + str(row[0])[:4] + str(row[0])[4:].title() + "</a></p>")
 
 def appelation_bbox(form, cursor):
     appl_name = f'"{form["appelation_name"].value}"'

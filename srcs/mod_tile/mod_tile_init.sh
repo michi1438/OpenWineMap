@@ -85,6 +85,7 @@ fi
 
 mv -v /.ccls_host /.MAP/mapnik/.ccls
 mv -v /leaflet-demo.html /var/www/html/index.html
+mv -v /new_data_form.html /var/www/html/add.html
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
 
