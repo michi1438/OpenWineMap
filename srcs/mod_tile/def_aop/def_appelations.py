@@ -145,6 +145,7 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
                    print(row)
         line = aoc_data.readline()
     all_deps = dep_list.split(',')
+    # TODO this by departement to avoid weird satelites polygons, check if exits, alter line to add new data else create new line...
     exec_var = {'all_comm': all_comm, 'all_deps': all_deps, 'comm': communes, 'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg, 'dep': dep} 
     sql_statement = SQL("INSERT INTO ww_appelations (name, reg, geom, zaxis, postal_code) VALUES (%(off_aop)s, %(reg)s, (SELECT st_simplify(ST_union(geom), 500) FROM polygons WHERE (name = ANY(%(all_comm)s) OR official_name = ANY(%(all_comm)s)) AND postal_code = ANY(%(all_deps)s)), %(border_sz)s, %(dep_list)s);").format(
         aop=Identifier(aop))
