@@ -47,8 +47,8 @@ def appelation_bbox(form, cursor):
     appl_name = f'"{form["appelation_name"].value}"'
 
     #cursor.execute("SELECT name from irouleguy limit 1;")
-    cursor.execute(SQL("SELECT ST_Extent(ST_FlipCoordinates(ST_Transform(ST_Envelope(geom), 4326))) FROM {aop}").format(
-        aop=Identifier(appl_name)))
+    exec_var = {'aop_name': appl_name} 
+    cursor.execute(SQL("SELECT ST_Extent(ST_FlipCoordinates(ST_Transform(ST_Envelope(geom), 4326))) FROM ww_appelations where name = %(aop_name)s"), )
     x = cursor.fetchone()[0].split(',')
 
     print("Content-Type: text/html;charset=utf-8")                                                                                                                                                                                                                                                                                  

@@ -41,6 +41,7 @@ def main():
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
 
+        cursor.execute(SQL("DROP TABLE IF EXISTS ww_appelations CASCADE;"))
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS ww_appelations(id serial PRIMARY KEY, name text UNIQUE, reg text, geom geometry(Geometry,3857), zaxis smallint, postal_code text);"))
 
         if os.path.isdir('./prevData/') == False:
@@ -80,14 +81,8 @@ def main():
                     elif line.find("L.latLngBounds(") == 0:
                         ext_exists = True
                     line = aoc_data.readline()
-                sql_view = ""
-                for x in aop_list:
-                    if sql_view == "":
-                        sql_view = f"CREATE VIEW combined_table AS SELECT geom, name FROM {x} "
-                    else:
-                        sql_view += f"UNION ALL SELECT geom, name FROM {x} "
-                sql_view +=";"
-                cursor.execute(SQL(sql_view + "select st_extent(st_flipcoordinates(st_transform(st_envelope(geom), 4326))) from combined_table"))
+                exec_var = {'reg': reg} 
+                cursor.execute(SQL("select st_extent(st_flipcoordinates(st_transform(st_envelope(geom), 4326))) from ww_appelations WHERE reg = %(reg)s"), exec_var)
                 # L.latLngBounds(L.latLng(50.736455, -6.328125),L.latLng(40.553080, 9.843750))
                 extent = cursor.fetchall()[0][0][3:]
                 print ("extent of the region = " + extent) 
@@ -128,11 +123,10 @@ def create_climgeo(variety, cursor, aoc_data):
 
 def create_aop(reg, cursor, aop, border_sz, aoc_data):
     cursor.execute(SQL("DROP TABLE IF EXISTS {};").format(Identifier(aop)))
-    cursor.execute(SQL("CREATE TABLE {} AS SELECT * FROM polygons WHERE 1 <> 1;").format(Identifier(aop))) # TODO no need to create individual Tables for each appelation anymore, ww_appelations groups them all...
-    cursor.execute(SQL("ALTER TABLE {} ADD id serial PRIMARY KEY;").format(Identifier(aop)))
     dep_list = ""
     off_aop = "AOP_" + aop[1:-1]
     line = aoc_data.readline()
+    all_comm = []
     while line.find("}}\n") != 0:
         line = line.strip()
         if line.find("dep=") == 0:
@@ -141,6 +135,7 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
             print ("dep =", dep[0])
         elif line.find("communes=") == 0:
             communes = line[9:].split(',')
+            all_comm += communes
             print ("communes =", communes)
             cursor.execute("""SELECT * FROM commune_not_found(%(comm)s, %(dep)s);""", {'comm': communes, 'dep': dep})
             records = cursor.fetchall()
@@ -148,20 +143,11 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
                 print(bcolors.WARNING + "\nCOMMUNES NOT FOUND: FOR DEPARTEMENT", dep[0] + bcolors.ENDC)
                 for row in records:
                    print(row)
-            exec_var = {'comm': communes, 'dep': dep, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
-            sql_statement = SQL("INSERT INTO {} SELECT * FROM polygons WHERE (name = ANY(%(comm)s) OR official_name = ANY(%(comm)s)) AND postal_code = ANY(%(dep)s);").format(Identifier(aop))
-            cursor.execute(sql_statement, exec_var)
         line = aoc_data.readline()
-
-    #TODO make sure everything depends on ww_appelaions table then remove individual table creation...
-    exec_var = {'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
-    sql_statement = SQL("INSERT INTO {aop} (name, reg, official_name, geom, zaxis, postal_code) VALUES ('the_whole_appelation', %(reg)s, %(off_aop)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s, %(dep_list)s);").format(
-            aop=Identifier(aop))
-    cursor.execute(sql_statement, exec_var)
-
-    exec_var = {'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
-    sql_statement = SQL("INSERT INTO ww_appelations (name, reg, geom, zaxis, postal_code) VALUES (%(off_aop)s, %(reg)s, (SELECT st_simplify(ST_union(geom), 500) FROM {aop}), %(border_sz)s, %(dep_list)s);").format(
-            aop=Identifier(aop))
+    all_deps = dep_list.split(',')
+    exec_var = {'all_comm': all_comm, 'all_deps': all_deps, 'comm': communes, 'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg, 'dep': dep} 
+    sql_statement = SQL("INSERT INTO ww_appelations (name, reg, geom, zaxis, postal_code) VALUES (%(off_aop)s, %(reg)s, (SELECT st_simplify(ST_union(geom), 500) FROM polygons WHERE (name = ANY(%(all_comm)s) OR official_name = ANY(%(all_comm)s)) AND postal_code = ANY(%(all_deps)s)), %(border_sz)s, %(dep_list)s);").format(
+        aop=Identifier(aop))
     cursor.execute(sql_statement, exec_var)
 
     print ("THE APPELATION", aop.upper(), "WAS CREATED !!\n")
