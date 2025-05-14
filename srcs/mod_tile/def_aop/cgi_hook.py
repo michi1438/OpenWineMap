@@ -44,11 +44,12 @@ def popup_list(form, cursor):
                 + str(row[0])[:4] + str(row[0])[4:].title() + "</a></p>")
 
 def appelation_bbox(form, cursor):
-    appl_name = f'"{form["appelation_name"].value}"'
+    appl_name = "AOP_"
+    appl_name += f'{form["appelation_name"].value}'
 
     #cursor.execute("SELECT name from irouleguy limit 1;")
     exec_var = {'aop_name': appl_name} 
-    cursor.execute(SQL("SELECT ST_Extent(ST_FlipCoordinates(ST_Transform(ST_Envelope(geom), 4326))) FROM ww_appelations where name = %(aop_name)s"), )
+    cursor.execute(SQL("SELECT ST_Extent(ST_FlipCoordinates(ST_Transform(ST_Envelope(geom), 4326))) FROM ww_appelations where name = %(aop_name)s"), exec_var)
     x = cursor.fetchone()[0].split(',')
 
     print("Content-Type: text/html;charset=utf-8")                                                                                                                                                                                                                                                                                  
