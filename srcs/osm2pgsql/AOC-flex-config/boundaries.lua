@@ -32,6 +32,7 @@ local tables = {}
 -- "area_id" column, for relations the negative id will be stored. When
 -- running in "append" mode, osm2pgsql will automatically update this table
 -- using the way/relation ids.
+-- TODO maybe replace the use of area_id with a serial key for better indexing...
 tables.polygons = osm2pgsql.define_area_table('polygons', {
     { column = 'type', type = 'text' },
     { column = 'zaxis', type = 'smallint' },

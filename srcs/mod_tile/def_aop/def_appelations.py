@@ -126,7 +126,7 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
     dep_list = ""
     off_aop = "AOP_" + aop[1:-1]
     line = aoc_data.readline()
-    all_comm = []
+    all_id = []
     while line.find("}}\n") != 0:
         line = line.strip()
         if line.find("dep=") == 0:
@@ -135,19 +135,22 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
             print ("dep =", dep[0])
         elif line.find("communes=") == 0:
             communes = line[9:].split(',')
-            all_comm += communes
             print ("communes =", communes)
             cursor.execute("""SELECT * FROM commune_not_found(%(comm)s, %(dep)s);""", {'comm': communes, 'dep': dep})
             records = cursor.fetchall()
             if len(records) != 0: 
                 print(bcolors.WARNING + "\nCOMMUNES NOT FOUND: FOR DEPARTEMENT", dep[0] + bcolors.ENDC)
                 for row in records:
-                   print(row)
+                    print(row)
+            cursor.execute("""SELECT area_id FROM polygons WHERE (name = ANY(%(comm)s) OR official_name = ANY(%(comm)s)) AND postal_code = ANY(%(dep)s);""", {'comm': communes, 'dep': dep})
+            records = cursor.fetchall()
+            for row in records:
+                all_id += row
         line = aoc_data.readline()
-    all_deps = dep_list.split(',')
-    # TODO this by departement to avoid weird satelites polygons, check if exits, alter line to add new data else create new line...
-    exec_var = {'all_comm': all_comm, 'all_deps': all_deps, 'comm': communes, 'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg, 'dep': dep} 
-    sql_statement = SQL("INSERT INTO ww_appelations (name, reg, geom, zaxis, postal_code) VALUES (%(off_aop)s, %(reg)s, (SELECT st_simplify(ST_union(geom), 500) FROM polygons WHERE (name = ANY(%(all_comm)s) OR official_name = ANY(%(all_comm)s)) AND postal_code = ANY(%(all_deps)s)), %(border_sz)s, %(dep_list)s);").format(
+    print("all_area_id = ", all_id)
+
+    exec_var = {'all_id': all_id, 'dep_list': dep_list, 'border_sz':border_sz, 'off_aop': off_aop, 'reg': reg} 
+    sql_statement = SQL("INSERT INTO ww_appelations (name, reg, geom, zaxis, postal_code) VALUES (%(off_aop)s, %(reg)s, (SELECT st_simplify(ST_union(geom), 500) FROM polygons WHERE area_id = ANY(%(all_id)s)), %(border_sz)s, %(dep_list)s);").format(
         aop=Identifier(aop))
     cursor.execute(sql_statement, exec_var)
 
