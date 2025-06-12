@@ -33,11 +33,13 @@ def main():
         _data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
         
         #TODO For testing..
-        cursor.execute(SQL("DROP TABLE IF EXISTS wine_types;"))
-        cursor.execute(SQL("DROP TABLE IF EXISTS grape_varieties;"))
-        cursor.execute(SQL("DROP TABLE IF EXISTS clim_n_geo;"))
+        cursor.execute(SQL("DROP TABLE IF EXISTS wine_types CASCADE;"))
+        cursor.execute(SQL("DROP TABLE IF EXISTS grape_varieties CASCADE;"))
+        cursor.execute(SQL("DROP TABLE IF EXISTS clim_n_geo CASCADE;"))
+        cursor.execute(SQL("DROP TABLE IF EXISTS aop_types_grapes CASCADE;"))
 
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS wine_types(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS aop_types_grapes(aop_id int REFERENCES ww_appelations (id) ON UPDATE CASCADE ON DELETE CASCADE, type_id int[] , grp_prim_id int[], grp_seco_id int[]);"))
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
 
@@ -52,6 +54,7 @@ def main():
             AOP = ''
             BORDER_SZ = 0
             VARIETY = None
+            WINE_TYPES = []
             CLIM_n_GEO = None
 
         for n in _data: 
@@ -61,19 +64,17 @@ def main():
                 reg = n[:-5] 
                 aoc_data = open("./" + n, "r+")
                 line = aoc_data.readline()
-                aop_list = []
                 cursor.execute(SQL("DROP VIEW IF EXISTS combined_table;"))
                 ext_exists = False
                 while line: 
                     if line.strip().find("[AOP]") == 0:
                         aop = f'"{line[5:].strip()}"'
-                        aop_list.append(f"\"\"{aop}\"\"")
                         print ("aop =", aop)
                     elif line.strip().find("[BORDER_SZ]") == 0:
                         border_sz = line[11:].strip()
                         print ("border_sz =", border_sz)
                     elif line.find("[VARIETY]") == 0:
-                        create_var(line.strip(), cursor, aoc_data)
+                        create_var(line.strip(), cursor, aoc_data, aop)
                     elif line.find("[CLIM_n_GEO]") == 0:
                         create_climgeo(line.strip(), cursor, aoc_data)
                     elif line.find("{{\n") == 0:
@@ -102,18 +103,28 @@ def main():
         print(f"An error occurred: {e}")
     print (bcolors.OKBLUE + "END " + __file__ + "\n" + bcolors.ENDC)
 
-def create_var(variety, cursor, aoc_data):
+def create_var(variety, cursor, aoc_data, aop):
     varieties = variety[9:].split(',')
+    off_aop = "AOP_" + aop[1:-1]
+    
+    print("CREATE_var: " + off_aop)
     for n in varieties:
         cursor.execute("""INSERT INTO wine_types (name) VALUES (%(var)s) ON CONFLICT DO NOTHING;""", {'var': n})
     line = aoc_data.readline()
     while line.find("}\n") != 0:
+        seco = []
         line = line.strip()
-        if line.find("prim=") == 0 or line.find("seco=") == 0: 
-            for n in line[5:].split(','):
+        if line.find("prim=") == 0:
+            prim = line[5:].split(',')
+            for n in prim:
                 cursor.execute("""INSERT INTO grape_varieties (name) VALUES(%(grp)s) ON CONFLICT DO NOTHING;""", {'grp': n})
-        #TODO link to current appelation many to many
+            print(varieties)
+        elif line.find("seco=") == 0: 
+            seco = line[5:].split(',')
+            for n in seco:
+                cursor.execute("""INSERT INTO grape_varieties (name) VALUES(%(grp)s) ON CONFLICT DO NOTHING;""", {'grp': n})
         line = aoc_data.readline()
+    cursor.execute("""INSERT INTO aop_types_grapes (aop_id, type_id, grp_prim_id, grp_seco_id) VALUES ((select id from ww_appelations where name = (%(aop_name)s)), (select array_agg(id) from wine_types where name = ANY(%(var)s)), (select array_agg(id) from grape_varieties where name = ANY(%(grp_prim)s)), (select array_agg(id) from grape_varieties where name = ANY(%(grp_seco)s))) ON CONFLICT DO NOTHING;""", {'var': varieties, 'aop_name': off_aop, 'grp_prim': prim, 'grp_seco':seco})
 
 def create_climgeo(variety, cursor, aoc_data):
         climgeo_attr = variety[12:].split(',')
@@ -127,7 +138,7 @@ def create_aop(reg, cursor, aop, border_sz, aoc_data):
     off_aop = "AOP_" + aop[1:-1]
     line = aoc_data.readline()
     all_id = []
-    while line.find("}}\n") != 0:
+    while line.find("}}") != 0:
         line = line.strip()
         if line.find("dep=") == 0:
             dep = line[4:].split()
