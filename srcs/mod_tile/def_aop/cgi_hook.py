@@ -40,7 +40,7 @@ def popup_list(form, cursor):
     records = cursor.fetchall()
     for row in records:
         print(f"<p id=\"aop_name\" onmouseleave=\"hide_poly()\" onmouseenter=\"show_poly('" + str(row[0][4:].replace("'","\\'")) + f"')\"> \
-                <a href=\"tech_sheet/{str(row[0])[4:]}.html\" target=\"split\" onclick=\"show_split('{str(row[0])[4:]}')\"> " \
+                <a href=\"cgi-bin/cgi_sheetparser.py?tech_sheet={str(row[0])[4:]}\" target=\"split\" onclick=\"show_split('{str(row[0])[4:]}')\"> " \
                 + str(row[0])[:4] + str(row[0])[4:].title() + "</a></p>")
 
 def appelation_bbox(form, cursor):

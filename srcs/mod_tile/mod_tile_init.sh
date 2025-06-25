@@ -85,6 +85,7 @@ fi
 
 mv -v /.ccls_host /.MAP/mapnik/.ccls
 mv -v /leaflet-demo.html /var/www/html/index.html
+mv -v /base_tech_sheet.html /var/www/html/tech_sheet/base_tech_sheet.html
 mv -v /new_data_form.html /var/www/html/add.html
 cp -v /myrenderd.conf /etc/renderd.conf
 chmod -R 777 /.MAP/mapnik/demo/*
@@ -110,7 +111,7 @@ AddHandler cgi-script .cgi .pl .py\n" >> /etc/apache2/apache2.conf
 
 cd /home/$DB_USER/db_connect/
 (
-	mv -v /def_aop/cgi_hook.py /var/www/cgi-bin/
+	mv -v /def_aop/cgi_* /var/www/cgi-bin/
 	mv -v /def_aop/* ./
 	python3 def_appelations.py #> def_appelation.out
 	python3 lay_renderd.py
