@@ -68,14 +68,28 @@ def create_tech_sheet(file):
         cursor.execute(SQL("SELECT type_id FROM aop_types_grapes where aop_id = %(id)s"), {'id': y[1]})
         x = cursor.fetchall()
         types = ""
+        Grapes = ""
         for t in x:
             cursor.execute(SQL("SELECT array_agg(name) FROM wine_types where id = ANY(%(id)s)"), {'id': t})
             x = cursor.fetchone()
             types += str(x[0])[1:-1].replace("'","") + ", "
+            for wt in t:
+                cursor.execute(SQL("SELECT grp_prim_id FROM aop_types_grapes WHERE aop_id = %(id)s AND type_id = %(t_id)s" ), {'id': y[1], 't_id': wt})
+                Grapes += "<h3>" + str(x) + " Wines</h3>"
+                xx = cursor.fetchone()
+                cursor.execute(SQL("SELECT array_agg(name) FROM grape_varieties where id = ANY(%(id)s)"), {'id': xx})
+                x = cursor.fetchone()
+                Grapes +="<p>" + str(x) + "</p>\n"
+
+        print("Grapes= ")
+        print(Grapes)
+        print("\n")
+        data = data.replace('[[[GRAPES]]]', str(Grapes))
         print("types = ")
         print(types)
         print("\n")
         data = data.replace('[[[WINE_TYPES]]]', str(types[:-2]))
+
         cursor.execute(SQL("SELECT name,reg FROM ww_appelations where id = %(id)s"), {'id': y[1]})
         x = cursor.fetchone()
         if x:
