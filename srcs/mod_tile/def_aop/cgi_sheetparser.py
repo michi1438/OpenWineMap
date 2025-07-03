@@ -14,29 +14,32 @@ def main():
     if param["tech_sheet"]:
         parse(param)
 
-def parse(param):
+def wait_for(file, status):
+    print("Content-Type: text/html;charset=utf-8")                                                                                                                                                                                                                                                                                  
+    print("Status: 302 Found")
+    print("File_status: " + status)
+    print("Location: /tech_sheet/." + file + ".html\r\n")
 
-    #cursor.execute("SELECT name from irouleguy limit 1;")
+    print(f"<p> WAIT FOR IT.... /tech_sheet/." + file + ".html is comming ! </p>")
+    print("\r\n\r\n")
+    EXIt()
+
+def parse(param):
 
     file = param["tech_sheet"].value #TODO try to hack... should be easy ! 
     if os.path.exists("/var/www/html/tech_sheet/." + file + ".html"):
-        print("Status: 302 Found")
-        print("Location: /tech_sheet/." + file + ".html")
-        print()
+        with open("/var/www/html/tech_sheet/." + file + ".html") as f:
+            if "[[[" in f.read():
+                os.remove("/var/www/html/tech_sheet/." + file + ".html");
+                create_tech_sheet(file)
+                wait_for(file, "RECREATED")
+                return
+        wait_for(file, "ALREADY_EXISTS")
         return
     else:
-        print("Content-Type: text/html;charset=utf-8")                                                                                                                                                                                                                                                                                  
-        print("Refresh: 10")
-        print ("Content-type:text/html\r\n")                                                                                                                                                                                                                                                                                            
-
-        print(f"<p> WAIT FOR IT.... /tech_sheet/." + file + ".html is comming ! </p>")
         create_tech_sheet(file)
-        print()
-        print("Status: 302 Found")
-        print("Location: /tech_sheet/." + file + ".html")
-        print()
-        return
-        
+        wait_for(file, "CREATED")
+
 def create_tech_sheet(file):
 
     connection = psycopg2.connect(
@@ -58,14 +61,11 @@ def create_tech_sheet(file):
         data = o_file.read()
 
     cursor.execute(SQL("SELECT name,id FROM ww_appelations where name = %(aop_name)s"), exec_var)
-    y = cursor.fetchone()
-    if y:
-        print("y = ")
-        print(y)
-        print("\n")
-        data = data.replace('[[[APPL_NAME]]]', y[0].title())
+    name_id = cursor.fetchone()
+    if name_id:
+        data = data.replace('[[[APPL_NAME]]]', name_id[0].title())
 
-        cursor.execute(SQL("SELECT type_id FROM aop_types_grapes where aop_id = %(id)s"), {'id': y[1]})
+        cursor.execute(SQL("SELECT type_id FROM aop_types_grapes where aop_id = %(id)s"), {'id': name_id[1]})
         x = cursor.fetchall()
         types = ""
         Grapes = ""
@@ -74,29 +74,26 @@ def create_tech_sheet(file):
             x = cursor.fetchone()
             types += str(x[0])[1:-1].replace("'","") + ", "
             for wt in t:
-                cursor.execute(SQL("SELECT grp_prim_id FROM aop_types_grapes WHERE aop_id = %(id)s AND type_id = %(t_id)s" ), {'id': y[1], 't_id': wt})
-                Grapes += "<h3>" + str(x) + " Wines</h3>"
+                cursor.execute(SQL("SELECT grp_prim_id FROM aop_types_grapes WHERE aop_id = %(id)s AND type_id = %(t_id)s" ), {'id': name_id[1], 't_id': wt})
+                Grapes += "<h3>" + str(x[0])[2:-2].replace("'", "").title() + " Wines</h3>"
                 xx = cursor.fetchone()
                 cursor.execute(SQL("SELECT array_agg(name) FROM grape_varieties where id = ANY(%(id)s)"), {'id': xx})
                 x = cursor.fetchone()
-                Grapes +="<p>" + str(x) + "</p>\n"
+                Grapes +="<p><pre>Primary:    " + str(x[0])[2:-2].replace("'", "") + "</pre></p>\n"
+                cursor.execute(SQL("SELECT grp_seco_id FROM aop_types_grapes WHERE aop_id = %(id)s AND type_id = %(t_id)s" ), {'id': name_id[1], 't_id': wt})
+                xx = cursor.fetchone()
+                cursor.execute(SQL("SELECT array_agg(name) FROM grape_varieties where id = ANY(%(id)s)"), {'id': xx})
+                x = cursor.fetchone()
+                if x[0]:
+                    Grapes +="<p><pre>Secondary:  " + str(x[0])[2:-2].replace("'", "") + "</pre></p>\n"
 
-        print("Grapes= ")
-        print(Grapes)
-        print("\n")
         data = data.replace('[[[GRAPES]]]', str(Grapes))
-        print("types = ")
-        print(types)
-        print("\n")
         data = data.replace('[[[WINE_TYPES]]]', str(types[:-2]))
 
-        cursor.execute(SQL("SELECT name,reg FROM ww_appelations where id = %(id)s"), {'id': y[1]})
+        cursor.execute(SQL("SELECT name,reg FROM ww_appelations where id = %(id)s"), {'id': name_id[1]})
         x = cursor.fetchone()
         if x:
-            print("x = ")
             reg_full = str(x[0])[4:].title() + ", " + str(x[1]) + ", FRANCE";
-            print(reg_full)
-            print("\n")
             data = data.replace('[[[REGION]]]', reg_full)
 
     with open("/var/www/html/tech_sheet/." + file + ".html", 'w') as o_file:
