@@ -8,7 +8,7 @@ if [ ! -d ./osm2pgsql ]; then
 	make install
 fi
 
-echo "alias osm2pgsql=\"/.PBF/osm2pgsql/build/osm2pgsql --output=flex -W -d $DB_NAME -H postgres -U $DB_USER\"" > /root/.bashrc
+echo "alias osm2pgsql=\"/.PBF/osm2pgsql/build/osm2pgsql --output=flex -S /boundaries.lua -W -d $DB_NAME -H $DB_HOST -U $DB_USER\"" > /root/.bashrc
 
 cd /.PBF
 

@@ -62,7 +62,7 @@ COPY apache.conf /etc/apache2/sites-available/000-default.conf
 
 # leaflet
 COPY leaflet-demo.html /
-COPY tech_sheet/ /
+COPY tech_sheet/base_tech_sheet.html /base_tech_sheet.html
 
 # Create volume directories
 RUN mkdir  -p /run/renderd/ \

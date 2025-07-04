@@ -33,6 +33,9 @@ def main():
         _data = os.listdir("/home/" + os.environ["DB_USER"] + "/db_connect/") 
         
         #TODO For testing..
+        cursor.execute(SQL("DROP TABLE IF EXISTS ww_appelations CASCADE;"))
+        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS ww_appelations(id serial PRIMARY KEY, name text UNIQUE, reg text, geom geometry(Geometry,3857), zaxis smallint, postal_code text);"))
+
         cursor.execute(SQL("DROP TABLE IF EXISTS wine_types CASCADE;"))
         cursor.execute(SQL("DROP TABLE IF EXISTS grape_varieties CASCADE;"))
         cursor.execute(SQL("DROP TABLE IF EXISTS clim_n_geo CASCADE;"))
@@ -43,8 +46,6 @@ def main():
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS grape_varieties(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
         cursor.execute(SQL("CREATE TABLE IF NOT EXISTS clim_n_geo(id serial PRIMARY KEY, name text NOT NULL UNIQUE, description text);"))
 
-        cursor.execute(SQL("DROP TABLE IF EXISTS ww_appelations CASCADE;"))
-        cursor.execute(SQL("CREATE TABLE IF NOT EXISTS ww_appelations(id serial PRIMARY KEY, name text UNIQUE, reg text, geom geometry(Geometry,3857), zaxis smallint, postal_code text);"))
 
         if os.path.isdir('./prevData/') == False:
             os.mkdir("./prevData/")
@@ -63,6 +64,7 @@ def main():
                 
                 reg = n[:-5] 
                 aoc_data = open("./" + n, "r+")
+                border_sz = ""
                 line = aoc_data.readline()
                 cursor.execute(SQL("DROP VIEW IF EXISTS combined_table;"))
                 ext_exists = False
