@@ -79,13 +79,13 @@ def create_tech_sheet(file):
                 xx = cursor.fetchone()
                 cursor.execute(SQL("SELECT array_agg(name) FROM grape_varieties where id = ANY(%(id)s)"), {'id': xx})
                 x = cursor.fetchone()
-                Grapes +="<p><pre>Primary:    " + str(x[0])[2:-2].replace("'", "") + "</pre></p>\n"
+                Grapes +="<pre>Primary:\n  " + str(x[0])[2:-2].replace("'", "") + "</pre>"
                 cursor.execute(SQL("SELECT grp_seco_id FROM aop_types_grapes WHERE aop_id = %(id)s AND type_id = %(t_id)s" ), {'id': name_id[1], 't_id': wt})
                 xx = cursor.fetchone()
                 cursor.execute(SQL("SELECT array_agg(name) FROM grape_varieties where id = ANY(%(id)s)"), {'id': xx})
                 x = cursor.fetchone()
                 if x[0]:
-                    Grapes +="<p><pre>Secondary:  " + str(x[0])[2:-2].replace("'", "") + "</pre></p>\n"
+                    Grapes +="<pre>Secondary:\n  " + str(x[0])[2:-2].replace("'", "") + "</pre>"
 
         data = data.replace('[[[GRAPES]]]', str(Grapes))
         data = data.replace('[[[WINE_TYPES]]]', str(types[:-2]))
